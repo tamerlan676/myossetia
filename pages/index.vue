@@ -2,7 +2,7 @@
 .main
   Slider
   Categories
-  Hits
+  Hits(:hits="hits")
   .blog 
     h2 Блог
     .blog-wrapper 
@@ -12,14 +12,16 @@
         .title Помогаем диким животным
         .date 23.12.2022
     nuxt-link.all-articles(to="/articles") Все статьи
+  Mission
 
 </template>
 
 <script>  
 import Categories from '~/components/Categories.vue'
+import Mission from '~/components/Mission.vue'
   export default {
     name: 'MainPage',
-    components: { Categories },
+    components: { Categories, Mission },
     layout: 'default',
     data () {
       return {
@@ -27,12 +29,18 @@ import Categories from '~/components/Categories.vue'
         suggestions: null
       }
     },
+    async fetch ({ store }) {
+        await store.dispatch('getHits')
+    },
     computed: {
       products() {
           return this.$store.state.products
       },
       cart() {
         return this.$store.state.cart
+      },
+      hits() {
+        return this.$store.state.hits
       }
     },
     methods: {

@@ -20,6 +20,7 @@ const createStore = () => {
       cuples: [],
       wrappers: [],
       bracelets: [],
+      hits: [],
       deliveryCities:null,
       deliveryCity: null,
       deliveryRegion: null,
@@ -43,22 +44,27 @@ const createStore = () => {
           state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0)
         }
       },
+      // addToCart(state, product) {
+      //   if(state.cart.length){ 
+      //     let isExists = false
+      //     state.cart.map(function(item) { 
+      //       if( item.id === product.id) { 
+      //         isExists = true}
+      //       return item })
+      //     if (!isExists) {
+      //       state.cart.push(product)
+      //       state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0)
+      //     }
+      //    }
+      //   else{
+      //     state.cart.push(product);
+      //     state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0)
+      //   } 
+      //   localStorage.setItem('cart', JSON.stringify(state.cart));
+      // },
       addToCart(state, product) {
-        if(state.cart.length){ 
-          let isExists = false
-          state.cart.map(function(item) { 
-            if( item.id === product.id) { 
-              isExists = true}
-            return item })
-          if (!isExists) {
-            state.cart.push(product)
-            state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0)
-          }
-         }
-        else{
-          state.cart.push(product);
-          state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0)
-        } 
+        state.cart.push(product);
+        state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0)
         localStorage.setItem('cart', JSON.stringify(state.cart));
       },
       minusOne(state, item){
@@ -67,20 +73,24 @@ const createStore = () => {
         {
           item.quantity = item.quantity  - 1;
           item.price =  item.price - item.price_count;
-          state.totalPrice = state.totalPrice - item.price_count
+          state.totalPrice = state.totalPrice - item.price_count;
+          localStorage.setItem('cart', JSON.stringify(state.cart));
         }
       },
       plusOne(state, item){
-        localStorage.setItem('cart', JSON.stringify(state.cart));
         item.quantity++;
         item.price = item.price_count + item.price;
-        state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0)
+        state.totalPrice = state.cart.map(item => item.price).reduce(function(sum, current) { return sum + current }, 0);
+        localStorage.setItem('cart', JSON.stringify(state.cart));
       },
       changeDelPrice(state, price) {
         state.delPrice = price
       },
-      deleteProduct(state, id){
-        state.cart.splice(id, 1)
+      deleteProduct( state, payload){
+        state.cart.splice(payload.id, 1);
+        console.log(payload.id)
+        state.totalPrice = state.totalPrice - payload.product.price
+        localStorage.setItem('cart', JSON.stringify(state.cart));
       },
       usePromocode(state, promocode){
         if(promocode === 'test') {
@@ -114,6 +124,9 @@ const createStore = () => {
       setCollection (state, collection) {
         state.collection = collection
       },
+      setHits (state, hits) {
+        state.hits = hits
+      },
       setDeliveryCities (state, deliveryCities, deliveryRegion) {
         state.deliveryCities = deliveryCities
         state.deliveryRegion = deliveryRegion
@@ -141,6 +154,11 @@ const createStore = () => {
         async getCollection ({ commit }, options) {
           const collection = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100', options)
           commit('setCollection', collection.data.filter((item) => { return item.acf.collection === options.collectionName }))
+        },
+        async getHits ({ commit }) {
+          const hits = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
+          commit('setHits', hits.data.filter((item) => { return item.acf.hit === true }))
+          console.log(hits)
         },
         async getPines ({ commit }) {
           const pines = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/pines?_embed&per_page=100')

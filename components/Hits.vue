@@ -2,22 +2,24 @@
 .hits 
   h2 Хиты продаж
   .hits-wrapper 
-    .product(v-for="(item, key) in 4" :key="key")
-        nuxt-link(:to="`/categories/cases/54`")
-          img.img(src="~/assets/images/case-bg.jpg")
+    .product(v-for="(item, key) in hits" :key="key")
+        nuxt-link(:to="`/categories/cases/${item.id}`")
+          img.img(:src="item.acf.product_images_1")
         .info 
           .left
-            h3 Наименование товара
-            .desc Под любую модель телефона
+            h3 {{ item.title.rendered }}
           .right
-            .old-price 1000 ₽
-            .price 800 ₽ 
+            .old-price {{ item.acf.price * 1.5 }} ₽
+            .price {{ item.acf.price_count }} ₽ 
         .sale Акция
 </template>
 
 <script>
   export default{
-    name: 'HitsComponent'
+    name: 'HitsComponent',
+    props: {
+      hits: Array
+    }
   }
 </script>
 
@@ -37,11 +39,9 @@
   }
 }
 .hits-wrapper{
-  @media(min-width: 768px){
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
   @media(min-width: 1200px){
     grid-template-columns: repeat(4, 1fr);
     width: 1120px;
@@ -68,7 +68,6 @@
     }
   }
   .info{
-    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
@@ -77,6 +76,7 @@
     }
     h3{
       margin-bottom: 5px;
+      font-size: 16px;
     }
     .desc{
       font-size: 12px;
@@ -84,7 +84,6 @@
     }
     .right{
       width: 100%;
-      text-align: right;
       .old-price{
         font-size: 14px;
         text-decoration: line-through;

@@ -42,6 +42,9 @@ import axios from 'axios'
   .slider{
     z-index: 1;
     overflow: hidden;
+    @media(min-width: 992px){
+      height: calc(100vh - 120px);
+    }
     .slide{
       width: 100%;
       height: 480px;

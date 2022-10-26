@@ -23,6 +23,18 @@
               nuxt-link(to="/categories/bracelets") Браслеты
             li(@click="turnMenu")
               nuxt-link(to="/categories/cuples") Кружки
+        li.dropdown-item Коллекции
+          ul.child-ul
+            li(@click="turnMenu")
+              nuxt-link(to="/collections/hohag") Hohog_com
+            li(@click="turnMenu")
+              nuxt-link(to="/collections/dzigoi") Dzigojty_ka
+            li(@click="turnMenu")
+              nuxt-link(to="/collections/tembolat") Tembolat
+            li(@click="turnMenu")
+              nuxt-link(to="/collections/alania") Alania
+            li(@click="turnMenu")
+              nuxt-link(to="/collections/irondz") Irondzinad
         li(@click="turnMenu")
           nuxt-link(to="/articles") Статьи
         li(@click="turnMenu")
@@ -31,6 +43,7 @@
           nuxt-link(to="/tests") Викторины
   CartPanel(:class="{active: cartActive}" @turnCart="turnCart")
   Nuxt
+  Footer
 </template>
 
 <script>
@@ -96,7 +109,7 @@ import CartPanel from '~/components/CartPanel.vue'
       position: fixed;
       width: 300px;
       height: 100%;
-      right: -100%;
+      left: -100%;
       transition: all .5s ease;
       box-sizing: border-box;
       overflow-y: scroll;
@@ -109,7 +122,7 @@ import CartPanel from '~/components/CartPanel.vue'
         display: none;
       }
       &.active{
-        right: 0;
+        left: 0;
       }
       header{
         display: flex;

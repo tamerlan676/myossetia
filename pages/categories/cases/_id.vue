@@ -39,8 +39,9 @@
               input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
     .rcommended
+  ProductBanner(v-if="getItem.acf.banner" :img="getItem.acf.banner" :text="getItem.acf.banner_text")
   .customers 
-    h2 Довольные покупатели
+    h2 Наша команда
     .customers-wrapper
       .customer(v-for="item in 5")
 </template>
@@ -308,7 +309,8 @@ export default {
 .customers{
   padding: 16px;
   @media(min-width: 1200px){
-    padding: 32px;
+    width: 1120px;
+    margin: 0 auto;
   }
   h2{
     font-size: 24px;
@@ -319,20 +321,20 @@ export default {
     overflow: auto;
     width: 100%;
     @media(min-width: 1200px){
-      width: 100%;
-      margin: 0 auto;
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
     .customer{
-      width: 300px;
+      width: 100%;
       height: 300px;
-      background: url('~/assets/images/amina.jpg');
+      background-image: url('~/assets/images/amina.jpg');
       background-size: cover;
       flex: 0 0 auto;
+      @media(min-width: 768px){
+        width: 33.3%;
+        height: 400px;
+      }
       @media(min-width: 1200px){
-        width: 100%;
+        width: 25%;
         height: 400px;
       }
     }
@@ -381,4 +383,5 @@ export default {
     margin-bottom: 48px;
   }
 }
+
 </styles>

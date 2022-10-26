@@ -6,12 +6,12 @@
   div(v-if="cart.length") 
     .products-list 
       .product(v-for="(product, id) in cart" :key="id")
-        .delete(@click="deleteProduct(id)")
+        .delete(@click="deleteProduct(product, id)")
         .wrapper
           img(:src="product.img")
           .info
             .title {{ product.title }}
-            .model {{ product.model }}, {{ product.color }}
+            .model(v-if="product.model || product.color") {{ product.model }}, {{ product.color }}
             .calc
               .calc-wrapper 
                 span(@click="minusOne(product)") -
@@ -48,8 +48,11 @@
       minusOne(product){
         this.$store.commit('minusOne', product)
       },
-      deleteProduct(id){
-        this.$store.commit('deleteProduct', id)
+      deleteProduct(product, id){
+        this.$store.commit('deleteProduct',{
+          product,
+          id
+        })
       }
     }
   }
@@ -141,7 +144,7 @@
           }
           .delete{
             width: 15px;
-            height: 15px;
+            height: 20px;
             position: absolute;
             top: 20px;
             background: url('~/assets/images/delete.svg');

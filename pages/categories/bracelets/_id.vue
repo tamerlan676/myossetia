@@ -300,6 +300,10 @@ export default {
     display: flex;
     overflow: auto;
     width: 100%;
+    @media(min-width: 768px){
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
     @media(min-width: 1200px){
       width: 100%;
       margin: 0 auto;

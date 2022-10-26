@@ -1,5 +1,7 @@
 <template lang="pug">
 .header
+  .burger(@click='$emit("turnMenu")' :class="{active: activeBurger}")
+    span
   nuxt-link(to="/")
     img.logo(src="~/assets/images/logo.png")
   .menu-lg
@@ -8,8 +10,8 @@
         nuxt-link(to="/") Главная
       li
         nuxt-link(to="/about") О Нас
-      li.dropdown-item(@click="turnSubMenu()") Сувениры
-        ul.child-ul(:class="{active: dropdownActive}")
+      li.dropdown-item(@click="turnCatMenu()") Аксессуары
+        ul.child-ul(:class="{active: catDroodown}")
           li
             nuxt-link(to="/categories/cases") Чехлы на телефоны
           li
@@ -20,6 +22,18 @@
             nuxt-link(to="/categories/bracelets") Браслеты
           li
             nuxt-link(to="/categories/pines") Значки
+      li.dropdown-item(@click="turnColMenu()") Коллекции
+        ul.child-ul(:class="{active: collectionsDropdown }")
+          li
+            nuxt-link(to="/collections/hohag") Hohog_com
+          li
+            nuxt-link(to="/collections/dzigoi") Dzigojty_ka
+          li
+            nuxt-link(to="/collections/tembolat") Tembolat
+          li
+            nuxt-link(to="/collections/alania") Alania
+          li
+            nuxt-link(to="/collections/irondz") Irondzinad
       li
         nuxt-link(to="/articles") Статьи
       li
@@ -27,8 +41,6 @@
       li
         nuxt-link(to="/tests") Викторины
   .mob-sm
-    .burger(@click='$emit("turnMenu")' :class="{active: activeBurger}")
-      span
     .cart(@click='$emit("turnCart")')
       img(width="30px" src="~/assets/images/cart.svg")
       .count(v-if="cart.length > 0") {{ cart.length }}
@@ -44,7 +56,8 @@
   },
   data() {
     return{
-      dropdownActive: false
+      catDroodown: false,
+      collectionsDropdown: false
     }
   },
   computed: {
@@ -56,8 +69,17 @@
       }
     },
     methods: {
-      turnSubMenu () {
-        this.dropdownActive = !this.dropdownActive
+      turnCatMenu () {
+        this.catDroodown = !this.catDroodown
+        if(this.collectionsDropdown){
+          this.collectionsDropdown = false
+        }
+      },
+      turnColMenu () {
+        this.collectionsDropdown = !this.collectionsDropdown
+        if(this.catDroodown){
+          this.catDroodown = false
+        }
       }
     }
   }
@@ -85,6 +107,55 @@
       width: 150px;
   }
   }
+  .burger{
+    width: 30px;
+    height: 25px;
+    position: relative;
+    @media(min-width: 992px){
+      display: none;
+    }
+    cursor: pointer;
+    &::before{
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      background: #000;
+      transition: all .5s ease;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      background: #000;
+      bottom: 0;
+      transition: all .5s ease;
+    }
+    span{
+      width: 30px;
+      height: 3px;
+      background: #000;
+      position: absolute;
+      top: 11px;
+      transition: all .5s ease;
+    }
+    &.active{
+      span{
+            display: none;
+          }
+        &:before{
+          transform: rotate(40deg);
+          bottom: 10px;
+          background: rgb(124, 36, 36);
+        }
+        &:after{
+          transform: rotate(-40deg);
+          top: 12px;
+          background: rgb(124, 36, 36);
+        }
+    }
+    }
   .menu-lg{
     display: none;
     @media(min-width: 992px){
@@ -157,59 +228,9 @@
     }
   }
   .mob-sm{
-    width: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .burger{
-    width: 30px;
-    height: 25px;
-    position: relative;
-    @media(min-width: 992px){
-      display: none;
-    }
-    cursor: pointer;
-    &::before{
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 3px;
-      background: #000;
-      transition: all .5s ease;
-    }
-    &::after{
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 3px;
-      background: #000;
-      bottom: 0;
-      transition: all .5s ease;
-    }
-    span{
-      width: 30px;
-      height: 3px;
-      background: #000;
-      position: absolute;
-      top: 11px;
-      transition: all .5s ease;
-    }
-    &.active{
-      span{
-            display: none;
-          }
-        &:before{
-          transform: rotate(40deg);
-          bottom: 10px;
-          background: rgb(124, 36, 36);
-        }
-        &:after{
-          transform: rotate(-40deg);
-          top: 12px;
-          background: rgb(124, 36, 36);
-        }
-    }
-    }
     .cart{
       position: relative;
       cursor: pointer;
