@@ -26,6 +26,7 @@ const createStore = () => {
       deliveryRegion: null,
       deliveryStreets: null,
       deliveryStreet: null,
+      deliveryIndex: null,
       models: [
         'IPhone X',
         'IPhone 11',
@@ -142,7 +143,9 @@ const createStore = () => {
       setDeliveryStreet (state, data) {
         state.deliveryStreet = data.data.street
         state.deliveryStreets = null
-        console.log(data.data.street)
+      },
+      setDeliveryIndex (state, index) {
+        state.deliveryIndex = index
       }
     
     },
@@ -207,6 +210,9 @@ const createStore = () => {
          )
          .then((response) => { 
            commit('setDeliveryStreets', response.data.suggestions)
+           commit('setDeliveryIndex', response.data.suggestions[0].data.postal_code)
+           console.log(response.data.suggestions[0].data.postal_code
+            )
          });
        }  
     }

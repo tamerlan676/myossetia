@@ -27,7 +27,7 @@
 .hits{
   padding: 40px 16px;
   @media(min-width: 1200px){
-    padding: 60px 0;
+    padding: 60px 0 120px;
   }
   h2{
     font-size: 24px;
@@ -35,6 +35,7 @@
     text-align: center;
     @media(min-width: 1200px){
       margin-bottom: 48px;
+      font-size: 32px;
     }
   }
 }
@@ -44,8 +45,10 @@
   grid-gap: 20px;
   @media(min-width: 1200px){
     grid-template-columns: repeat(4, 1fr);
-    width: 1120px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
   }
   .product{
     border: 1px solid rgb(241, 241, 241);
@@ -60,7 +63,6 @@
     }
     img{
       width: 100%;
-      height: 300px;
       object-fit: cover;
     }
     &:hover{

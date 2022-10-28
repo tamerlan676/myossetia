@@ -1,6 +1,6 @@
 <template lang="pug">
 .order
-  h2 Оформление заказа
+  h2 Оформление заказа {{ deliveryIndex }}
   form(@submit.prevent="submitForm")
    .order-wrapper
     .steps
@@ -34,6 +34,9 @@
             .name Номер дома*
             input.text-field(type="text" v-model="number" placeholder="Введите номер дома" require)
           .field
+            .name Почтовый индекс*
+            input.text-field(type="text" v-model="index" placeholder="Введите индекс" require)
+          .field
             .name Квартира
             input.text-field(type="text" v-model="flat" placeholder="Введите номер квартиры")
           button.next-step(type="button" @click="nextStepSecond()" :class="{active: city !== '' && street !== '' && number !== ''}") Следующий шаг
@@ -47,34 +50,23 @@
           .variant(@click="delVariant = 'Почта'; changeDelPrice(250)" :class="{active: delVariant === 'Почта' }")
             .variant-title Почта России
             .variant-desc  250 ₽.
-          .variant(@click="delVariant = 'СДЕК'; changeDelPrice(350)" :class="{active: delVariant === 'СДЕК' }")
-            .variant-title СДЕК
-            .variant-desc  350 ₽.
           .variant(@click="delVariant = 'Курьер'; changeDelPrice(150)" :class="{active: delVariant === 'Курьер' }")
             .variant-title Доставка курьером
             .variant-desc  150 ₽.
-          .field(v-if="delVariant === 'Почта'")
-            .tip Пожалуйста заполните дополнительное поле
-            .name Индекс*
-            input.text-field(type="text" v-model="index" placeholder="Введите почтовый индекс" require)
-          .field(v-if="delVariant === 'Отчество'")
-            .tip Пожалуйста заполните дополнительное поле
-            .name Ваше Отчество*
-            input.text-field(type="text" v-model="surname" placeholder="Введите отчество")
-          .field(v-if="delVariant === 'СДЕК'")
-            .tip Пожалуйста заполните дополнительное поле
-            .name Адрес пункта выдачи СДЕК*
-            input.text-field(type="text" v-model="sdekAdress" placeholder="Введите адрес СДЕК" require)
-          button.next-step(type="button" @click="currentStep++" :class="{active: delVariant !== ''}") Следующий шаг
+          button.next-step(type="button" @click="nextStepThird()" :class="{active: delVariant !== ''}") Следующий шаг
           button.prev-step(type="button" @click="prevStep()") Назад
       transition(name="slide-fade")
         .step(v-if="currentStep === 4") 
           .step-title 4. Способ оплаты
-          .variant(@click="paymentMethod = 'Банковской картой'" :class="{active: paymentMethod === 'Банковской картой' }")
-            .variant-title Банковской картой
-          .variant(@click="paymentMethod = 'Наличными при получении'" :class="{active: paymentMethod === 'Наличными при получении' }")
-            .variant-title Наличными при получении
-          button.next-step(type="button" @click="userInfo = !userInfo" :class="{active: paymentMethod !== ''}") завершить
+          //- .variant(@click="paymentMethod = 'Банковской картой'" :class="{active: paymentMethod === 'Банковской картой' }")
+          //-   .variant-title Банковской картой
+          //- .variant(@click="paymentMethod = 'Наличными при получении'" :class="{active: paymentMethod === 'Наличными при получении' }")
+          //-   .variant-title Наличными при получении
+          .pay-info 
+            | Пока вы можете оплатить заказ лишь при получении. 
+            br
+            | Вскоре мы добавим и другие способы оплаты.
+          button.next-step(type="button" @click="userInfo = !userInfo" class="active") завершить
           button.prev-step(type="button" @click="prevStep()") назад
       .steps-status 
         .step-box(v-for="i  in 4" :class="{first: currentStep === 1, second: currentStep === 2, third: currentStep === 3, four: currentStep === 4}")
@@ -97,6 +89,9 @@
           span Улица
           span {{ street }}
         .line 
+          span Индекс
+          span {{ index }}
+        .line 
           span Номер дома
           span {{ number }}
         .line(v-if="flat !== ''") 
@@ -111,9 +106,6 @@
         .line(v-if="delVariant !== ''") 
           span Способ доставки
           span {{ delVariant }}
-        .line(v-if="sdekAdress !== ''") 
-          span Адрес пункта СДЕК
-          span {{ sdekAdress }}
         .line
           span Способ оплаты
           span {{ paymentMethod }}
@@ -129,9 +121,6 @@
       .delivery(v-if="delVariant === 'Почта'") 
         .del-var Почта России
         .de-price 250 ₽
-      .delivery(v-if="delVariant === 'СДЕК'") 
-        .del-var СДЕК
-        .de-price 350 ₽
       .delivery(v-if="delVariant === 'Курьер'") 
         .del-var Курьер
         .de-price 150 ₽
@@ -167,7 +156,6 @@ export default{
       index: '',
       phone: '',
       surname: '',
-      sdekAdress: '',
       delVariant: '',
       paymentMethod: '',
       promocode: '',
@@ -190,6 +178,9 @@ export default{
     },
     deliveryStreets() {
           return this.$store.state.deliveryStreets
+    },
+    deliveryIndex() {
+          return this.$store.state.deliveryIndex
     },
     totalPrice() {
         return this.$store.state.totalPrice + this.$store.state.delPrice
@@ -274,12 +265,12 @@ export default{
         totalPrice: this.totalPrice,
         products: list.join().replace(/,/g, '\n' ) 
       }
-      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Отчество ${order.surname} \n Телефон ${order.phone} \n Адрес: г.${order.city}, ул.${order.street}, №${order.number}, КвартираЖ ${order.flat} Индекс: ${order.index}  \n`
+      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}  \n`
       axios.post('https://api.telegram.org/bot5727754164:AAEZ2AaJjTuTVWdIdd9oL0M5s2YEZbXCtvI/sendMessage', {
         chat_id: '-741684193',
         parse_mode: 'html',
         text: message
-      }).then(this.notSend = false, this.sended = true)
+      }).then(this.notSend = false, this.sended = true, location.href='/success', localStorage.clear())
     },
   }
 }  
@@ -314,6 +305,9 @@ export default{
   }
   .step-title{
     font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .pay-info{
     margin-bottom: 16px;
   }
   .next-step{
@@ -516,11 +510,14 @@ export default{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    padding: 8px 0;
     border-bottom: 1px solid rgb(214, 214, 214);
     img{
       width: 60px;
+      height: 60px;
       @media(min-width: 1200px){
         width: 80px;
+        height: 80px;
       }
     }
     .title{

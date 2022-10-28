@@ -30,14 +30,15 @@
 .categories{
   padding: 40px 16px;
   @media(min-width: 1200px){
-    padding: 120px 0;
+    padding: 120px 0 60px;
   }
   .block-title{
     margin-bottom: 32px;
     font-size: 24px;
     text-align: center;
     @media(min-width: 1200px){
-      margin-bottom: 48px;
+      margin-bottom: 40px;
+      font-size: 32px;
     }
   }
   .categories-wrapper{
@@ -50,9 +51,11 @@
       margin: 0 auto; 
     }
     @media(min-width: 1200px){
-      width: 1120px;
+      width: 100%;
+      padding: 40px;
       margin: 0 auto; 
       grid-template-columns: 1fr 1fr 1fr 1fr;
+      box-sizing: border-box;
       
     }
     .category{
@@ -73,7 +76,7 @@
       height: 400px; 
     }
     @media(min-width: 1200px){
-      height: 400px; 
+      height: 500px; 
     }
     &:before{
       content: '';

@@ -64,13 +64,13 @@ import axios from 'axios'
         height: 600px;
       }
       @media(min-width: 1200px){
-        height: 820px;
+        height: calc(100vh - 120px);
       }
       .title{
         position: absolute;
         z-index: 2;
         bottom: 150px;
-        left: 16px;
+        left: 40px;
         color: #fff;
         font-size: 24px;
         letter-spacing: 3px;
@@ -83,7 +83,7 @@ import axios from 'axios'
         position: absolute;
         border: 1px solid #fff;
         padding: 10px;
-        left: 16px;
+        left: 40px;
         text-transform: uppercase;
         color: #fff;
         font-weight: 500;

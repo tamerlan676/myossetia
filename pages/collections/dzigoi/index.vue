@@ -55,7 +55,7 @@ import CaseCollections from '~/components/CaseCollections.vue';
       .collection-wrapper{
         width: 100%;
         height: 380px;
-        background-image: url('~/assets/images/collections-wrappers/dzigo.webp');
+        background-image: url('~/assets/images/collections-wrappers/dzigoi.webp');
         background-size: cover;
         background-position: center;
         margin-bottom: 40px;
