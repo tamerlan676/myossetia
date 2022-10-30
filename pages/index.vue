@@ -4,14 +4,21 @@
   Categories
   Hits(:hits="hits")
   .blog 
-    h2 Блог
+    h2 #MYOSSETIACares
+    .desc Давайте вместе изменим в к лучшему отношение к природе нашего региона.
     .blog-wrapper 
-      .article(v-for="i in 3")
+      .article
+        nuxt-link(to="articles/beregi") 
+          img(src="~/assets/images/beregi.webp")
+        .title Береги Осетию
+      .article
         nuxt-link(to="#") 
           img(src="~/assets/images/horses.jpg")
         .title Помогаем диким животным
-        .date 23.12.2022
-    nuxt-link.all-articles(to="/articles") Все статьи
+      .article
+        nuxt-link(to="articles/sdai") 
+          img(src="~/assets/images/musor.jpg")
+        .title Сдай старый чехол и получи скидку
   Mission
 
 </template>
@@ -61,12 +68,18 @@ import Mission from '~/components/Mission.vue'
   padding: 80px 16px;
   box-sizing: border-box;
   h2{
-    margin-bottom: 32px;
     font-size: 24px;
     text-align: center;
+    margin-bottom: 16px;
     @media(min-width: 1200px){
-      margin-bottom: 48px;
+      margin-bottom: 16px;
     }
+  }
+  .desc{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 48px;
+    
   }
   .blog-wrapper{
       margin-bottom: 32px;
@@ -93,9 +106,10 @@ import Mission from '~/components/Mission.vue'
       img{
         max-width: 100%;
         margin-bottom: 8px;
+        height: 380px;
       }
       .title{
-        font-weight: 500;
+        font-weight: 700;
         font-size: 18px;
         margin-bottom: 10px;
       }
