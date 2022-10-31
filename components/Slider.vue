@@ -70,20 +70,21 @@ import axios from 'axios'
         position: absolute;
         z-index: 2;
         bottom: 150px;
-        left: 40px;
+        left: 16px;
         color: #fff;
         font-size: 24px;
         letter-spacing: 3px;
         text-transform: uppercase;
         @media(min-width: 992px){
           font-size: 32px;
+          left: 40px;
         }
       }
       .sl-link{
         position: absolute;
         border: 1px solid #fff;
         padding: 10px;
-        left: 40px;
+        left: 16px;
         text-transform: uppercase;
         color: #fff;
         font-weight: 500;
@@ -91,6 +92,7 @@ import axios from 'axios'
         letter-spacing: .2rem;
         @media(min-width: 992px){
           padding: 15px;
+          left: 40px;
           bottom: 90px
         }
       }

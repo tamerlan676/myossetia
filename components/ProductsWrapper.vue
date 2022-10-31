@@ -52,7 +52,11 @@
         } 
         h3{
           margin-bottom: 5px;
-          font-size: 16px;
+          font-size: 13px;
+          font-weight: normal;
+          @media(min-width: 768px){
+            font-size: 16px;
+          }
         }
         .desc{
           font-size: 12px;
@@ -68,7 +72,7 @@
             text-decoration: line-through;
           }
           .price{
-            font-weight: 800;
+            font-weight: 500;
             font-size: 18px;
             color: #499167;
           }
@@ -81,7 +85,8 @@
         font-size: 14px;
         left: 0;
         top:30px;
-        color: #fff
+        color: #fff;
+        opacity: 0.6;
       }
   }
 }
