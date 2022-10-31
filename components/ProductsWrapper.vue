@@ -16,7 +16,7 @@
   export default{
     name: 'ProductsWrapper',
     props: {
-      products: Array
+      products: Array,
     }
   }
 </script>

@@ -8,9 +8,7 @@
     ul.parent-ul
       li
         nuxt-link(to="/") Главная
-      li
-        nuxt-link(to="/about") О Нас
-      li.dropdown-item(@click="turnCatMenu()") Аксессуары
+      li.dropdown-item(@click="turnCatMenu()") Каталог
         ul.child-ul(:class="{active: catDroodown}")
           li
             nuxt-link(to="/categories/cases") Чехлы на телефоны
@@ -35,11 +33,11 @@
           li
             nuxt-link(to="/collections/irondz") Irondzinad
       li
-        nuxt-link(to="/articles") Статьи
+        nuxt-link(to="/about") Наши проекты
       li
         nuxt-link(to="/contacts") Контакты
       li
-        nuxt-link(to="/tests") Викторины
+        nuxt-link(to="/about") О Нас
   .mob-sm
     .cart(@click='$emit("turnCart")')
       img(width="30px" src="~/assets/images/cart.svg")
@@ -200,6 +198,7 @@
         font-weight: bold;
         font-size: 12px;
         transition: all .5s ease;
+        letter-spacing: .1rem;
         &:hover{
           color: brown
         }

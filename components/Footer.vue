@@ -95,6 +95,7 @@
       color: grey;
       text-transform: uppercase;
       font-size: 14px;
+      letter-spacing: .2rem;
       &:hover{
         color: #000
       }

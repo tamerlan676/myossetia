@@ -2,7 +2,7 @@
 .category
   .collection-wrapper
   .collection-info
-    h1.title My Ossetia x Hohag
+    h1.title My Ossetia x Irondzinad
     .collection-desc {{ desc }}
   .category-flex
     CaseCollections
@@ -58,7 +58,7 @@
         .collection-wrapper{
           width: 100%;
           height: 380px;
-          background-image: url('~/assets/images/collection.jpg');
+          background-image: url('~/assets/images/irondz-wr.webp');
           background-size: cover;
           background-position: center;
         }

@@ -88,6 +88,7 @@ import axios from 'axios'
         color: #fff;
         font-weight: 500;
         bottom: 100px;
+        letter-spacing: .2rem;
         @media(min-width: 992px){
           padding: 15px;
           bottom: 90px

@@ -9,9 +9,7 @@
     ul.parent-ul
         li(@click="turnMenu")
           nuxt-link(to="/") Главная
-        li(@click="turnMenu")
-          nuxt-link(to="/about") О Нас
-        li.dropdown-item Сувениры
+        li.dropdown-item Каталог
           ul.child-ul
             li(@click="turnMenu")
               nuxt-link(to="/categories/cases") Чехлы на телефоны
@@ -36,11 +34,11 @@
             li(@click="turnMenu")
               nuxt-link(to="/collections/irondz") Irondzinad
         li(@click="turnMenu")
-          nuxt-link(to="/articles") Статьи
+          nuxt-link(to="/articles") Наши проекты
         li(@click="turnMenu")
           nuxt-link(to="/contacts") Контакты
         li(@click="turnMenu")
-          nuxt-link(to="/tests") Викторины
+          nuxt-link(to="/about") О нас
   CartPanel(:class="{active: cartActive}" @turnCart="turnCart")
   Nuxt
   Footer
@@ -100,6 +98,7 @@ import CartPanel from '~/components/CartPanel.vue'
       justify-content: center;
       color: #fff;
       font-size: 13px;
+      letter-spacing: .2rem;
       @media(min-width: 1200px){
         font-size: 16px;
       }
