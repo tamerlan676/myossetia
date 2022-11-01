@@ -161,6 +161,8 @@ import CartPanel from '~/components/CartPanel.vue'
           }
           a{
             font-size: 14px;
+            width: 100%;
+            display: block;
           }
         }
       }

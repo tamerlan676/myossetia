@@ -4,7 +4,7 @@
   h1.title Чехлы 
   .category-flex
     CaseCollections
-    ProductsWrapper(:products="mobileCases")
+    ProductsWrapper(:products="mobileCases" folder="categories" category="cases")
 </template>
   
   <script>

@@ -2,7 +2,7 @@
 .category
   h1.title Пины 
   .category-flex
-    ProductsWrapper(:products="pines")
+    ProductsWrapper(:products="pines" folder="categories" category="pines")
 </template>
   
   <script>

@@ -3,17 +3,7 @@
   h1.title Обложки на паспорт 
   .category-flex
     CaseCollections
-    .products-wrapper
-      .product(v-for="(item, key) in wrappers" :key="key")
-        nuxt-link(:to="`/categories/wrappers/${item.id}`")
-          img.img(:src="item.acf.product_images_1")
-        .info 
-          .left
-            h3 {{ item.title.rendered }}
-          .right
-            .old-price {{ item.acf.price * 1.5 }} ₽
-            .price {{ item.acf.price_count }} ₽ 
-        .sale Акция
+    ProductsWrapper(:products="wrappers" folder="categories" category="wrappers")
 </template>
   
   <script>

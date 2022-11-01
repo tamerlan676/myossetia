@@ -2,7 +2,7 @@
 .category
   h1.title Браслеты 
   .category-flex
-    ProductsWrapper(:products="wrappers")
+    ProductsWrapper(:products="wrappers" folder="categories" category="bracelets")
 </template>
   
   <script>

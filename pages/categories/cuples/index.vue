@@ -2,7 +2,7 @@
 .category
   h1.title Металлические кружки 
   .category-flex
-    ProductsWrapper(:products="cuples")
+    ProductsWrapper(:products="cuples" folder="categories" category="cuples")
 </template>
   
   <script>

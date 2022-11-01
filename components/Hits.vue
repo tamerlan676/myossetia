@@ -12,6 +12,7 @@
             .old-price {{ item.acf.price * 1.5 }} ₽
             .price {{ item.acf.price_count }} ₽ 
         .sale Акция
+        .sale-dt Акция
 </template>
 
 <script>
@@ -105,10 +106,27 @@
     background: #FC9E4F;
     padding: 5px 10px;
     font-size: 14px;
-    left: 0;
-    top:30px;
+    right: 0;
+    bottom:15px;
     color: #fff;
     opacity: 0.6;
+    @media(min-width: 992px){
+      display: none;
+    }
+  }
+  .sale-dt{
+    display: none;
+    position: absolute;
+    background: #FC9E4F;
+    padding: 5px 10px;
+    font-size: 14px;
+    left: 0;
+    top: 30px;
+    color: #fff;
+    opacity: 0.6;
+    @media(min-width: 992px){
+      display: block;
+    }
   }
 }
 </style>

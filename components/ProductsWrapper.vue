@@ -1,7 +1,7 @@
 <template lang="pug">
 .products-wrapper
   .product(v-for="(item, key) in products" :key="key")
-    nuxt-link(:to="`/categories/cases/${item.id}`")
+    nuxt-link(:to="`/${folder}/${category}/${item.id}`")
       img.img(:src="item.acf.product_images_1")
     .info 
       .left
@@ -10,6 +10,7 @@
         .old-price {{ item.acf.price * 1.5 }} ₽
         .price {{ item.acf.price_count }} ₽ 
     .sale Акция
+    .sale-dt Акция
 </template>
 
 <script>
@@ -17,6 +18,8 @@
     name: 'ProductsWrapper',
     props: {
       products: Array,
+      folder: String, // Переменная папки. Либо категории (categories) либо коллекции (collections)
+      category: String // Название папки внутри категории или коллекции
     }
   }
 </script>
@@ -83,10 +86,27 @@
         background: #FC9E4F;
         padding: 5px 10px;
         font-size: 14px;
-        left: 0;
-        top:30px;
+        right: 0;
+        bottom:15px;
         color: #fff;
         opacity: 0.6;
+        @media(min-width: 992px){
+          display: none;
+        }
+      }
+  .sale-dt{
+        display: none;
+        position: absolute;
+        background: #FC9E4F;
+        padding: 5px 10px;
+        font-size: 14px;
+        left: 0;
+        top: 30px;
+        color: #fff;
+        opacity: 0.6;
+        @media(min-width: 992px){
+          display: block;
+        }
       }
   }
 }

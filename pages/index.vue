@@ -5,20 +5,23 @@
   Hits(:hits="hits")
   .blog 
     h2 #MYOSSETIACares
-    .desc Давайте вместе изменим в к лучшему отношение к природе нашего региона.
+    .desc Давайте вместе изменим в к лучшему отношение к&#160;природе нашего региона.
     .blog-wrapper 
       .article
         nuxt-link(to="articles/beregi") 
           img(src="~/assets/images/beregi.webp")
         .title Береги Осетию
+        .desc-t Краткое описание статьи должно быть тут в несколько строк текста
       .article
         nuxt-link(to="#") 
           img(src="~/assets/images/horses.jpg")
         .title Помогаем диким животным
+        .desc-t Краткое описание статьи должно быть тут в несколько строк текста
       .article
         nuxt-link(to="articles/sdai") 
           img(src="~/assets/images/musor.jpg")
         .title Сдай старый чехол и получи скидку
+        .desc-t Краткое описание статьи должно быть тут в несколько строк текста
   Mission
 
 </template>
@@ -78,11 +81,14 @@ import Mission from '~/components/Mission.vue'
   .desc{
     width: 100%;
     text-align: center;
-    margin-bottom: 48px;
-    
+    margin-bottom: 40px;
+    @media(min-width: 1200px){
+      font-size: 20px;
+      width: 600px;
+      margin: 0 auto 40px;
+    }
   }
   .blog-wrapper{
-      margin-bottom: 32px;
     @media(min-width: 768px){
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -95,8 +101,13 @@ import Mission from '~/components/Mission.vue'
       width: 1120px;
       margin: 0 auto 32px;
     }
+    .desc{
+    width: 100%;
+    text-align: center;
+    }
     .article{
-      margin-bottom: 32px;
+      margin-bottom: 40px;
+      text-align: center;
       @media(min-width: 768px){
         margin-bottom: 0;
       }
@@ -104,9 +115,13 @@ import Mission from '~/components/Mission.vue'
         margin-bottom: 0;
       }
       img{
-        max-width: 100%;
+        width: 100%;
         margin-bottom: 8px;
         height: 380px;
+        @media(min-width: 1200px){
+          width: 300px;
+          height: 300px;
+        }
       }
       .title{
         font-weight: 700;
