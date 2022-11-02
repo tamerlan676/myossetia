@@ -159,71 +159,61 @@
     @media(min-width: 992px){
       display: block;
     }
-    .parent-ul{
+    .parent-ul {
       list-style: none;
+      margin: 0;
+      padding-left: 0;
       display: flex;
-      align-items: center;
-      li{
-        margin-right: 30px;
-        &.dropdown-item{
-          position: relative;
-          text-transform: uppercase;
-          font-weight: bold;
-          font-size: 12px;
-          transition: all .5s ease;
-          cursor: pointer;
-          &:after{
-            content: '';
-            position: absolute;
-            right: -12px;
-            top: 5px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid #000;
-          }
-          &:hover{
-            color: brown
-          }
-        }
-        &:last-child{
-          margin-right: 0;
-        }
-      }
-      a{
-        color: black;
+    }
+    li {
+      color: #000;
+      display: block;
+      position: relative;
+      transition-duration: 0.5s;
+      padding: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
+      font-weight: bold;
+      a {
+        color: #000;
         text-transform: uppercase;
-        text-decoration: none;
-        font-weight: bold;
         font-size: 12px;
-        transition: all .5s ease;
         letter-spacing: .1rem;
+        font-weight: bold;
+      }
+      &:hover{
+        background: #e5e5e5;
+	      cursor: pointer;
+      }
+    }
+
+    .child-ul {
+      background: #e5e5e5;
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      transition: all 1s ease;
+      pointer-events: none;
+      left: 0;
+      width: 200px;
+      padding: 10px;
+      transform: matrix(1, 0, 0, 1, 3, -20);
+      a{
+        width: 100%;
+        display: block;
         &:hover{
-          color: brown
+          color: brown;
         }
       }
     }
-    .child-ul{
-      position: absolute;
-      background: #fff;
-      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-      padding: 15px;
-      width: 200px;
-      top: 30px;
-      z-index: 1;
-      transition: all .5s ease;
-      transform: matrix(1, 0, 0, 1, 3, -20);
-      opacity: 0;
-      pointer-events: none;
-      li{
-        margin-bottom: 12px;
-      }
-      &.active{
-      opacity: 1;
+
+    ul li:hover > ul,
+    ul li ul:hover {
+      visibility: visible;
       pointer-events: all;
-      transform: matrix(1, 0, 0, 1, 3, 0);
-      }
+      opacity: 1;
+      transform: matrix(1, 0, 0, 1, 0, 10);
     }
   }
   .mob-sm{
