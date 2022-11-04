@@ -19,6 +19,7 @@ const createStore = () => {
       pines: [],
       cuples: [],
       wrappers: [],
+      wrapper: '',
       bracelets: [],
       hits: [],
       deliveryCities:null,
@@ -89,7 +90,6 @@ const createStore = () => {
       },
       deleteProduct( state, payload){
         state.cart.splice(payload.id, 1);
-        console.log(payload.id)
         state.totalPrice = state.totalPrice - payload.product.price
         localStorage.setItem('cart', JSON.stringify(state.cart));
       },
@@ -115,6 +115,9 @@ const createStore = () => {
       },
       setWrappers (state, wrappers) {
         state.wrappers = wrappers
+      },
+      setWrapper (state, wrapper) {
+        state.wrapper = wrapper
       },
       setCuples (state, cuples) {
         state.cuples = cuples
@@ -161,7 +164,6 @@ const createStore = () => {
         async getHits ({ commit }) {
           const hits = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
           commit('setHits', hits.data.filter((item) => { return item.acf.hit === true }))
-          console.log(hits)
         },
         async getPines ({ commit }) {
           const pines = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/pines?_embed&per_page=100')
@@ -170,6 +172,11 @@ const createStore = () => {
         async getWrappers ({ commit }) {
           const wrappers = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100')
           commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === 'ПВХ' }))
+        },
+        async getWrapper ({ commit }, id) {
+          const wrappers = await axios.get(`https://ne404.ru/admin/wp-json/wp/v2/wrappers/${id}`, id)
+          commit('setWrapper', wrappers.data)
+          console.log(wrappers)
         },
         async changeMaterial ({ commit }, material) {
           const wrappers = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100', material)

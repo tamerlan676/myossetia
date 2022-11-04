@@ -26,7 +26,7 @@
           .current {{ getItem.acf.price }} ₽
         .options 
           .description {{ getItem.acf.description }}
-        button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
+        button.add-to-cart(@click="addToCart(product)" class="active") Добавить в корзину
     .rcommended
   .customers 
     h2 Довольные покупатели
@@ -56,12 +56,12 @@ export default {
       }
     }
   },
-  async fetch ({ store }) {
-        await store.dispatch('getWrappers')
+  async fetch ({ store, params }) {
+        await store.dispatch('getWrapper', params.id)
   },
   computed: {
     getItem() {
-      return this.$store.state.wrappers.filter(item => item.id === +this.$route.params.id)[0]
+      return this.$store.state.wrapper
     },
     oldPrice() {
       return this.$store.state.wrappers.filter(item => item.id === +this.$route.params.id)[0].acf.price * 1.3
