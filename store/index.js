@@ -169,7 +169,11 @@ const createStore = () => {
         },
         async getWrappers ({ commit }) {
           const wrappers = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100')
-          commit('setWrappers', wrappers.data)
+          commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === 'ПВХ' }))
+        },
+        async changeMaterial ({ commit }, material) {
+          const wrappers = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100', material)
+          commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === material }))
         },
         async getCuples ({ commit }) {
           const cuples = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cuples?_embed&per_page=100')

@@ -1,6 +1,6 @@
 <template lang="pug">
 .slider
-  VueSlickCarousel(:settings="settings" class="slider" v-if="slider") 
+  VueSlickCarousel(:settings="settings" v-if="slider" class="my-slider") 
    .slide(v-for="(slide, id) in slider" :key="id" :style="{ 'background-image': 'url(' + slide.acf.slide + ')' }")
      h2.title {{ slide.title.rendered }}
      nuxt-link.sl-link(:to="slide.acf.slide_link") Читать Подробнее
@@ -20,7 +20,6 @@ import axios from 'axios'
       return {
         slider: null,
         settings: {
-        "dots": true,
         "edgeFriction": 0.35,
         "infinite": false,
         "speed": 500,
@@ -42,6 +41,7 @@ import axios from 'axios'
   .slider{
     z-index: 1;
     overflow: hidden;
+    position: relative;
     @media(min-width: 992px){
       height: calc(100vh - 120px);
     }
@@ -97,5 +97,26 @@ import axios from 'axios'
         }
       }
     }
+  .slick-prev{
+    left: -10px;
+    z-index: 15;
+    width: 17px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: url(~/assets/images/prev.svg);
+  }
+  .slick-next{
+    right: -10px;
+    z-index: 15;
+    width: 17px;
+    height: 30px!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: url(~/assets/images/next.svg);
+    @media(min-width: 992px){
+      right: 20px;
+    }
+  }
   }
 </style>

@@ -21,6 +21,11 @@
     .total-price
       .total Итоговая цена: 
       .price {{ totalPrice }} ₽
+    .promocode-zone(v-if="!promocodeActivated")
+      input(type="text" v-model="promocode" placeholder="Введите промокод")
+      button(type="button" @click="usePromocode") Применить
+    .message(v-if="promocodeActivated") Промокод на скидку 10% применился!
+    .errorMessage(v-if="promocodeError") Недействительный промокод
     .btn(@click="$emit('turnCart')")
       nuxt-link.create-order(to="/order") Оформить заказ
   .empty-cart(v-if="cart.length < 1") В вашей корзине пока ничего нет
@@ -31,6 +36,7 @@
     name: 'CartPanel',
     data() {
       return {
+        promocode: '',
       }
     },
     computed: {
@@ -40,10 +46,19 @@
       totalPrice() {
         return this.$store.state.totalPrice
       },
+      promocodeActivated() {
+        return this.$store.state.promocodeActivated
+      },
+      promocodeError() {
+        return this.$store.state.promocodeError
+      }
     },
     methods: {
       plusOne(product){
         this.$store.commit('plusOne', product)
+      },
+      usePromocode(){
+        this.$store.commit('usePromocode', this.promocode)
       },
       minusOne(product){
         this.$store.commit('minusOne', product)
@@ -184,5 +199,35 @@
         padding: 16px;
         text-align: center;
       }
+      .promocode-zone{
+        display: flex;
+        padding: 8px;
+        input{
+          border: 1px solid rgba(0,0,0,0.1);
+          padding: 12px;
+          margin-right: 5px;
+          width: 100%;
+          font-size: 16px;
+        }
+        button{
+          padding: 12px;
+          background-color: #000;
+          color: #fff
+        }
+        &.hide{
+          display: none;
+        } 
+  }
+  .message{
+        text-align: center;
+        margin-bottom: 16px;
+        color: green;
+        }
+      .errorMessage{
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 16px;
+        color: red;
+      }  
     }
 </style>

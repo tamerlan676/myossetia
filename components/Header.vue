@@ -100,7 +100,7 @@
     padding: 20px 32px;
   }
   .logo{
-    width: 100px;
+    width: 140px;
     @media(min-width: 992px){
       width: 150px;
   }
@@ -158,6 +158,7 @@
     display: none;
     @media(min-width: 992px){
       display: block;
+      margin-right: 140px;
     }
     .parent-ul {
       list-style: none;

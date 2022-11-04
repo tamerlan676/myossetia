@@ -80,4 +80,5 @@ import CaseCollections from '~/components/CaseCollections.vue';
       // }
     }
 
+
   </style>

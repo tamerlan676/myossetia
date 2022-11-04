@@ -78,10 +78,12 @@ import CartPanel from '~/components/CartPanel.vue'
         },
         fixBody(){
           if(this.cartActive === true){
-            document.body.style.overflow = 'hidden'
+            const x=window.scrollX;
+            const y=window.scrollY;
+            window.onscroll=function(){window.scrollTo(x, y);};
           }
           if(this.cartActive === false){
-            document.body.style.overflow = 'auto'
+            window.onscroll=function(){};
           }
         }
     },
