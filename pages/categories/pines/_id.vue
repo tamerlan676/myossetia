@@ -143,6 +143,14 @@ export default {
     width: 100%;
     img{
       max-width: 100%;
+      @media(min-width: 768px){
+        width: 100%;
+        object-fit: cover;
+        height: 750px;
+      }
+      @media(min-width: 992px){
+        height: 600px;
+      }
     }
   }
   .slick-prev, .slick-next{
@@ -158,6 +166,9 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background: url(~/assets/images/prev.svg);
+    @media(min-width: 992px){
+      left: 20px;
+    }
   }
   .slick-next{
     right: -10px;

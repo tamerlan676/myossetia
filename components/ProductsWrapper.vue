@@ -42,6 +42,11 @@
     }
     img{
       max-width: 100%;
+      @media(min-width: 1200px){
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+      } 
     }
     .info{
         justify-content: space-between;
@@ -90,7 +95,7 @@
         bottom:15px;
         color: #fff;
         opacity: 0.6;
-        @media(min-width: 992px){
+        @media(min-width: 768px){
           display: none;
         }
       }

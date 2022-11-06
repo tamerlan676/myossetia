@@ -46,6 +46,18 @@
     left: 0;
     z-index: -1;
   }
+  &:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-size: contain;
+    // background-image: linear-gradient(to bottom, transparent, white);
+    background-image: url(~/assets/images/misson-grad.png);
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
   .info{
     color: #fff;
     text-align: center;

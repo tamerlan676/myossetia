@@ -11,17 +11,14 @@
         nuxt-link(to="articles/beregi") 
           img(src="~/assets/images/beregi.webp")
         .title Береги Осетию
-        .desc-t Краткое описание статьи должно быть тут в несколько строк текста
       .article
         nuxt-link(to="#") 
           img(src="~/assets/images/horses.jpg")
         .title Помогаем диким животным
-        .desc-t Краткое описание статьи должно быть тут в несколько строк текста
       .article
         nuxt-link(to="articles/sdai") 
           img(src="~/assets/images/musor.jpg")
-        .title Сдай старый чехол и получи скидку
-        .desc-t Краткое описание статьи должно быть тут в несколько строк текста
+        .title Сдай чехол и получи скидку
   Mission
 
 </template>
@@ -118,8 +115,8 @@ import Mission from '~/components/Mission.vue'
         width: 100%;
         margin-bottom: 8px;
         height: 380px;
+        object-fit: cover;
         @media(min-width: 1200px){
-          width: 300px;
           height: 300px;
         }
       }

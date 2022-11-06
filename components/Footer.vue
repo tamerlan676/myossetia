@@ -1,8 +1,9 @@
 <template lang="pug">
 .footer
+  .footer-header
   .footer-wrapper
     .block
-        img(src="~/assets/images/logo.png")
+        img(src="~/assets/images/logo_footer.png")
         .email mail@myossetia.ru
     .block 
       ul.menu
@@ -58,12 +59,14 @@
 <style lang="scss" scoped>
 .footer{
   width: 100%;
-  background: rgba(0, 0, 0, .04);
-  padding: 16px;
   overflow: hidden;
   box-sizing: border-box;
-  @media(min-width: 992px){
-    padding: 60px 0;
+  background: #000;
+  .footer-header{
+    width: 100%;
+    height: 320px;
+    background-image: url(~/assets/images/footer-bg.jpg);
+    background-size: cover;
   }
   .footer-wrapper{
     margin-bottom: 24px;
@@ -81,6 +84,9 @@
       @media(min-width: 992px){
         border-bottom: none;
       }
+      img{
+        width: 150px;
+      }
   }
   .menu{
     li{
@@ -92,12 +98,12 @@
     }
     a{
       font-weight: 300;
-      color: grey;
+      color: #fff;
       text-transform: uppercase;
       font-size: 14px;
       letter-spacing: .2rem;
       &:hover{
-        color: #000
+        color: #c49d6e
       }
     }
   }
@@ -109,6 +115,8 @@
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: .2rem;
+    color: #fff;
+    padding-bottom: 40px;
   }
 }
 </style>

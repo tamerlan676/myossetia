@@ -1,7 +1,10 @@
 <template lang="pug">
 .category
+  .category-wrapper
+  .category-info
+    h1.title Чехлы на телефоны
+    .category-desc {{ desc }}
   MobileCaseCollections
-  h1.title Чехлы 
   .category-flex
     CaseCollections
     ProductsWrapper(:products="mobileCases" folder="categories" category="cases")
@@ -11,6 +14,11 @@
 import CaseCollections from '~/components/CaseCollections.vue';
     export default{
     name: "SlugCategory",
+    data() {
+      return {
+        desc: 'Силиконовые чехлы с эксклюзивными принтами от My Ossetia, изготовлены из противоударного  силикона премиум качества. Материал достаточно плотный и в тоже время не громоздкий, отлично сидит в руке.  Наши кейсы идеально подходят для подарка близкому человеку, а так же себе - любимому! \n С любовью, My Ossetia !'
+      }
+    },
     async fetch({ store }) {
         await store.dispatch("getMobileCases");
     },
@@ -29,56 +37,59 @@ import CaseCollections from '~/components/CaseCollections.vue';
   </script>
   
   <style lang="scss" scoped>
-    .category{
-      padding: 32px 16px;
-      h1{
-        font-size: 24px;
-        margin-bottom: 24px;
-        @media(min-width: 1200px){
-          text-align: center;
-        }
-      }
-      .category-flex{
-        display: flex;
-        .categories{
-          display: none;
-          position: sticky;
-          top: 20px;
-          @media(min-width: 1200px){
-            display: block;
-            width: 300px;
-            margin-right: 24px;
-          }
-          h3{
-            margin-bottom: 32px;
-            font-size: 24px;  
-          }
-          ul{
-            list-style: none;
-          }
-          li{
-            margin-bottom: 24px;
-          }
-          a{
-            color: #000;
-            font-weight: 600;
-            transition: all .5s ease;
-            &:hover{
-              color: brown;
-            }
-          }
-        }
-      }
-      // .hit{
-      //   position: absolute;
-      //   background: #67AAF9;
-      //   padding: 5px 10px;
-      //   font-size: 14px;
-      //   left: 0;
-      //   bottom:29%;
-      //   color: #fff
-      // }
+.category{
+  h1{
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .category-flex{
+    display: flex;
+    padding: 16px;
+    @media(min-width: 1200px){
+      padding: 30px;
     }
-
-
+  }
+  .materials{
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-left: 16px;
+    @media(min-width: 1200px){
+      padding-left: 30px;
+    }
+    button{
+      background: #e5e5e5;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 10px;
+      border-radius: 5px;
+      margin-right: 10px;
+      transition: all .5s ease;
+      &.active{
+        background: #000;
+        color: #fff
+      }
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+  .category-wrapper{
+    width: 100%;
+    height: 380px;
+    background-image: url('~/assets/images/wr-mob.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .category-info{
+    padding: 32px 16px;
+    white-space: pre-line;
+    line-height: 1.5;
+    @media(min-width: 1200px){
+      width: 900px;
+      padding: 32px;
+    }
+  }
+}
   </style>

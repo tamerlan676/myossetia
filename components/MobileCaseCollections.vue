@@ -24,6 +24,7 @@
   display: flex;
   margin-bottom: 24px;
   overflow-x: scroll;
+  padding-left: 16px;
   @media(min-width: 768px){
     margin: 0 auto 24px;
     width: fit-content; 

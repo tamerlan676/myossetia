@@ -184,13 +184,13 @@
         font-weight: bold;
       }
       &:hover{
-        background: #e5e5e5;
+        background: #c49d6e;
 	      cursor: pointer;
       }
     }
 
     .child-ul {
-      background: #e5e5e5;
+      background: #c49d6e;
       visibility: hidden;
       opacity: 0;
       position: absolute;
