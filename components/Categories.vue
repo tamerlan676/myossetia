@@ -52,7 +52,7 @@
     }
     @media(min-width: 1200px){
       width: 100%;
-      padding: 40px;
+      padding: 0 40px;
       margin: 0 auto; 
       grid-template-columns: 1fr 1fr 1fr 1fr;
       box-sizing: border-box;

@@ -3,6 +3,7 @@
   Slider
   Categories
   Hits(:hits="hits")
+  Mission
   .blog 
     h2 #MYOSSETIACares
     .desc Давайте вместе изменим в к лучшему отношение к&#160;природе нашего региона.
@@ -19,8 +20,6 @@
         nuxt-link(to="articles/sdai") 
           img(src="~/assets/images/musor.jpg")
         .title Сдай чехол и получи скидку
-  Mission
-
 </template>
 
 <script>  
@@ -63,10 +62,12 @@ import Mission from '~/components/Mission.vue'
 
 <style lang="scss" scoped>
 .blog{
-  background: rgb(219, 219, 219);
   width: 100%;
   padding: 80px 16px;
   box-sizing: border-box;
+  @media(min-width: 1200px){
+    padding: 120px 0;
+  }
   h2{
     font-size: 24px;
     text-align: center;
@@ -117,7 +118,7 @@ import Mission from '~/components/Mission.vue'
         height: 380px;
         object-fit: cover;
         @media(min-width: 1200px){
-          height: 300px;
+          height: 400px;
         }
       }
       .title{

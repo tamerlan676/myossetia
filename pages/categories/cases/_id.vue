@@ -40,10 +40,7 @@
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
     .rcommended
   ProductBanner(v-if="getItem.acf.banner" :img="getItem.acf.banner" :text="getItem.acf.banner_text")
-  .customers 
-    h2 Наша команда
-    .customers-wrapper
-      .customer(v-for="item in 5")
+  OurTeam
 </template>
 
 <script>
@@ -314,40 +311,6 @@ export default {
     }
     &.active{
       background: orange;
-    }
-  }
-}
-.customers{
-  padding: 16px;
-  @media(min-width: 1200px){
-    width: 1120px;
-    margin: 0 auto;
-  }
-  h2{
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .customers-wrapper{
-    display: flex;
-    overflow: auto;
-    width: 100%;
-    @media(min-width: 1200px){
-      overflow: hidden;
-    }
-    .customer{
-      width: 100%;
-      height: 300px;
-      background-image: url('~/assets/images/amina.jpg');
-      background-size: cover;
-      flex: 0 0 auto;
-      @media(min-width: 768px){
-        width: 33.3%;
-        height: 400px;
-      }
-      @media(min-width: 1200px){
-        width: 25%;
-        height: 400px;
-      }
     }
   }
 }
