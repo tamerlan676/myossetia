@@ -182,9 +182,11 @@
         font-size: 12px;
         letter-spacing: .1rem;
         font-weight: bold;
+        transition: all .5s ease;
       }
       &:hover{
         background: #c49d6e;
+        color: #fff;
 	      cursor: pointer;
       }
     }
@@ -203,6 +205,8 @@
       a{
         width: 100%;
         display: block;
+        color: #fff;
+        transition: all .5s ease;
         &:hover{
           color: brown;
         }

@@ -24,7 +24,8 @@
   .categories{
   display: none;
   position: sticky;
-  top: 20px;
+  top: 120px;
+  height: fit-content;
   @media(min-width: 1200px){
     display: block;
     width: 300px;

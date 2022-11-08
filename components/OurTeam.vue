@@ -43,6 +43,26 @@
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
+    position: relative;
+    &:before{
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100%;
+      right: 0;
+      z-index: 5;
+      background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(255, 255, 255));
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 5;
+      background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(255, 255, 255));
+    }
   }
   .team-wrapper{
     display: flex;
