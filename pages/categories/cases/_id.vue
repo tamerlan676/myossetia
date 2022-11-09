@@ -38,6 +38,7 @@
               input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
               input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
+        AfterInfo
     .rcommended
   ProductBanner(v-if="getItem.acf.banner" :img="getItem.acf.banner" :text="getItem.acf.banner_text")
   OurTeam
@@ -357,5 +358,4 @@ export default {
     margin-bottom: 48px;
   }
 }
-
 </styles>

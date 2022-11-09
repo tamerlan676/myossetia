@@ -47,21 +47,27 @@
     &:before{
       content: '';
       position: absolute;
-      width: 100px;
+      width: 50px;
       height: 100%;
       right: 0;
       z-index: 5;
       background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(255, 255, 255));
+      @media(min-width: 992px){
+        width: 100px;
+      }
     }
     &:after{
       content: '';
       position: absolute;
-      width: 100px;
+      width: 50px;
       height: 100%;
       left: 0;
       top: 0;
       z-index: 5;
       background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(255, 255, 255));
+      @media(min-width: 992px){
+        width: 100px;
+      }
     }
   }
   .team-wrapper{

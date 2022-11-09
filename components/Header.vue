@@ -183,6 +183,9 @@
         letter-spacing: .1rem;
         font-weight: bold;
         transition: all .5s ease;
+        &:hover{
+          color: #fff
+        }
       }
       &:hover{
         background: #c49d6e;
