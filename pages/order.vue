@@ -39,7 +39,7 @@
           .field
             .name Квартира
             input.text-field(type="text" v-model="flat" placeholder="Введите номер квартиры")
-          button.next-step(type="button" @click="nextStepSecond()" :class="{active: city !== '' && street !== '' && number !== ''}") Следующий шаг
+          button.next-step(type="button" @click="nextStepSecond()" href="#" :class="{active: city !== '' && street !== '' && number !== ''}") Следующий шаг
           button.prev-step(type="button" @click="prevStep()") Назад
       transition(name="slide-fade")
         .step(v-if="currentStep === 3")  
@@ -213,6 +213,7 @@ export default{
     nextStepSecond() {
       if(this.city !=='' && this.street !=='' && this.number !== '') {
         this.currentStep++
+        location.href="#"
       }
     },
     usePromocode(){
@@ -270,10 +271,12 @@ export default{
         chat_id: '-741684193',
         parse_mode: 'html',
         text: message
-      }).then(this.notSend = false, this.sended = true, function changeLocation() {
+      }).then(
+          function changeLocation() {
             location.href='/success'
           },
-          setTimeout(this.changeLocation, 10000), localStorage.clear())
+          setTimeout(this.changeLocation, 10000)
+        )
     },
   }
 }  
