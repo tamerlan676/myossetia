@@ -270,7 +270,10 @@ export default{
         chat_id: '-741684193',
         parse_mode: 'html',
         text: message
-      }).then(this.notSend = false, this.sended = true, location.href='/success', localStorage.clear())
+      }).then(this.notSend = false, this.sended = true, function changeLocation() {
+            location.href='/success'
+          },
+          setTimeout(this.changeLocation, 10000), localStorage.clear())
     },
   }
 }  
