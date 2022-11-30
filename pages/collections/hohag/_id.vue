@@ -10,6 +10,7 @@
       li
         nuxt-link(to="/categories/cases/") Чехлы
       li {{ getItem.title.rendered }}
+  AddMessage(:addedMessage="addedMessage")
   .item
     .wrapper
       h1.product-title {{ getItem.title.rendered }}
@@ -58,6 +59,7 @@ export default {
       id: this.$route.params.id,
       model: '',
       color: 'Черный',
+      addedMessage: false,
       settings: {
         "dots": true,
         "edgeFriction": 0.35,
@@ -98,6 +100,10 @@ export default {
   methods: {
     addToCart(product) {
       this.$store.commit('addToCart', product)
+      this.addedMessage = true
+      setTimeout(() => {
+        this.addedMessage = false
+      }, 1500)
     },
   }
 }
@@ -355,6 +361,9 @@ export default {
   padding: 15px;
   background: #f7f7f7;
   box-sizing: border-box;
+  @media(min-width: 768px){
+    padding: 16px 32px;
+  }
   .back{
     img{
       height: 25px;
@@ -373,8 +382,10 @@ export default {
       li{
         margin-right: 24px;
         position: relative;
+        text-transform: uppercase;
         &:last-child{
           font-weight: 600;
+          margin-right: 0;
         }
         a{
           color: rgb(95, 95, 95)

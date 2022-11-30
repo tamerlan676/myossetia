@@ -37,8 +37,6 @@
           nuxt-link(to="/articles") Наши проекты
         li(@click="turnMenu")
           nuxt-link(to="/contacts") Контакты
-        li(@click="turnMenu")
-          nuxt-link(to="/about") О нас
   CartPanel(:class="{active: cartActive}" @turnCart="turnCart")
   Nuxt
   Footer
@@ -108,7 +106,7 @@ import CartPanel from '~/components/CartPanel.vue'
     position: relative;
     .mob-menu{
       position: fixed;
-      width: 300px;
+      width: 100%;
       height: 100%;
       left: -100%;
       transition: all .5s ease;

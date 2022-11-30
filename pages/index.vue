@@ -12,14 +12,17 @@
         nuxt-link(to="articles/beregi") 
           img(src="~/assets/images/beregi.webp")
         .title Береги Осетию
+        .article-desc Давайте вместе сохраним природу Осетии в первозданном виде!	
       .article
         nuxt-link(to="#") 
           img(src="~/assets/images/horses.jpg")
         .title Помогаем диким животным
+        .article-desc Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста.						
       .article
         nuxt-link(to="articles/sdai") 
           img(src="~/assets/images/musor.jpg")
         .title Сдай чехол и получи скидку
+        .article-desc Сдай свой старый чехол и получи скидку 10% на всю нашу продукцию. Изменить мир – это реально. Стоит только начать с себя!						
 </template>
 
 <script>  
@@ -125,6 +128,9 @@ import Mission from '~/components/Mission.vue'
         font-weight: 700;
         font-size: 18px;
         margin-bottom: 10px;
+      }
+      .article-desc{
+        color: #807E7E
       }
       .date{
         font-size: 14px;

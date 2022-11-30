@@ -1,6 +1,6 @@
 <template lang="pug">
 .order
-  h2 Оформление заказа {{ deliveryIndex }}
+  h2 Оформление заказа
   form(@submit.prevent="submitForm")
    .order-wrapper
     .steps

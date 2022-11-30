@@ -29,14 +29,29 @@ const createStore = () => {
       deliveryStreet: null,
       deliveryIndex: null,
       models: [
+        
+        'IPhone 7',
+        'IPhone 8',
+        'IPhone 7 plus',
+        'IPhone 8 Plus', 
         'IPhone X',
+        'IPhone XS',
+        'IPhone XS MAX',
+        'IPhone XR',
         'IPhone 11',
-        'IPhone 11 Pro',
+        'IPhone 11pro',
+        'IPhone 11pro max',
         'IPhone 12',
+        'IPhone 12pro',
+        'IPhone 12pro max',
         'IPhone 12 mini',
-        'IPhone 12 Pro',
-        'IPhone 12 ProMax',
         'IPhone 13',
+        'IPhone 13 pro',
+        'IPhone 13 pro max',
+        'IPhone 13 mini',
+        'IPhone 14',
+        'IPhone 14 pro',
+        'IPhone 14 pro max'
       ]
     },
    mutations: {

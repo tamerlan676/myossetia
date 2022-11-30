@@ -10,6 +10,7 @@
       li
         nuxt-link(to="/categories/cases/") Чехлы
       li {{ getItem.title.rendered }}
+  AddMessage(:addedMessage="addedMessage")
   .item
     .wrapper
       h1.product-title {{ getItem.title.rendered }}
@@ -37,7 +38,7 @@
             .colors
               input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
               input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
-        button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
+        button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") {{ cartText }}
         AfterInfo
     .rcommended
   ProductBanner(v-if="getItem.acf.banner" :img="getItem.acf.banner" :text="getItem.acf.banner_text")
@@ -55,6 +56,8 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
+      cartText: 'Добавить в корзину',
+      addedMessage: false,
       model: '',
       color: 'Черный',
       settings: {
@@ -97,7 +100,11 @@ export default {
   methods: {
     addToCart(product) {
       this.$store.commit('addToCart', product)
-    },
+      this.addedMessage = true
+      setTimeout(() => {
+        this.addedMessage = false
+      }, 1500)
+    }
   }
 }
 </script>
@@ -163,10 +170,6 @@ export default {
       @media(min-width: 768px){
         width: 100%;
         object-fit: cover;
-        height: 750px;
-      }
-      @media(min-width: 992px){
-        height: 600px;
       }
     }
   }
@@ -314,6 +317,13 @@ export default {
       background: orange;
     }
   }
+  .fly{
+    width: 100px;
+    height: 100px;
+    background: #000;
+    position: absolute;
+    transition: all .7s ease;
+  }
 }
 .breadcrumbs{
   display: flex;
@@ -321,6 +331,9 @@ export default {
   padding: 15px;
   background: #f7f7f7;
   box-sizing: border-box;
+  @media(min-width: 768px){
+    padding: 16px 32px;
+  }
   .back{
     img{
       height: 25px;
@@ -339,8 +352,10 @@ export default {
       li{
         margin-right: 24px;
         position: relative;
+        text-transform: uppercase;
         &:last-child{
           font-weight: 600;
+          margin-right: 0;
         }
         a{
           color: rgb(95, 95, 95)

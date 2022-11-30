@@ -4,7 +4,7 @@
   .team-desc тут будет описание этого блока и информация о том, что каждый может оказаться здесь
   .team-wrap
     .team-wrapper.scroll-right
-      nuxt-link.team-item(v-for="item in 10" to="/#" target="_blank")
+      nuxt-link.team-item(v-for="item in 10" :key="key" to="/#" target="_blank")
         .nickname @amina
         img(src="~/assets/images/amina.jpg")
 </template>

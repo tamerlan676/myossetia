@@ -44,7 +44,6 @@
       max-width: 100%;
       @media(min-width: 1200px){
         width: 100%;
-        height: 450px;
         object-fit: cover;
       } 
     }
@@ -52,9 +51,6 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px;
-        @media(min-width: 768px){
-          display: flex;
-        }
         @media(min-width: 992px){
           padding: 16px;
         } 
@@ -72,9 +68,6 @@
         }
         .right{
           text-align: left;
-          @media(min-width: 768px){
-            text-align: right;
-          }
           .old-price{
             font-size: 14px;
             text-decoration: line-through;

@@ -4,7 +4,6 @@
     h3 Кто мы?
     h2 Наша миссия
     p {{ text }}
-    nuxt-link.mission-link(to="#") подробнее
 </template>
 
 <script>

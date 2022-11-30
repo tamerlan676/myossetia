@@ -36,8 +36,6 @@
         nuxt-link(to="/about") Наши проекты
       li
         nuxt-link(to="/contacts") Контакты
-      li
-        nuxt-link(to="/about") О Нас
   .mob-sm
     .cart(@click='$emit("turnCart")')
       img(width="30px" src="~/assets/images/cart.svg")

@@ -110,6 +110,9 @@
       }
     }
     }
+    .email{
+      color: #fff
+    }
     .copyright{
       text-align: center;
       padding: 0 2rem;

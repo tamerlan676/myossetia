@@ -3,7 +3,7 @@
   h3 Коллекции
   ul
     li
-      nuxt-link(to="/collections/hohag") Hohog_com
+      nuxt-link(to="/collections/hohag") Hohag_com
     li
       nuxt-link(to="/collections/dzigoi") Dzigojty_ka
     li
