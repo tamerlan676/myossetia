@@ -31,7 +31,8 @@
   grid-gap: 20px;
   @media(min-width: 1200px){
     grid-template-columns: repeat(4, 1fr);
-    width: 100%
+    width: 100%;
+    margin-bottom: 120px;
   }
   .product{
     border: 1px solid rgb(241, 241, 241);
@@ -81,13 +82,12 @@
       }
       .sale{
         position: absolute;
-        background: #FC9E4F;
+        background: #fdaa65;
         padding: 5px 10px;
         font-size: 14px;
         right: 0;
         bottom:15px;
         color: #fff;
-        opacity: 0.6;
         @media(min-width: 768px){
           display: none;
         }
@@ -95,13 +95,12 @@
   .sale-dt{
         display: none;
         position: absolute;
-        background: #FC9E4F;
+        background: #fdaa65;
         padding: 5px 10px;
         font-size: 14px;
         left: 0;
         top: 30px;
         color: #fff;
-        opacity: 0.6;
         @media(min-width: 992px){
           display: block;
         }

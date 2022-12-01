@@ -1,7 +1,10 @@
 <template lang="pug">
 .team
-  h2 Наша команда
-  .team-desc тут будет описание этого блока и информация о том, что каждый может оказаться здесь
+  .team-header
+    .left
+      h2 Наша команда
+      .team-desc тут будет описание этого блока и информация о том, что каждый может оказаться здесь
+    .right #MYOssetia
   .team-wrap
     .team-wrapper.scroll-right
       nuxt-link.team-item(v-for="item in 10" :key="key" to="/#" target="_blank")
@@ -31,13 +34,38 @@
     margin-bottom: 24px;
     text-align: center;
     font-size: 24px;
+    @media(min-width: 768px){
+      text-align: left;
+    }
     @media(min-width: 992px){
       font-size: 32px;
     }
   }
+  .team-header{
+    margin-bottom: 40px;
+    @media(min-width: 768px){
+      display: flex;
+      justify-content: space-between;
+    }
+    .left{
+      margin-bottom: 20px;
+    }
+    .right{
+      text-align: center;
+      font-weight: 500;
+      text-transform: uppercase;
+      @media(min-width: 768px){
+      display: flex;
+      justify-content: space-between;
+      font-size: 32px;
+    }
+    }
+  }
   .team-desc{
     text-align: center;
-    margin-bottom: 40px;
+    @media(min-width: 768px){
+        text-align: left;
+    }
   }
   .team-wrap{
     width: 100%;
@@ -51,7 +79,6 @@
       height: 100%;
       right: 0;
       z-index: 5;
-      background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(255, 255, 255));
       @media(min-width: 992px){
         width: 100px;
       }
@@ -64,7 +91,6 @@
       left: 0;
       top: 0;
       z-index: 5;
-      background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(255, 255, 255));
       @media(min-width: 992px){
         width: 100px;
       }

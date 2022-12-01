@@ -11,11 +11,11 @@
           nuxt-link(:to="item.link") {{ item.title }}
     .block 
       ul.menu
-        li(v-for="item in menu1")
+        li(v-for="item in menu2")
           nuxt-link(:to="item.link") {{ item.title }}
     .block 
       ul.menu
-        li(v-for="item in menu1")
+        li(v-for="item in menu3")
           nuxt-link(:to="item.link") {{ item.title }}
   .copyright © 2022 WWW.MYOSSETIA.RU
   </template>
@@ -43,13 +43,53 @@
               link: '#'
             },
             {
-              title: 'О нас',
-              link: '#'
-            },
-            {
               title: 'Контакты',
               link: '#'
             },
+          ],
+          menu2:[
+            {
+              title: 'Чехлы на телефоны',
+              link: '/categories/cases'
+            },
+            {
+              title: 'Обложки на паспорт',
+              link: '/categories/wrappers'
+            },
+            {
+              title: 'Металлические кружки',
+              link: '/categories/cuples'
+            },
+            {
+              title: 'Браслеты',
+              link: '/categories/bracelets'
+            },
+            {
+              title: 'Значки',
+              link: '/categories/pines'
+            }
+          ],
+          menu3:[
+            {
+              title: 'Hohag_com',
+              link: '/collections/hohag'
+            },
+            {
+              title: 'Dzigojty_ka',
+              link: '/collections/dzigoi'
+            },
+            {
+              title: 'Tembolat',
+              link: '/collections/tembolat'
+            },
+            {
+              title: 'Alania',
+              link: '/collections/alania'
+            },
+            {
+              title: 'Irondzinad',
+              link: '/collections/irondz'
+            }
           ]
         }
       }

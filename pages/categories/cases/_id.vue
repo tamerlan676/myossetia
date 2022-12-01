@@ -110,6 +110,9 @@ export default {
 </script>
 
 <styles scoped lang="scss">
+.main{
+  overflow: hidden;
+}
 .item{
   padding: 16px;
   @media(min-width: 992px) {
@@ -262,7 +265,7 @@ export default {
             left: -1px;
             background: rgb(44, 44, 44);
             cursor: pointer;
-            border: 1px solid #e5e5e5
+            border: 1px solid #c2bdbd
             }
             &:checked{
               &:before{
@@ -286,7 +289,7 @@ export default {
             left: -1px;
             background: rgb(247, 247, 247);
             cursor: pointer;
-            border: 1px solid #e5e5e5
+            border: 1px solid #c2bdbd
             }
             &:checked{
               &:before{

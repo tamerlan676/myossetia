@@ -23,7 +23,7 @@
       li.dropdown-item(@click="turnColMenu()") Коллекции
         ul.child-ul(:class="{active: collectionsDropdown }")
           li
-            nuxt-link(to="/collections/hohag") Hohog_com
+            nuxt-link(to="/collections/hohag") Hohag_com
           li
             nuxt-link(to="/collections/dzigoi") Dzigojty_ka
           li

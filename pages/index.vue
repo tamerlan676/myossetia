@@ -1,6 +1,7 @@
 <template lang="pug">
 .main
-  Slider
+  CarouselSlider
+  //- Slider
   Categories
   Hits(:hits="hits")
   Mission
