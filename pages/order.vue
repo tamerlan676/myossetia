@@ -106,9 +106,6 @@
         .line(v-if="delVariant !== ''") 
           span Способ доставки
           span {{ delVariant }}
-        .line
-          span Способ оплаты
-          span {{ paymentMethod }}
         button.submit-btn(type="submitForm") Отправить
     .order-info 
       h3 Ваш заказ

@@ -131,6 +131,12 @@ import axios from 'axios'
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      img{
+        width: 10px;
+        @media(min-width: 992px){
+          width: 20px;
+        }
+      }
     }
     .prev{
       position: absolute;
@@ -143,6 +149,12 @@ import axios from 'axios'
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      img{
+        width: 10px;
+        @media(min-width: 992px){
+          width: 20px;
+        }
+      }
     }
     .dots{
       display: flex;

@@ -20,6 +20,12 @@
             img(:src="getItem.acf.product_images_1")
           .slide(v-if="getItem.acf.product_images_2") 
             img(:src="getItem.acf.product_images_2")
+          .slide(v-if="getItem.acf.product_images_3") 
+            img(:src="getItem.acf.product_images_3")
+          .slide(v-if="getItem.acf.product_images_4") 
+            img(:src="getItem.acf.product_images_4")
+          .slide(v-if="getItem.acf.product_images_5") 
+            img(:src="getItem.acf.product_images_5")
       .info
         h1.product-mob-title {{ getItem.title.rendered }}
         .prices 
@@ -39,7 +45,7 @@
               input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
               input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") {{ cartText }}
-        AfterInfo
+        AfterInfo(:benefits="benefits")
     .rcommended
   ProductBanner(v-if="getItem.acf.banner" :img="getItem.acf.banner" :text="getItem.acf.banner_text")
   OurTeam
@@ -60,6 +66,24 @@ export default {
       addedMessage: false,
       model: '',
       color: 'Черный',
+      benefits: [
+          {
+            icon: require('~/assets/images/benefits/brilliant.svg'),
+            text: 'Эксклюзивный дизайн'
+          },
+          {
+            icon: require('~/assets/images/benefits/point.svg'),
+            text: 'Бесплатная доставка от 2500 рублей'
+          },
+          {
+            icon: require('~/assets/images/benefits/thumb-up.svg'),
+            text: 'Высокое качество материалов и печати'
+          },
+          {
+            icon: require('~/assets/images/benefits/heart.svg'),
+            text: 'Из Осетии с любовью!'
+          },
+        ],
       settings: {
         "dots": true,
         "edgeFriction": 0.35,

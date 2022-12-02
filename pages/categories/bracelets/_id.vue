@@ -20,6 +20,12 @@
             img(:src="getItem.acf.product_images_1")
           .slide(v-if="getItem.acf.product_images_2") 
             img(:src="getItem.acf.product_images_2")
+          .slide(v-if="getItem.acf.product_images_3") 
+            img(:src="getItem.acf.product_images_3")
+          .slide(v-if="getItem.acf.product_images_4") 
+            img(:src="getItem.acf.product_images_4")
+          .slide(v-if="getItem.acf.product_images_5") 
+            img(:src="getItem.acf.product_images_5")
       .info
         h1.product-mob-title {{ getItem.title.rendered }}
         .prices 
@@ -28,11 +34,7 @@
         .options 
           .description {{ getItem.acf.description }}
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
-    .rcommended
-  .customers 
-    h2 Довольные покупатели
-    .customers-wrapper
-      .customer(v-for="item in 5")
+        AfterInfo(:benefits="benefits")
 </template>
 
 <script>
@@ -47,6 +49,28 @@ export default {
     return {
       id: this.$route.params.id,
       addedMessage: false,
+      benefits: [
+          {
+            icon: require('~/assets/images/benefits/brilliant.svg'),
+            text: 'Эксклюзивный дизайн'
+          },
+          {
+            icon: require('~/assets/images/benefits/point.svg'),
+            text: 'Бесплатная доставка от 2500 рублей'
+          },
+          {
+            icon: require('~/assets/images/benefits/hand.svg'),
+            text: 'Размер на любую руку'
+          },
+          {
+            icon: require('~/assets/images/benefits/thumb-up.svg'),
+            text: 'Материалы: Вощенный шнур ХБ, металл'
+          },
+          {
+            icon: require('~/assets/images/benefits/heart.svg'),
+            text: 'Из Осетии с любовью!'
+          },
+        ],
       settings: {
         "dots": true,
         "edgeFriction": 0.35,
@@ -94,11 +118,12 @@ export default {
 <styles scoped lang="scss">
 .item{
   padding: 16px;
+  margin-bottom: 40px;
   @media(min-width: 992px) {
-      padding: 32px;;
+      padding: 32px;
   }
   @media(min-width: 1200px) {
-      margin: 0 auto;
+      margin: 0 auto 120px;
       width: 1120px;
       padding: 0;
   }

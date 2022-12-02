@@ -4,9 +4,9 @@
   .category-info
     h1.title Обложки на паспорт
     .category-desc {{ desc }}
-  .materials 
-    button(:class="{active: material === 'ПВХ'}" @click="changeMaterial('ПВХ')") из ПВХ
+  .materials
     button(:class="{active: material === 'Кожа'}" @click="changeMaterial('Кожа')" ) из кожи
+    button(:class="{active: material === 'ПВХ'}" @click="changeMaterial('ПВХ')") из ПВХ
   .category-flex
     ProductsWrapper(:products="wrappers" folder="categories" category="wrappers")
 </template>
@@ -16,7 +16,7 @@
       name: 'SlugCategory',
       data() {
         return {
-          material: 'ПВХ',
+          material: 'Кожа',
           desc: 'Классика — это стильно! \n\n Изделия из кожи — это то, что всегда будет на вершине и придаст вам правильного лоска. А кожаная обложка на паспорт, которая художественно подчеркнет ваш вкус, географическое происхождение и не броский патриотизм — вдвойне!'
         }
       },

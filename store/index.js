@@ -169,40 +169,40 @@ const createStore = () => {
     },
     actions: {
         async getMobileCases ({ commit }) {
-          const products = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
+          const products = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
           commit('setMobileCases', products.data)
         },
         async getCollection ({ commit }, options) {
-          const collection = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100', options)
+          const collection = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100', options)
           commit('setCollection', collection.data.filter((item) => { return item.acf.collection === options.collectionName }))
         },
         async getHits ({ commit }) {
-          const hits = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
+          const hits = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
           commit('setHits', hits.data.filter((item) => { return item.acf.hit === true }))
         },
         async getPines ({ commit }) {
-          const pines = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/pines?_embed&per_page=100')
+          const pines = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/pines?_embed&per_page=100')
           commit('setPines', pines.data)
         },
         async getWrappers ({ commit }) {
-          const wrappers = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100')
-          commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === 'ПВХ' }))
+          const wrappers = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100')
+          commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === 'Кожа' }))
         },
         async getWrapper ({ commit }, id) {
-          const wrappers = await axios.get(`https://ne404.ru/admin/wp-json/wp/v2/wrappers/${id}`, id)
+          const wrappers = await axios.get(`https://myossetia.ru/admin/wp-json/wp/v2/wrappers/${id}`, id)
           commit('setWrapper', wrappers.data)
           console.log(wrappers)
         },
         async changeMaterial ({ commit }, material) {
-          const wrappers = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100', material)
+          const wrappers = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100', material)
           commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === material }))
         },
         async getCuples ({ commit }) {
-          const cuples = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/cuples?_embed&per_page=100')
+          const cuples = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cuples?_embed&per_page=100')
           commit('setCuples', cuples.data)
         },
         async getBracelets ({ commit }) {
-          const bracelets = await axios.get('https://ne404.ru/admin/wp-json/wp/v2/bracelets?_embed&per_page=100')
+          const bracelets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/bracelets?_embed&per_page=100')
           commit('setBracelets', bracelets.data)
         },
         async getDeliveryCities ({ commit }, params) {

@@ -2,7 +2,7 @@
 .after-info
   .price-info Цена действительна только для сайта и может отличаться от цен в розничных магазинах
   .benefits
-    .benefit(v-for="item in list")
+    .benefit(v-for="item in benefits")
       img(:src="item.icon") 
       p {{ item.text }}
 </template>
@@ -10,29 +10,11 @@
 <script>
   export default{
     name: 'CartPanel',
-    props: [
-
-    ],
+    props: {
+      benefits: Array
+    },
     data() {
       return {
-        list: [
-          {
-            icon: require('~/assets/images/benefits/brilliant.svg'),
-            text: 'Эксклюзивный дизайн'
-          },
-          {
-            icon: require('~/assets/images/benefits/point.svg'),
-            text: 'Бесплатная доставка от 2500 рублей'
-          },
-          {
-            icon: require('~/assets/images/benefits/thumb-up.svg'),
-            text: 'Высокое качество материалов и печати'
-          },
-          {
-            icon: require('~/assets/images/benefits/heart.svg'),
-            text: 'Из Осетии с любовью!'
-          },
-        ]
       }
     }
   }
