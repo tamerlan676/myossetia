@@ -22,6 +22,7 @@
 
 <style lang="scss" scoped>
 .after-info{
+  margin-bottom: 40px;
   .price-info{
     margin-bottom: 32px;
     font-size: 14px;

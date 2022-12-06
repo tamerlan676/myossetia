@@ -202,6 +202,7 @@ export default{
     nextStepFirst() {
       if(this.name !=='' && this.familia !=='') {
         this.currentStep++
+        location.href="#"
       }
     },
     changeDelPrice(n){

@@ -8,7 +8,7 @@
       li
         nuxt-link(to="/") Главная
       li
-        nuxt-link(to="/categories/cases/") Чехлы
+        nuxt-link(to="/collections/alania/") Коллекция "Алания"
       li {{ getItem.title.rendered }}
   AddMessage(:addedMessage="addedMessage")
   .item

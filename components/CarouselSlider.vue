@@ -1,6 +1,6 @@
 <template lang="pug">
 .slider
-  .wrapper(:style="{'margin-left': '-' + (100 * currentSlide) + '%'}")
+  .wrapper(:style="listPosition")
     .slide(v-for="(slide, id) in slider" :key="id" :style="{ 'background-image': 'url(' + slide.acf.slide + ')'}")
       h2.title {{ slide.title.rendered }}
       nuxt-link.sl-link(:to="slide.acf.slide_link") Читать Подробнее
@@ -19,7 +19,19 @@ import axios from 'axios'
     data() {
       return {
         slider: null,
-        currentSlide: 0
+        currentSlide: 0,
+        touch: {
+          startX: 0,
+          endX: 0
+        }
+      }
+    },
+    computed: {
+      listLength() {
+        return { width: this.cards.length * 100 + '%' };
+      },
+      listPosition() {
+        return { transform: 'translateX(-'+ this.currentSlide * 100 +'%)' };
       }
     },
     created() {
@@ -28,6 +40,9 @@ import axios from 'axios'
       )
     },
     mounted(){
+      this.$el.addEventListener('touchstart', event => this.touchstart(event))
+      this.$el.addEventListener('touchmove', event => this.touchmove(event))
+      this.$el.addEventListener('touchend', () => this.touchend())
       const vm = this;
       setInterval(function () {
         if(vm.currentSlide < 3){
@@ -36,9 +51,24 @@ import axios from 'axios'
         if(vm.currentSlide === 3){
           vm.currentSlide = 0
         }
-      }, 10000)
+      }, 15000)
     },
     methods: {
+      touchstart(event) {
+        this.touch.startX = event.touches[0].clientX;
+        this.touch.endX = 0;
+      },
+      touchmove(event) {
+        this.touch.endX = event.touches[0].clientX;
+      },
+      touchend() {
+        if(!this.touch.endX || Math.abs(this.touch.endX - this.touch.startX) < 20)
+          return;
+        if(this.touch.endX < this.touch.startX)
+          this.nextSlide()
+        else
+        this.prevSlide()
+      },
       nextSlide() {
         this.currentSlide = this.currentSlide + 1
         if(this.currentSlide === 3){

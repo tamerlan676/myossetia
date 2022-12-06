@@ -8,7 +8,7 @@
       li
         nuxt-link(to="/") Главная
       li
-        nuxt-link(to="/categories/pines/") Пины
+        nuxt-link(to="/categories/wrappers/") Обложки
       li {{ getItem.title.rendered }}
   AddMessage(:addedMessage="addedMessage")
   .item
