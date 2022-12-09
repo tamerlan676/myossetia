@@ -1,6 +1,6 @@
 <template lang="pug">
 .default
-  .banner НОВИНКИ ОСЕНИ УЖЕ В КАТАЛОГЕ!
+  .banner НОВИНКИ ЗИМЫ УЖЕ В КАТАЛОГЕ!
   Header(@turnMenu="turnMenu" :activeBurger="activeBurger" @turnCart="turnCart")
   .mob-menu(:class="{active: menuActive}")
     header
@@ -21,6 +21,8 @@
               nuxt-link(to="/categories/bracelets") Браслеты
             li(@click="turnMenu")
               nuxt-link(to="/categories/cuples") Кружки
+            li(@click="turnMenu")
+              nuxt-link(to="/categories/popsockets") Попсокеты
         li.dropdown-item Коллекции
           ul.child-ul
             li(@click="turnMenu")
@@ -43,7 +45,9 @@
 </template>
 
 <script>
-import CartPanel from '~/components/CartPanel.vue'
+// import Snowf from 'vue-snowf'
+import CartPanel from '~/components/CartPanel.vue';
+
   export default{
     name: "DefaultLayout",
     components: { CartPanel },

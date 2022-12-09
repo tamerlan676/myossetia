@@ -5,20 +5,27 @@
       h2 Наша команда
       .team-desc тут будет описание этого блока и информация о том, что каждый может оказаться здесь
     .right #MYOssetia
-  .team-wrap
+  .team-wrap(v-if="team")
     .team-wrapper.scroll-right
-      nuxt-link.team-item(v-for="item in 10" :key="key" to="/#" target="_blank")
-        .nickname @amina
-        img(src="~/assets/images/amina.jpg")
+      nuxt-link.team-item(v-for="(item, id) in team" :to="item.acf.link" target="_blank")
+        .nickname {{ item.acf.name }}
+        img(:src="item.acf.img")
 </template>
 
 <script>
+  import axios from 'axios'
   export default{
     name: 'CategoriesComponent',
     data() {
       return {
+        team: null
       }
-    }
+    },
+    created() {
+      axios.get('https://myossetia.ru/admin/wp-json/wp/v2/followers?_embed&per_page=100').then((res) => {this.team = res.data;
+      }
+      )
+    },
   }
 </script>
 
@@ -122,7 +129,7 @@
     }
     .team-item{
       width: 26.25rem;
-      height: 15.75rem;
+      height: 25.75rem;
       overflow: hidden;
       margin: 0 12px;
       text-align: center;

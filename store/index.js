@@ -17,6 +17,7 @@ const createStore = () => {
       mobileCases: [],
       collection: [],
       pines: [],
+      popsockets: [],
       cuples: [],
       wrappers: [],
       wrapper: '',
@@ -128,6 +129,9 @@ const createStore = () => {
       setPines (state, pines) {
         state.pines = pines
       },
+      setPopsockets (state, popsockets) {
+        state.popsockets = popsockets
+      },
       setWrappers (state, wrappers) {
         state.wrappers = wrappers
       },
@@ -184,6 +188,10 @@ const createStore = () => {
           const pines = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/pines?_embed&per_page=100')
           commit('setPines', pines.data)
         },
+        async getPopsockets ({ commit }) {
+          const popsockets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/popsockets?_embed&per_page=100')
+          commit('setPopsockets', popsockets.data)
+        },
         async getWrappers ({ commit }) {
           const wrappers = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100')
           commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === 'Кожа' }))
@@ -191,7 +199,6 @@ const createStore = () => {
         async getWrapper ({ commit }, id) {
           const wrappers = await axios.get(`https://myossetia.ru/admin/wp-json/wp/v2/wrappers/${id}`, id)
           commit('setWrapper', wrappers.data)
-          console.log(wrappers)
         },
         async changeMaterial ({ commit }, material) {
           const wrappers = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100', material)

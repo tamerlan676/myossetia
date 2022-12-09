@@ -35,7 +35,7 @@ import axios from 'axios'
       }
     },
     created() {
-      axios.get('https://ne404.ru/admin/wp-json/wp/v2/slider?_embed&per_page=100').then((res) => {this.slider = res.data;
+      axios.get('https://myossetia.ru/admin/wp-json/wp/v2/slider?_embed&per_page=100').then((res) => {this.slider = res.data;
       }
       )
     },

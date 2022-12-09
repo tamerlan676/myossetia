@@ -2,13 +2,13 @@
 .main
   .breadcrumbs
     .back
-      nuxt-link(to="/categories/wrappers")
+      nuxt-link(to="/categories/popsockets")
         img(src="~/assets/images/back.svg")
     ul.breadcrumbs-dt
       li
         nuxt-link(to="/") Главная
       li
-        nuxt-link(to="/categories/wrappers/") Обложки
+        nuxt-link(to="/categories/popsockets/") Попсокеты
       li {{ getItem.title.rendered }}
   AddMessage(:addedMessage="addedMessage")
   .item
@@ -17,15 +17,9 @@
       .slider
         VueSlickCarousel(:settings="settings" class="slider") 
           .slide 
-              img(:src="getItem.acf.product_images_1")
+            img(:src="getItem.acf.product_images_1")
           .slide(v-if="getItem.acf.product_images_2") 
-              img(:src="getItem.acf.product_images_2")
-          .slide(v-if="getItem.acf.product_images_3") 
-              img(:src="getItem.acf.product_images_3")
-          .slide(v-if="getItem.acf.product_images_4") 
-              img(:src="getItem.acf.product_images_4")
-          .slide(v-if="getItem.acf.product_images_5") 
-              img(:src="getItem.acf.product_images_5")
+            img(:src="getItem.acf.product_images_2")
       .info
         h1.product-mob-title {{ getItem.title.rendered }}
         .prices 
@@ -33,8 +27,7 @@
           .current {{ getItem.acf.price }} ₽
         .options 
           .description {{ getItem.acf.description }}
-        button.add-to-cart(@click="addToCart(product)" class="active") Добавить в корзину
-        AfterInfo(:benefits="benefits")
+        button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
 </template>
 
 <script>
@@ -49,24 +42,6 @@ export default {
     return {
       id: this.$route.params.id,
       addedMessage: false,
-      benefits: [
-          {
-            icon: require('~/assets/images/benefits/brilliant.svg'),
-            text: 'Эксклюзивный дизайн'
-          },
-          {
-            icon: require('~/assets/images/benefits/point.svg'),
-            text: 'Бесплатная доставка от 2500 рублей'
-          },
-          {
-            icon: require('~/assets/images/benefits/thumb-up.svg'),
-            text: 'Высокое качество материалов и печати'
-          },
-          {
-            icon: require('~/assets/images/benefits/heart.svg'),
-            text: 'Из Осетии с любовью!'
-          },
-        ],
       settings: {
         "dots": true,
         "edgeFriction": 0.35,
@@ -78,15 +53,15 @@ export default {
       }
     }
   },
-  async fetch ({ store, params }) {
-        await store.dispatch('getWrapper', params.id)
+  async fetch ({ store }) {
+        await store.dispatch('getPopsockets')
   },
   computed: {
     getItem() {
-      return this.$store.state.wrapper
+      return this.$store.state.popsockets.filter(item => item.id === +this.$route.params.id)[0]
     },
     oldPrice() {
-      return this.$store.state.wrappers.filter(item => item.id === +this.$route.params.id)[0].acf.price * 1.3
+      return this.$store.state.popsockets.filter(item => item.id === +this.$route.params.id)[0].acf.price * 1.3
     },
     product() {
       return {
@@ -114,12 +89,11 @@ export default {
 <styles scoped lang="scss">
 .item{
   padding: 16px;
-  margin-bottom: 40px;
   @media(min-width: 992px) {
       padding: 32px;;
   }
   @media(min-width: 1200px) {
-      margin: 0 auto 120px;
+      margin: 0 auto;
       width: 1120px;
       padding: 0;
   }
@@ -318,39 +292,6 @@ export default {
     }
     &.active{
       background: orange;
-    }
-  }
-}
-.customers{
-  padding: 16px;
-  @media(min-width: 1200px){
-    padding: 32px;
-  }
-  h2{
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .customers-wrapper{
-    display: flex;
-    overflow: auto;
-    width: 100%;
-    @media(min-width: 1200px){
-      width: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-    .customer{
-      width: 300px;
-      height: 300px;
-      background: url('~/assets/images/amina.jpg');
-      background-size: cover;
-      flex: 0 0 auto;
-      @media(min-width: 1200px){
-        width: 100%;
-        height: 400px;
-      }
     }
   }
 }
