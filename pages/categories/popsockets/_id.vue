@@ -28,6 +28,7 @@
         .options 
           .description {{ getItem.acf.description }}
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
+        AfterInfo(:benefits="benefits")
 </template>
 
 <script>
@@ -42,6 +43,24 @@ export default {
     return {
       id: this.$route.params.id,
       addedMessage: false,
+      benefits: [
+          {
+            icon: require('~/assets/images/benefits/brilliant.svg'),
+            text: 'Эксклюзивный дизайн'
+          },
+          {
+            icon: require('~/assets/images/benefits/point.svg'),
+            text: 'Бесплатная доставка от 2500 рублей'
+          },
+          {
+            icon: require('~/assets/images/benefits/thumb-up.svg'),
+            text: 'Высокое качество материалов и печати'
+          },
+          {
+            icon: require('~/assets/images/benefits/heart.svg'),
+            text: 'Из Осетии с любовью!'
+          },
+        ],
       settings: {
         "dots": true,
         "edgeFriction": 0.35,
