@@ -39,11 +39,7 @@
               input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
               input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
-    .rcommended
-  .customers 
-    h2 Довольные покупатели
-    .customers-wrapper
-      .customer(v-for="item in 5")
+        AfterInfo(:benefits="benefits")
 </template>
 
 <script>

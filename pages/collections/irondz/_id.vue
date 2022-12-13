@@ -39,11 +39,7 @@
               input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
               input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
-    .rcommended
-  .customers 
-    h2 Довольные покупатели
-    .customers-wrapper
-      .customer(v-for="item in 5")
+        AfterInfo(:benfits="benefits")
 </template>
 
 <script>
@@ -60,6 +56,24 @@ export default {
       model: '',
       color: 'Черный',
       addedMessage: false,
+      benefits: [
+          {
+            icon: require('~/assets/images/benefits/brilliant.svg'),
+            text: 'Эксклюзивный дизайн'
+          },
+          {
+            icon: require('~/assets/images/benefits/point.svg'),
+            text: 'Бесплатная доставка от 2500 рублей'
+          },
+          {
+            icon: require('~/assets/images/benefits/thumb-up.svg'),
+            text: 'Высокое качество материалов и печати'
+          },
+          {
+            icon: require('~/assets/images/benefits/heart.svg'),
+            text: 'Из Осетии с любовью!'
+          },
+        ],
       settings: {
         "dots": true,
         "edgeFriction": 0.35,
