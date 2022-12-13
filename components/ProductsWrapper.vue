@@ -38,6 +38,7 @@
     border: 1px solid rgb(241, 241, 241);
     position: relative;
     transition: all .5s ease;
+    overflow: hidden;
     &:hover{
       transform: translateY(-20px);
     }

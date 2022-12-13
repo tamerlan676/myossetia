@@ -35,6 +35,8 @@
               nuxt-link(to="/collections/alania") Alania
             li(@click="turnMenu")
               nuxt-link(to="/collections/irondz") Irondzinad
+            li(@click="turnMenu")
+              nuxt-link(to="/collections/alborov") Atsamaz Alborov
         li(@click="turnMenu")
           nuxt-link(to="/articles") Наши проекты
         li(@click="turnMenu")
@@ -103,6 +105,7 @@ import CartPanel from '~/components/CartPanel.vue';
       color: #fff;
       font-size: 13px;
       letter-spacing: .2rem;
+      text-align: center;
       @media(min-width: 1200px){
         font-size: 16px;
       }

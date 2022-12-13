@@ -12,6 +12,8 @@
       nuxt-link(to="/collections/alania") Alania
     li
       nuxt-link(to="/collections/irondz") Irondzinad
+    li
+      nuxt-link(to="/collections/alborov") Atsamaz Alborov
 </template>
 
 <script>
