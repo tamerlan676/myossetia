@@ -201,24 +201,23 @@ import CartPanel from '~/components/CartPanel.vue';
       }
       .child-ul{
         transition: all .5s ease;
-        transform: translateY(-22);
+        transform: translateY(-22px);
         overflow: hidden;
-        height: 0;
         pointer-events: none;
-        opacity: 0;
-        &.active{
-          margin-top: 20px;
-          overflow: hidden;
-          transform: translateY(0);
-          height: fit-content;
-          pointer-events: all;
-          opacity: 1;
-          li{
+        height: 0;
+        li{
             padding: 10px 0;
             a{
               color: #000
             }
           }
+        &.active{
+          margin-top: 20px;
+          overflow: hidden;
+          transform: translateY(0);
+          pointer-events: all;
+          opacity: 1;
+          height: auto;
         }
       }
     }

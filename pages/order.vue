@@ -15,7 +15,7 @@
             input.text-field(type="text" v-model="familia" placeholder="Введите фамилию" require)
           .field
             .name Номер телефона*
-            input.text-field(type="text" v-model="phone" placeholder="Введите номер телефона" require)
+            input.text-field(type="number" v-model="phone" placeholder="Введите номер телефона" require)
           button.next-step(type="button" @click="nextStepFirst()" :class="{active: name !== '' && familia !== '' && phone !== ''}") Следующий шаг
       transition(name="slide-fade")
         .step(v-if="currentStep === 2") 
@@ -35,7 +35,7 @@
             input.text-field(type="text" v-model="number" placeholder="Введите номер дома" require)
           .field
             .name Почтовый индекс*
-            input.text-field(type="text" v-model="index" placeholder="Введите индекс" require)
+            input.text-field(type="number" v-model="index" placeholder="Введите индекс" require)
           .field
             .name Квартира
             input.text-field(type="text" v-model="flat" placeholder="Введите номер квартиры")
@@ -246,7 +246,7 @@ export default{
       this.$store.commit('setDeliveryStreet', datas)
     },
     submitForm() {
-      const list = this.cart.map((item, index) =>  (index + 1) + ' ' + item.title + ' - ' + item.quantity + ' ' + item.price_count*item.quantity + '₽' )
+      const list = this.cart.map((item, index) =>  (index + 1) + ' ' + item.title + ' - ' + item.quantity + ' ' + item.model + ' ' + item.color + ' ' + item.price_count*item.quantity + '₽' )
       const order = {
         name: this.name,
         familia: this.familia,
@@ -264,7 +264,7 @@ export default{
         totalPrice: this.totalPrice,
         products: list.join().replace(/,/g, '\n' ) 
       }
-      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}  \n`
+      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Способ доставки: ${order.delVariant} \n Цена доставки: ${order.delVariant} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}  \n`
       axios.post('https://api.telegram.org/bot5727754164:AAEZ2AaJjTuTVWdIdd9oL0M5s2YEZbXCtvI/sendMessage', {
         chat_id: '-741684193',
         parse_mode: 'html',

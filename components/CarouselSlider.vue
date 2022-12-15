@@ -90,7 +90,7 @@ import axios from 'axios'
     position: relative;
     display: flex;
     @media(min-width: 992px){
-      height: calc(100vh - 120px);
+      height: calc(100vh - 80px);
     }
     .wrapper{
       width: 100%;
@@ -117,7 +117,7 @@ import axios from 'axios'
         height: 600px;
       }
       @media(min-width: 1200px){
-        height: calc(100vh - 120px);
+        height: calc(100vh - 80px);
       }
       .title{
         position: absolute;
