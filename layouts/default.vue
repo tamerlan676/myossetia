@@ -1,46 +1,15 @@
 <template lang="pug">
 .default
-  .banner НОВИНКИ ЗИМЫ УЖЕ В КАТАЛОГЕ!
   Header(@turnMenu="turnMenu" :activeBurger="activeBurger" @turnCart="turnCart")
   .mob-menu(:class="{active: menuActive}")
-    header
-      .menu Меню
-      img( width="30px" src="~/assets/images/close.svg" @click="turnMenu")
     ul.parent-ul
-        li(@click="turnMenu")
-          nuxt-link(to="/") Главная
-        li.dropdown-item Каталог
-          ul.child-ul
-            li(@click="turnMenu")
-              nuxt-link(to="/categories/cases") Чехлы на телефоны
-            li(@click="turnMenu")
-              nuxt-link(to="/categories/wrappers") Обложки
-            li(@click="turnMenu")
-              nuxt-link(to="/categories/pines") Значки
-            li(@click="turnMenu")
-              nuxt-link(to="/categories/bracelets") Браслеты
-            li(@click="turnMenu")
-              nuxt-link(to="/categories/cuples") Кружки
-            li(@click="turnMenu")
-              nuxt-link(to="/categories/popsockets") Попсокеты
-        li.dropdown-item Коллекции
-          ul.child-ul
-            li(@click="turnMenu")
-              nuxt-link(to="/collections/hohag") Hohog_com
-            li(@click="turnMenu")
-              nuxt-link(to="/collections/dzigoi") Dzigojty_ka
-            li(@click="turnMenu")
-              nuxt-link(to="/collections/tembolat") Tembolat
-            li(@click="turnMenu")
-              nuxt-link(to="/collections/alania") Alania
-            li(@click="turnMenu")
-              nuxt-link(to="/collections/irondz") Irondzinad
-            li(@click="turnMenu")
-              nuxt-link(to="/collections/alborov") Atsamaz Alborov
-        li(@click="turnMenu")
-          nuxt-link(to="/articles") Наши проекты
-        li(@click="turnMenu")
-          nuxt-link(to="/contacts") Контакты
+        li.parent-li(@click="checkMenuElem(item)" v-for="item in menu") 
+            nuxt-link.parent-a(:to="item.link") {{ item.title }}
+            .icon(v-if="item.subitems" :class="{ turned: item.sub }")
+            ul.child-ul(:class="{ active: item.sub }")
+              li(v-for="subitem in item.subitems" @click="turnMenu")
+                nuxt-link(:to="subitem.link") {{ subitem.title }}
+               
   CartPanel(:class="{active: cartActive}" @turnCart="turnCart")
   Nuxt
   Footer
@@ -55,6 +24,83 @@ import CartPanel from '~/components/CartPanel.vue';
     components: { CartPanel },
     data() {
         return {
+            menu: [
+              {
+                title: 'Главная',
+                link: '/',
+              },
+              {
+                title: 'Каталог',
+                link: '#',
+                sub: false,
+                subitems: [
+                  {
+                    title: 'Чехлы на телефоны',
+                    link: '/categories/cases'
+                  },
+                  {
+                    title: 'Обложки на паспорт',
+                    link: '/categories/wrappers'
+                  },
+                  {
+                    title: 'Металлические кружки',
+                    link: '/categories/cuples'
+                  },
+                  {
+                    title: 'Браслеты',
+                    link: '/categories/bracelets'
+                  },
+                  {
+                    title: 'Значки',
+                    link: '/categories/pines'
+                  },
+                  {
+                    title: 'Попсокеты',
+                    link: '/categories/popsockets'
+                  },
+                ]
+              },
+              {
+                title: 'Коллекции',
+                link: '#',
+                sub: false,
+                subitems: [
+                  {
+                    title: 'Hohag_com',
+                    link: '/collections/hohag'
+                  },
+                  {
+                    title: 'Dzigojty_ka',
+                    link: '/collections/dzigoi'
+                  },
+                  {
+                    title: 'Tembolat',
+                    link: '/collections/tembolat'
+                  },
+                  {
+                    title: 'Alania',
+                    link: '/collections/alania'
+                  },
+                  {
+                    title: 'Irondzinad',
+                    link: '/collections/irondz'
+                  },
+                  {
+                    title: 'Atsamaz Alborov',
+                    link: '/collections/alborov'
+                  },
+                ]
+              },
+              {
+                title: 'Контакты',
+                link: '#'
+              },
+              {
+                title: 'О Нас',
+                link: '#'
+              },
+
+            ],
             activeBurger: false,
             menuActive: false,
             cartActive: false
@@ -71,6 +117,14 @@ import CartPanel from '~/components/CartPanel.vue';
                 this.cartActive = false;
                 this.fixBody()
             }
+        },
+        checkMenuElem(item){
+          if(item.subitems){
+            item.sub = !item.sub
+          }else{
+            location.href = item.link;
+            this.turnMenu()
+          }
         },
         turnCart() {
             this.cartActive = !this.cartActive;
@@ -96,20 +150,6 @@ import CartPanel from '~/components/CartPanel.vue';
 
 <style lang="scss" scoped>
   .default{
-    .banner{
-      height: 40px;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 13px;
-      letter-spacing: .2rem;
-      text-align: center;
-      @media(min-width: 1200px){
-        font-size: 16px;
-      }
-    }
     position: relative;
     .mob-menu{
       position: fixed;
@@ -120,7 +160,7 @@ import CartPanel from '~/components/CartPanel.vue';
       box-sizing: border-box;
       overflow-y: scroll;
       z-index: 20;
-      top: 0;
+      top: 78px;
       background: #fff;
       box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
       padding-bottom: 20px;
@@ -130,46 +170,54 @@ import CartPanel from '~/components/CartPanel.vue';
       &.active{
         left: 0;
       }
-      header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #e5e5e5;
-        padding: 16px;
-        img{
-          cursor: pointer;
-        }
-      } 
       .parent-ul{
-        li{
-          padding: 10px 24px;
-          border-bottom: 1px solid rgb(231, 231, 231);
-          &.dropdown-item{
-            font-weight: bold;
-            font-size: 16px;
-            color: #000;
+        padding: 16px;
+        .parent-li{
+          font-size: 18px;
+          padding: 10px;
+          border-bottom: 1px solid rgb(205, 205, 205);
+          position: relative;
+          .parent-a{
+            font-weight: 500;
             text-transform: uppercase;
+            color: #000
           }
-        }
-        a{
-          font-weight: 800;
-          font-size: 16px;
-          color: #000;
-          text-transform: uppercase;
+          .icon{
+            position: absolute;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            right: 0;
+            background-repeat: no-repeat;
+            background-image: url(~/assets/images/next.svg);
+            transition: all .3s linear;
+            &.turned{
+              transform: rotate(90deg);
+              top: 9px
+            }
+          }
         }
       }
       .child-ul{
-        margin-top: 20px;
-        padding-left: 20px;
-        li{
-          padding-left: 0;
-          &:last-child{
-          border-bottom: none;
-          }
-          a{
-            font-size: 14px;
-            width: 100%;
-            display: block;
+        transition: all .5s ease;
+        transform: translateY(-22);
+        overflow: hidden;
+        height: 0;
+        pointer-events: none;
+        opacity: 0;
+        &.active{
+          margin-top: 20px;
+          overflow: hidden;
+          transform: translateY(0);
+          height: fit-content;
+          pointer-events: all;
+          opacity: 1;
+          li{
+            padding: 10px 0;
+            a{
+              color: #000
+            }
           }
         }
       }

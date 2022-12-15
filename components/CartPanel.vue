@@ -76,10 +76,10 @@
 <style lang="scss" scoped>
     .cart-panel{
       position: fixed;
-      width: 95%;
+      width: 100%;
       height: 100%;
       right: -100%;
-      top: 0;
+      top: 78px;
       transition: all .5s ease;
       z-index: 20;
       background: rgb(241, 241, 241);
@@ -173,10 +173,10 @@
         font-weight: 600;
         display: flex;
         justify-content: space-between;
-        padding: 8px;
+        padding: 16px;
       }
       .btn{
-        padding: 8px;
+        padding: 16px;
         .create-order{
         width: 100%;
         box-sizing: border-box;
@@ -201,7 +201,7 @@
       }
       .promocode-zone{
         display: flex;
-        padding: 8px;
+        padding: 16px;
         input{
           border: 1px solid rgba(0,0,0,0.1);
           padding: 12px;

@@ -16,7 +16,7 @@
         components: { CaseCollections },
         data() {
           return {
-            desc: ''
+            desc: 'Молодой, но стремительно набирающий популярность, художник из Осетии - Ацамаз Алборов в своем стиле рисует знаменитых по всему миру персонажей кино, мультфильмов и комиксов. \n Но помимо Ведьмака и Джокера вы можете найти рисунки и осетинских героев'
           }
         },
         async fetch({ store, params }) {
@@ -50,6 +50,9 @@
             background-image: url('~/assets/images/alb-wr.jpg');
             background-size: cover;
             background-position: center;
+          }
+          .collection-desc{
+            white-space: pre-line;
           }
           .collection-info{
             padding: 32px 16px;
