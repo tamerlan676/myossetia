@@ -310,11 +310,13 @@ export default {
     font-weight: 800;
     transition: .5s ease;
     margin-bottom: 24px;
+    pointer-events: all;
     @media(min-width: 768px){
           width: 300px;
     }
     &.active{
       background: orange;
+      pointer-events: all;
     }
   }
 }

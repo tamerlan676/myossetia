@@ -63,10 +63,6 @@
             {
               title: 'Браслеты',
               link: '/categories/bracelets'
-            },
-            {
-              title: 'Значки',
-              link: '/categories/pines'
             }
           ],
           menu3:[

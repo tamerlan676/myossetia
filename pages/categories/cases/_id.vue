@@ -48,7 +48,7 @@
         AfterInfo(:benefits="benefits")
     .rcommended
   ProductBanner(v-if="getItem.acf.banner" :img="getItem.acf.banner" :text="getItem.acf.banner_text")
-  OurTeam
+  //- OurTeam
 </template>
 
 <script>

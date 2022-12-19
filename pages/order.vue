@@ -264,7 +264,7 @@ export default{
         totalPrice: this.totalPrice,
         products: list.join().replace(/,/g, '\n' ) 
       }
-      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Способ доставки: ${order.delVariant} \n Цена доставки: ${order.delVariant} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}  \n`
+      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Способ доставки: ${order.delVariant} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}  \n`
       axios.post('https://api.telegram.org/bot5727754164:AAEZ2AaJjTuTVWdIdd9oL0M5s2YEZbXCtvI/sendMessage', {
         chat_id: '-741684193',
         parse_mode: 'html',
