@@ -14,6 +14,7 @@
 import CaseCollections from '~/components/CaseCollections.vue';
     export default{
     name: "SlugCategory",
+    components: { CaseCollections },
     data() {
       return {
         desc: 'Силиконовые чехлы с эксклюзивными принтами от My Ossetia, изготовлены из противоударного  силикона премиум качества. Материал достаточно плотный и в тоже время не громоздкий, отлично сидит в руке.  Наши кейсы идеально подходят для подарка близкому человеку, а так же себе - любимому! \n С любовью, My Ossetia !'
@@ -21,6 +22,11 @@ import CaseCollections from '~/components/CaseCollections.vue';
     },
     async fetch({ store }) {
         await store.dispatch("getMobileCases");
+    },
+    head(){
+        return {
+          title: 'Чехлы на телефон - My Ossetia',
+        }
     },
     computed: {
         mobileCases() {
@@ -31,8 +37,7 @@ import CaseCollections from '~/components/CaseCollections.vue';
         addToCart(e) {
             this.$store.commit("addToCart", e);
         },
-    },
-    components: { CaseCollections }
+    }
 }
   </script>
   

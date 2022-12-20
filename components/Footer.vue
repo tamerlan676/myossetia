@@ -44,7 +44,7 @@
             },
             {
               title: 'Контакты',
-              link: '#'
+              link: '/contacts'
             },
           ],
           menu2:[

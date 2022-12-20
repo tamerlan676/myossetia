@@ -19,6 +19,11 @@
       async fetch ({ store }) {
         await store.dispatch('getCuples')
       },
+      head(){
+        return {
+          title: 'Металлические кружки - My Ossetia',
+        }
+      },
       computed: {
         cuples() {
           return this.$store.state.cuples

@@ -2,13 +2,18 @@
 .success
   img(src="~/assets/images/success.svg")
   .title Заказ принят
-  .text Совсем скоро мы отправим его вам и пришлем на ваш телефон номер посылки, чтобы вы могли ее отслеживать.
+  .text Спасибо, что выбрали нас. Совсем скоро мы свяжемся с Вами для подтверждения заказа. Всего хорошего!
   nuxt-link.back(to="/") Вернуться на главную
 </template>
 
 <script>
 export default{
   name: 'SuccessPage',
+  head(){
+        return {
+          title: 'Успешный заказ My Ossetia',
+        }
+  },
 }  
 </script>
 

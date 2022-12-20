@@ -19,6 +19,11 @@
       async fetch ({ store }) {
         await store.dispatch('getPopsockets')
       },
+      head(){
+        return {
+          title: 'Попсокеты - My Ossetia',
+        }
+      },
       computed: {
         popsockets() {
           return this.$store.state.popsockets

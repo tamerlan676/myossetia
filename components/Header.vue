@@ -3,7 +3,7 @@
   .burger(@click='$emit("turnMenu")' :class="{active: activeBurger}")
     span
   nuxt-link(to="/")
-    img.logo(src="~/assets/images/logo.png")
+    img.logo(src="~/assets/images/myo.png")
   .menu-lg
     ul.parent-ul
       li

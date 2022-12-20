@@ -166,6 +166,11 @@ export default{
   //   }
   //   await store.dispatch('getAdress', options)
   // },
+  head(){
+        return {
+          title: 'Оформление заказа',
+        }
+  },
   computed: {
     cart() {
           return this.$store.state.cart
@@ -215,7 +220,7 @@ export default{
       }
     },
     usePromocode(){
-        this.$store.commit('usePromocode', this.promocode)
+        this.$store.commit('usePromocode', this.promocode.toUpperCase())
     },
     nextStepThird() {
       if(this.delVariant !=='') {
@@ -575,6 +580,7 @@ export default{
           margin-right: 5px;
           width: 100%;
           font-size: 16px;
+          text-transform: uppercase;
         }
         button{
           padding: 12px;

@@ -25,6 +25,11 @@ import CaseCollections from '~/components/CaseCollections.vue';
       }
         await store.dispatch("getCollection", options);
     },
+    head(){
+        return {
+          title: 'Коллекция Alania от My Ossetia',
+        }
+    },
     computed: {
         collection() {
             return this.$store.state.collection;

@@ -85,6 +85,11 @@ export default {
   async fetch ({ store }) {
         await store.dispatch('getBracelets')
   },
+  head(){
+        return {
+          title: this.getItem.title.rendered,
+        }
+  },
   computed: {
     getItem() {
       return this.$store.state.bracelets.filter(item => item.id === +this.$route.params.id)[0]

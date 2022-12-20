@@ -25,6 +25,11 @@
         }
           await store.dispatch("getCollection", options);
       },
+      head(){
+        return {
+          title: 'Коллекция Irondzinad от My Ossetia',
+        }
+      },
       computed: {
           collection() {
               return this.$store.state.collection;

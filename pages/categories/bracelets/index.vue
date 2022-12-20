@@ -19,6 +19,11 @@
       async fetch ({ store }) {
         await store.dispatch('getBracelets')
       },
+      head(){
+        return {
+          title: 'Браслеты - My Ossetia',
+        }
+      },
       computed: {
         wrappers() {
           return this.$store.state.bracelets

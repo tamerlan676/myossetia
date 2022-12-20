@@ -93,7 +93,7 @@ import CartPanel from '~/components/CartPanel.vue';
               },
               {
                 title: 'Контакты',
-                link: '#'
+                link: '/contacts'
               },
               {
                 title: 'О Нас',
@@ -132,18 +132,18 @@ import CartPanel from '~/components/CartPanel.vue';
                 this.menuActive = false;
                 this.activeBurger = false;
             }
-            this.fixBody()
+            // this.fixBody()
         },
-        fixBody(){
-          if(this.cartActive === true){
-            const x=window.scrollX;
-            const y=window.scrollY;
-            window.onscroll=function(){window.scrollTo(x, y);};
-          }
-          if(this.cartActive === false){
-            window.onscroll=function(){};
-          }
-        }
+        // fixBody(){
+        //   if(this.cartActive === true){
+        //     const x=window.scrollX;
+        //     const y=window.scrollY;
+        //     window.onscroll=function(){window.scrollTo(x, y);};
+        //   }
+        //   if(this.cartActive === false){
+        //     window.onscroll=function(){};
+        //   }
+        // }
     },
 }
 </script>

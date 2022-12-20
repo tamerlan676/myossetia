@@ -2,13 +2,13 @@
 .main
   .breadcrumbs
     .back
-      nuxt-link(to="/categories/cases")
+      nuxt-link(to="collections/alborov/")
         img(src="~/assets/images/back.svg")
     ul.breadcrumbs-dt
       li
         nuxt-link(to="/") Главная
       li
-        nuxt-link(to="/collections/alborov/") Atsa Alborov
+        nuxt-link(to="/collections/alborov/") Коллекция Atsa Alborov
       li {{ getItem.title.rendered }}
   AddMessage(:addedMessage="addedMessage")
   .item
@@ -32,7 +32,7 @@
             select(v-model="model")
               option(disabled value="") Выберите один из вариантов
               option(v-for="(item, key) in getModels" :key="key") {{ item }}
-            .not-model Моей модели нет в списке
+            a.not-model(href="https://wa.me/79288597799" target="_blank") Моей модели нет в списке
           .option
             h4 2. Выберите цвет чехла
             .colors
@@ -87,6 +87,11 @@ export default {
   },
   async fetch ({ store }) {
         await store.dispatch('getMobileCases')
+  },
+  head(){
+        return {
+          title: this.getItem.title.rendered,
+        }
   },
   computed: {
     getItem() {
@@ -242,6 +247,7 @@ export default {
       }
       .not-model{
         margin-bottom: 16px;
+        display: block;
       }
       .custom-model{
         width: 100%;

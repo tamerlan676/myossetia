@@ -7,7 +7,7 @@
     .right #MYOssetia
   .team-wrap(v-if="team")
     .team-wrapper.scroll-right
-      nuxt-link.team-item(v-for="(item, id) in team" :to="item.acf.link" target="_blank")
+      nuxt-link.team-item(v-for="(item, id) in team" :key="id" :to="item.acf.link" target="_blank")
         .nickname {{ item.acf.name }}
         img(:src="item.acf.img")
 </template>

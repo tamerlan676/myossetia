@@ -24,9 +24,9 @@ export default{
       map: 'https://yandex.ru/maps/?um=constructor%3A5fedb0800bc765bf95c201bc0b0dc85baba827dbed9932897fcc04e8377ed223&source=constructorLink',
       options: [
         {
-          text: '+ 7 9888 888 89 98',
+          text: '+ 79288597799',
           img: require('~/assets/images/contacts/call.png'),
-          link: 'tel:+1234567890'
+          link: 'tel:+79288597799'
         },
         {
           text: 'Написать в Telegram',
@@ -96,7 +96,12 @@ export default{
       ]
 
     }
-  }
+  },
+  head(){
+        return {
+          title: 'Контактная информация My Ossetia',
+        }
+  },
 }  
 </script>
 

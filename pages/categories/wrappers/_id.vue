@@ -81,6 +81,11 @@ export default {
   async fetch ({ store, params }) {
         await store.dispatch('getWrapper', params.id)
   },
+  head(){
+        return {
+          title: this.getItem.title.rendered,
+        }
+  },
   computed: {
     getItem() {
       return this.$store.state.wrapper

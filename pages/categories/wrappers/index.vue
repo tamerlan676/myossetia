@@ -23,6 +23,11 @@
       async fetch ({ store }) {
         await store.dispatch('getWrappers')
       },
+      head(){
+        return {
+          title: 'Обложки на паспорт - My Ossetia'
+        }
+      },
       computed: {
         wrappers() {
           return this.$store.state.wrappers

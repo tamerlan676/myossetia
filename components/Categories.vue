@@ -4,8 +4,8 @@
   .categories-wrapper
     nuxt-link.category(to=`/categories/cases` :style="{ 'background-image': 'url(' + caseImg + ')' }")
       h4.category-name Чехлы для телефонов
-    nuxt-link.category(to="/categories/pines" :style="{ 'background-image': 'url(' + pineImg + ')' }")
-      h4.category-name Пины
+    nuxt-link.category(to="/categories/popsockets" :style="{ 'background-image': 'url(' + popImg + ')' }")
+      h4.category-name Попсокеты
     nuxt-link.category(to="/categories/wrappers" :style="{ 'background-image': 'url(' + pasImg + ')' }")
       h4.category-name Обложки на паспорт
     nuxt-link.category(to="/categories/cuples" :style="{ 'background-image': 'url(' + cupleImg + ')' }")
@@ -19,7 +19,7 @@
       return {
         caseImg: require('~/assets/images/case-cat.jpg'),
         cupleImg: require('~/assets/images/cuplee-cat.jpg'),
-        pineImg: require('~/assets/images/pins-cat.jpg'),
+        popImg: require('~/assets/images/popscockets.png'),
         pasImg: require('~/assets/images/pas-cat.jpg'),
       }
     }

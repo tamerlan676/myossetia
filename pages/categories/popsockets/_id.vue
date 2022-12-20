@@ -75,6 +75,11 @@ export default {
   async fetch ({ store }) {
         await store.dispatch('getPopsockets')
   },
+  head(){
+        return {
+          title: this.getItem.title.rendered,
+        }
+  },
   computed: {
     getItem() {
       return this.$store.state.popsockets.filter(item => item.id === +this.$route.params.id)[0]

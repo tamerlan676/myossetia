@@ -58,7 +58,7 @@
         this.$store.commit('plusOne', product)
       },
       usePromocode(){
-        this.$store.commit('usePromocode', this.promocode)
+        this.$store.commit('usePromocode', this.promocode.toUpperCase())
       },
       minusOne(product){
         this.$store.commit('minusOne', product)
@@ -208,6 +208,7 @@
           margin-right: 5px;
           width: 100%;
           font-size: 16px;
+          text-transform: uppercase;
         }
         button{
           padding: 12px;
