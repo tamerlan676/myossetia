@@ -3,7 +3,7 @@
   .wrapper(:style="listPosition")
     .slide(v-for="(slide, id) in slider" :key="id" :style="{ 'background-image': 'url(' + slide.acf.slide + ')'}")
       h2.title {{ slide.title.rendered }}
-      nuxt-link.sl-link(:to="slide.acf.slide_link") Читать Подробнее
+      nuxt-link.sl-link(:to="slide.acf.slide_link") {{ slide.acf.button_text }}
   .next(@click="nextSlide")
     img(src="~/assets/images/next-arrow.svg")
   .prev(@click="prevSlide" v-if="currentSlide > 0")

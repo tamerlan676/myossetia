@@ -20,6 +20,8 @@ const createStore = () => {
       popsockets: [],
       cuples: [],
       wrappers: [],
+      brelocks: [],
+      brelock: '',
       wrapper: '',
       bracelets: [],
       hits: [],
@@ -110,7 +112,7 @@ const createStore = () => {
         localStorage.setItem('cart', JSON.stringify(state.cart));
       },
       usePromocode(state, promocode){
-        if(promocode === 'NOGAZ10') {
+        if(promocode === 'MYOSS10') {
           state.percent = 10
           state.sale = state.totalPrice / state.percent;
           state.totalPrice = state.totalPrice - state.sale;
@@ -128,6 +130,12 @@ const createStore = () => {
       },
       setPines (state, pines) {
         state.pines = pines
+      },
+      setBrelocks (state, brelocks) {
+        state.brelocks = brelocks
+      },
+      setBrelock (state, brelock) {
+        state.brelock = brelock
       },
       setPopsockets (state, popsockets) {
         state.popsockets = popsockets
@@ -187,6 +195,14 @@ const createStore = () => {
         async getPines ({ commit }) {
           const pines = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/pines?_embed&per_page=100')
           commit('setPines', pines.data)
+        },
+        async getBrelocks ({ commit }) {
+          const brelocks = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/brelocks?_embed&per_page=100')
+          commit('setBrelocks', brelocks.data)
+        },
+        async getBrelock ({ commit }, id) {
+          const brelocks = await axios.get(`https://myossetia.ru/admin/wp-json/wp/v2/brelocks/${id}`, id)
+          commit('setBrelock', brelocks.data)
         },
         async getPopsockets ({ commit }) {
           const popsockets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/popsockets?_embed&per_page=100')

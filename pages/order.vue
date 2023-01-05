@@ -45,13 +45,19 @@
         .step(v-if="currentStep === 3")  
           .step-title 3. Способ доставки
           .variant(@click="delVariant = 'Самовывоз'; changeDelPrice(0)" :class="{active: delVariant === 'Самовывоз' }")
-            .variant-title Самовывоз
+            .variant-title 
+              |Самовывоз
+              br
+              span(style="font-weight: normal; font-size: 13px") (по Владикавказу)
             .variant-desc  бесплатно
           .variant(@click="delVariant = 'Почта'; changeDelPrice(250)" :class="{active: delVariant === 'Почта' }")
             .variant-title Почта России
             .variant-desc  250 ₽.
           .variant(@click="delVariant = 'Курьер'; changeDelPrice(150)" :class="{active: delVariant === 'Курьер' }")
-            .variant-title Доставка курьером
+            .variant-title 
+              | Доставка курьером
+              br
+              span(style="font-weight: normal; font-size: 13px") (по Владикавказу)
             .variant-desc  150 ₽.
           button.next-step(type="button" @click="nextStepThird()" :class="{active: delVariant !== ''}") Следующий шаг
           button.prev-step(type="button" @click="prevStep()") Назад

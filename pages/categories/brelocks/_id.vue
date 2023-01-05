@@ -2,13 +2,13 @@
 .main
   .breadcrumbs
     .back
-      nuxt-link(to="/collections/alborov/")
+      nuxt-link(to="/categories/brelocks")
         img(src="~/assets/images/back.svg")
     ul.breadcrumbs-dt
       li
         nuxt-link(to="/") Главная
       li
-        nuxt-link(to="/collections/alborov/") Коллекция Atsamaz Alborov
+        nuxt-link(to="/categories/brelocks") Брелки
       li {{ getItem.title.rendered }}
   AddMessage(:addedMessage="addedMessage")
   .item
@@ -17,9 +17,15 @@
       .slider
         VueSlickCarousel(:settings="settings" class="slider") 
           .slide 
-            img(:src="getItem.acf.product_images_1")
+              img(:src="getItem.acf.product_images_1")
           .slide(v-if="getItem.acf.product_images_2") 
-            img(:src="getItem.acf.product_images_2")
+              img(:src="getItem.acf.product_images_2")
+          .slide(v-if="getItem.acf.product_images_3") 
+              img(:src="getItem.acf.product_images_3")
+          .slide(v-if="getItem.acf.product_images_4") 
+              img(:src="getItem.acf.product_images_4")
+          .slide(v-if="getItem.acf.product_images_5") 
+              img(:src="getItem.acf.product_images_5")
       .info
         h1.product-mob-title {{ getItem.title.rendered }}
         .prices 
@@ -27,18 +33,7 @@
           .current {{ getItem.acf.price }} ₽
         .options 
           .description {{ getItem.acf.description }}
-          .option
-            h4 1. Выберите модель телефона
-            select(v-model="model")
-              option(disabled value="") Выберите один из вариантов
-              option(v-for="(item, key) in getModels" :key="key") {{ item }}
-            a.not-model(href="https://wa.me/79288597799" target="_blank") Моей модели нет в списке
-          .option
-            h4 2. Выберите цвет чехла
-            .colors
-              input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
-              input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
-        button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
+        button.add-to-cart(@click="addToCart(product)" class="active") Добавить в корзину
         AfterInfo(:benefits="benefits")
 </template>
 
@@ -53,8 +48,6 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      model: '',
-      color: 'Черный',
       addedMessage: false,
       benefits: [
           {
@@ -67,7 +60,7 @@ export default {
           },
           {
             icon: require('~/assets/images/benefits/thumb-up.svg'),
-            text: 'Высокое качество материалов и печати'
+            text: 'Высокое качество материалов'
           },
           {
             icon: require('~/assets/images/benefits/heart.svg'),
@@ -85,8 +78,8 @@ export default {
       }
     }
   },
-  async fetch ({ store }) {
-        await store.dispatch('getMobileCases')
+  async fetch ({ store, params }) {
+        await store.dispatch('getBrelock', params.id)
   },
   head(){
         return {
@@ -95,20 +88,15 @@ export default {
   },
   computed: {
     getItem() {
-      return this.$store.state.mobileCases.filter(item => item.id === +this.$route.params.id)[0]
+      return this.$store.state.brelock
     },
     oldPrice() {
-      return this.$store.state.mobileCases.filter(item => item.id === +this.$route.params.id)[0].acf.price * 1.3
-    },
-    getModels() {
-      return this.$store.state.models
+      return this.$store.state.brelock.filter(item => item.id === +this.$route.params.id)[0].acf.price * 1.3
     },
     product() {
       return {
         title: this.getItem.title.rendered,
         id: this.id,
-        model: this.model,
-        color: this.color,
         price: +this.getItem.acf.price,
         price_count: +this.getItem.acf.price_count,
         quantity: +this.getItem.acf.quantity,
@@ -131,11 +119,12 @@ export default {
 <styles scoped lang="scss">
 .item{
   padding: 16px;
+  margin-bottom: 40px;
   @media(min-width: 992px) {
       padding: 32px;;
   }
   @media(min-width: 1200px) {
-      margin: 0 auto;
+      margin: 0 auto 120px;
       width: 1120px;
       padding: 0;
   }
@@ -189,10 +178,6 @@ export default {
       @media(min-width: 768px){
         width: 100%;
         object-fit: cover;
-        height: 750px;
-      }
-      @media(min-width: 992px){
-        height: 600px;
       }
     }
   }
@@ -247,7 +232,6 @@ export default {
       }
       .not-model{
         margin-bottom: 16px;
-        display: block;
       }
       .custom-model{
         width: 100%;
@@ -334,13 +318,11 @@ export default {
     font-weight: 800;
     transition: .5s ease;
     margin-bottom: 24px;
-    pointer-events: none;
     @media(min-width: 768px){
           width: 300px;
     }
     &.active{
       background: orange;
-      pointer-events: all;
     }
   }
 }
