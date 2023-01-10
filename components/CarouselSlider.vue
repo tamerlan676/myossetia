@@ -4,7 +4,8 @@
     .slide(v-for="(slide, id) in slider" :key="id" :style="{ 'background-image': 'url(' + slide.acf.slide + ')'}")
       h2.title {{ slide.title.rendered }}
       nuxt-link.sl-link(:to="slide.acf.slide_link") {{ slide.acf.button_text }}
-  .next(@click="nextSlide")
+      .test(v-html="slide.acf.test_field") {{ slide.acf.test_field }}
+  .next(@click="nextSlide" v-if="currentSlide < 2")
     img(src="~/assets/images/next-arrow.svg")
   .prev(@click="prevSlide" v-if="currentSlide > 0")
     img(src="~/assets/images/prev-arrow.svg")
@@ -43,15 +44,6 @@ import axios from 'axios'
       this.$el.addEventListener('touchstart', event => this.touchstart(event))
       this.$el.addEventListener('touchmove', event => this.touchmove(event))
       this.$el.addEventListener('touchend', () => this.touchend())
-      const vm = this;
-      setInterval(function () {
-        if(vm.currentSlide < 3){
-          vm.currentSlide = vm.currentSlide + 1
-        }
-        if(vm.currentSlide === 3){
-          vm.currentSlide = 0
-        }
-      }, 15000)
     },
     methods: {
       touchstart(event) {
@@ -70,9 +62,8 @@ import axios from 'axios'
         this.prevSlide()
       },
       nextSlide() {
-        this.currentSlide = this.currentSlide + 1
-        if(this.currentSlide === 3){
-          this.currentSlide = 0
+        if(this.currentSlide < 2){
+          this.currentSlide = this.currentSlide + 1
         }
       },
       prevSlide() {

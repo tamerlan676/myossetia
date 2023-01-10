@@ -2,7 +2,7 @@
 .category
   .category-wrapper
   .category-info
-    h1.title Брелки
+    h1.title Брелоки
     .category-desc {{ desc }}
   //- .materials
   //-   button(:class="{active: material === 'Кожа'}" @click="changeMaterial('Кожа')" ) из кожи
@@ -17,7 +17,7 @@
       data() {
         return {
           // material: 'Кожа',
-          desc: 'Описание для брелков'
+          desc: 'Брелоки от My Ossetia  из дерева - это отличный сувенир и прекрасный подарок для детей и взрослых. Оригинальный дизайн и красочность оформления придутся по вкусу ценителям оригинальных вещей. Изготовлен из экологически чистого материала - березовой фанеры. Окрашен безопасными красками на водной основе.'
         }
       },
       async fetch ({ store }) {
@@ -87,7 +87,7 @@
   .category-wrapper{
     width: 100%;
     height: 380px;
-    background-image: url('~/assets/images/wr-pasp.jpg');
+    background-image: url('~/assets/images/brelki-wr.jpg');
     background-size: cover;
     background-position: center;
   }

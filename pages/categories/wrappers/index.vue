@@ -75,6 +75,7 @@
       border-radius: 5px;
       margin-right: 10px;
       transition: all .5s ease;
+      color: #000;
       &.active{
         background: #000;
         color: #fff

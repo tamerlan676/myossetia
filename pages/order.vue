@@ -211,7 +211,7 @@ export default{
       this.currentStep = this.currentStep - 1
     },
     nextStepFirst() {
-      if(this.name !=='' && this.familia !=='') {
+      if(this.name !=='' && this.familia !=='' && this.phone !== '') {
         this.currentStep++
         location.href="#"
       }
@@ -283,6 +283,7 @@ export default{
       }).then(
           function changeLocation() {
             location.href='/success'
+            localStorage.clear()
           },
           setTimeout(this.changeLocation, 10000)
         )
