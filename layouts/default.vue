@@ -9,6 +9,13 @@
             ul.child-ul(:class="{ active: item.sub }")
               li(v-for="subitem in item.subitems" @click="turnMenu")
                 nuxt-link(:to="subitem.link") {{ subitem.title }}
+    .socials
+      a(href="https://www.instagram.com/myossetia.store/" target="_blank")
+        img(style="height: 30px;" src="~/assets/images/contacts/insta.svg")
+      a(href="https://vk.com/myossetia" target="_blank")
+        img(style="height: 30px;" src="~/assets/images/contacts/vk.svg")
+      a(href="https://t.me/myossetia" target="_blank")
+        img(style="height: 30px;" src="~/assets/images/contacts/tlg.svg")
                
   CartPanel(:class="{active: cartActive}" @turnCart="turnCart")
   Nuxt
@@ -188,17 +195,17 @@ import CartPanel from '~/components/CartPanel.vue';
           }
           .icon{
             position: absolute;
-            top: 10px;
-            width: 20px;
-            height: 20px;
+            top: 20px;
+            width: 10px;
+            height: 10px;
             background-size: contain;
-            right: 0;
+            right: 10px;
             background-repeat: no-repeat;
             background-image: url(~/assets/images/next.svg);
             transition: all .3s linear;
+            transform: rotate(90deg);
             &.turned{
-              transform: rotate(90deg);
-              top: 9px
+              transform: rotate(-90deg);
             }
           }
         }
@@ -208,21 +215,28 @@ import CartPanel from '~/components/CartPanel.vue';
         transform: translateY(-22px);
         overflow: hidden;
         pointer-events: none;
-        height: 0;
+        opacity: 0;
+        max-height: 0;
         li{
-            padding: 10px 0;
+            padding: 10px 20px;
             a{
               color: #000
             }
           }
         &.active{
-          margin-top: 20px;
+          margin-top: 10px;
           overflow: hidden;
           transform: translateY(0);
           pointer-events: all;
           opacity: 1;
-          height: auto;
+          max-height: 300px;
         }
+      }
+      .socials{
+        width: 130px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
