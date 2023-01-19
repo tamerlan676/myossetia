@@ -38,7 +38,6 @@
 <script>
 export default{
   name: 'FootbolkaPage',
-  layout: 'no-footer',
   data() {
     return {
       step: 1,
@@ -132,7 +131,6 @@ export default{
       flex-direction: column;
       justify-content: center;
       padding: 16px;
-      height: 80vh;
       .label{
         font-size: 20px;
         margin-bottom: 48px;

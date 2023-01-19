@@ -127,6 +127,10 @@
         }
     }
     .menu{
+      display: none;
+      @media(min-width: 992px){
+        display: block;
+      }
       li{
         margin-bottom: 16px;
         text-align: center;
