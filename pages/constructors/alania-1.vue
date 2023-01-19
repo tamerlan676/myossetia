@@ -3,7 +3,7 @@
   .enter-name(v-if="step === 1") 
     .label Введите имя или фамилию, которые нужно нанести на чехол.
     input(placeholder="ВВЕДИТЕ ИМЯ" v-model="name")
-    .button.next(@click="step = 2") ДАЛЕЕ
+    .button.next(@click="step = 2", location.href="#") ДАЛЕЕ
   .enter-name(v-if="step === 2") 
     .label Введите номер, который нужно нанести на чехол.
     input(placeholder="ВВЕДИТЕ НОМЕР" v-model="number")
@@ -16,7 +16,7 @@
       .name {{ name }}
       .number {{ number }}
     button.new(@click="step = 'options'") ЗАКАЗАТЬ
-    button.new(@click="step = 1") ПО НОВОЙ
+    button.new(@click="step = 1") ИЗМЕНИТЬ
   .options(v-if="step === 'options'") 
         .description
         .option
@@ -38,6 +38,7 @@
 <script>
 export default{
   name: 'FootbolkaPage',
+  layout: 'no-footer',
   data() {
     return {
       step: 1,
@@ -253,6 +254,10 @@ export default{
       padding: 16px;
       width: 100%;
       box-sizing: border-box;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
     .option{
       margin-bottom: 32px;
       h4{
@@ -374,6 +379,7 @@ export default{
     display: block;
     margin: 0 auto;
     width: fit-content;
+    color: #3468ac
   }
   }
 
