@@ -94,7 +94,11 @@ export default {
         price: +this.getItem.acf.price,
         price_count: +this.getItem.acf.price_count,
         quantity: +this.getItem.acf.quantity,
-        img: this.getItem.acf.product_images_1
+        img: this.getItem.acf.product_images_1,
+        model: '',
+        color: '',
+        shirtName: '',
+        shirtNumber: ''
       }
     }
   },

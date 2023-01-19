@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "GeoMd";
+  src: local("GeoMd"),
+   url(~/assets/fonts/GeoMd.ttf) format("truetype");
+}
+@font-face {
+  font-family: "GeoBold";
+  src: local("GeoBold"),
+   url(~/assets/fonts/GeoBold.ttf) format("truetype");
+}
+
 *{
   padding: 0;
   margin: 0;

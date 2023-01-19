@@ -11,6 +11,7 @@
         .price {{ item.acf.price_count }} ₽ 
     .sale Акция
     .sale-dt Акция
+  slot(name="constructor")
 </template>
 
 <script>

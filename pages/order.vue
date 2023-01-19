@@ -257,7 +257,7 @@ export default{
       this.$store.commit('setDeliveryStreet', datas)
     },
     submitForm() {
-      const list = this.cart.map((item, index) =>  (index + 1) + ' ' + item.title + ' - ' + item.quantity + ' ' + item.model + ' ' + item.color + ' ' + item.price_count*item.quantity + '₽' )
+      const list = this.cart.map((item, index) =>  (index + 1) + ' ' + item.title + ' - ' + item.quantity + ' ' + item.model + ' ' + item.color + ' ' + item.shirtName + ' ' + item.shirtNumber + ' ' + item.price_count*item.quantity + '₽' )
       const order = {
         name: this.name,
         familia: this.familia,
@@ -273,7 +273,7 @@ export default{
         paymentMethod: this.paymentMethod,
         userInfo: false,   
         totalPrice: this.totalPrice,
-        products: list.join().replace(/,/g, '\n' ) 
+        products: list.join().replace(/,/g, '\n')
       }
       const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Способ доставки: ${order.delVariant} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}  \n`
       axios.post('https://api.telegram.org/bot5727754164:AAEZ2AaJjTuTVWdIdd9oL0M5s2YEZbXCtvI/sendMessage', {
@@ -287,6 +287,7 @@ export default{
           },
           setTimeout(this.changeLocation, 10000)
         )
+        console.log(message)
     },
   }
 }  

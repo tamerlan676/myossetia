@@ -7,6 +7,19 @@
   .category-flex
     CaseCollections
     ProductsWrapper(:products="collection" folder="collections" category="alania")
+      template(v-slot:constructor)
+        .product(v-for="item in constructors")
+          nuxt-link(to="/constructors/alania-1")
+            img.img(:src="item.img" style="max-width: 100%")
+          .info 
+            .left
+              h3 {{ item.title }}
+            .right
+              .old-price {{ item.oldPrice}} ₽
+              .price {{ item.price }} ₽ 
+          //- .sale Конструктор
+          .sale-dt Конструктор
+
 </template>
   
   <script>
@@ -16,7 +29,23 @@ import CaseCollections from '~/components/CaseCollections.vue';
     components: { CaseCollections },
     data() {
       return {
-        desc: 'Наша любимая команда имеет замечательную историю, которая включается в себя яркие футбольные моменты. Когда-то мы были чемпионами и верим, что это произойдет вновь. \n\n Если вы ярый фанат барсов, то эта коллекция именно для вас.'
+        desc: 'Наша любимая команда имеет замечательную историю, которая включается в себя яркие футбольные моменты. Когда-то мы были чемпионами и верим, что это произойдет вновь. \n\n Если вы ярый фанат барсов, то эта коллекция именно для вас.',
+        constructors: [
+          {
+            title: 'Конструктор 1',
+            img: require('~/assets/images/constructors/constructor-1.png'),
+            price: 300,
+            oldPrice: 600,
+            link: '#'
+          },
+          {
+            title: 'Конструктор 2',
+            img: require('~/assets/images/constructors/constructor-1.png'),
+            price: 300,
+            oldPrice: 600,
+            link: '#'
+          },
+        ],
       }
     },
     async fetch({ store, params }) {
