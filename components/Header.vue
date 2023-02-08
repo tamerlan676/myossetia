@@ -3,11 +3,13 @@
   .burger(@click='$emit("turnMenu")' :class="{active: activeBurger}")
     span
   nuxt-link(to="/")
-    img.logo(src="~/assets/images/myo.png")
+    img.logo(src="~/assets/images/logo.png")
   .menu-lg
     ul.parent-ul
       li
         nuxt-link(to="/") Главная
+      li
+        nuxt-link(to="/about") О нашей компании
       li.dropdown-item(@click="turnCatMenu()") Каталог
         ul.child-ul(:class="{active: catDroodown}")
           li
@@ -36,8 +38,6 @@
             nuxt-link(to="/collections/irondz") Irondzinad
           li
             nuxt-link(to="/collections/alborov") Atsamaz Alborov
-      li
-        nuxt-link(to="/about") Наши проекты
       li
         nuxt-link(to="/contacts") Контакты
   .mob-sm

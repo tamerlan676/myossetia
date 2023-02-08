@@ -37,6 +37,10 @@ import CartPanel from '~/components/CartPanel.vue';
                 link: '/',
               },
               {
+                title: 'О Нашей компании',
+                link: '/about',
+              },
+              {
                 title: 'Каталог',
                 link: '#',
                 sub: false,
@@ -105,12 +109,7 @@ import CartPanel from '~/components/CartPanel.vue';
               {
                 title: 'Контакты',
                 link: '/contacts'
-              },
-              {
-                title: 'О Нас',
-                link: '#'
-              },
-
+              }
             ],
             activeBurger: false,
             menuActive: false,
