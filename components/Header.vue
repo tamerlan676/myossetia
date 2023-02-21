@@ -27,6 +27,8 @@
       li.dropdown-item(@click="turnColMenu()") Коллекции
         ul.child-ul(:class="{active: collectionsDropdown }")
           li
+            nuxt-link(to="/collections/artlova") Дарья Орлова
+          li
             nuxt-link(to="/collections/hohag") Hohag_com
           li
             nuxt-link(to="/collections/dzigoi") Dzigojty_ka

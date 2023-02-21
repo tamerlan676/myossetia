@@ -80,6 +80,10 @@ import CartPanel from '~/components/CartPanel.vue';
                 link: '#',
                 sub: false,
                 subitems: [
+                {
+                    title: 'Дарья Орлова',
+                    link: '/collections/artlova'
+                  },
                   {
                     title: 'Hohag_com',
                     link: '/collections/hohag'
