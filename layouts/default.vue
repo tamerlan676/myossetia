@@ -20,6 +20,10 @@
   CartPanel(:class="{active: cartActive}" @turnCart="turnCart")
   Nuxt
   Footer
+  .floating-call-btn 
+      a(target="_blank" href="https://wa.me/79288597799")
+        .pulse
+          img(width="60px" src="~/assets/images/fl-wts.svg")
 </template>
 
 <script>
@@ -64,6 +68,10 @@ import CartPanel from '~/components/CartPanel.vue';
                   {
                     title: 'Брелоки',
                     link: '/categories/brelocks'
+                  },
+                  {
+                    title: 'Открытки',
+                    link: '/categories/cards'
                   },
                   // {
                   //   title: 'Значки',
@@ -120,10 +128,13 @@ import CartPanel from '~/components/CartPanel.vue';
             cartActive: false
         };
     },
-    mounted() {
-      this.$store.commit('setCart',)
-    },
     methods: {
+      start() {
+        this.loading = true
+      },
+      finish() {
+        this.loading = false
+      },
         turnMenu() {
             this.menuActive = !this.menuActive;
             this.activeBurger = !this.activeBurger;
@@ -242,5 +253,29 @@ import CartPanel from '~/components/CartPanel.vue';
         justify-content: space-between;
       }
     }
+    .floating-call-btn{
+          position: fixed;
+          bottom: 10%;
+          right: 15px;
+          z-index: 100;
+          .pulse {
+            width: 55px;
+            height: 55px;
+            border-radius: 50px;
+            background: #1ba916;
+            animation: pulse 1500ms infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 #1ba916;
+          }
+          100% {
+            box-shadow: 0 0 0 17px #fbb32f01;
+          }
+        }
+        }
   }
 </style>

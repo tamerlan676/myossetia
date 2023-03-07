@@ -23,6 +23,8 @@
           li
             nuxt-link(to="/categories/brelocks") Брелоки
           li
+            nuxt-link(to="/categories/cards") Открытки
+          li
             nuxt-link(to="/categories/popsockets") Попсокеты
       li.dropdown-item(@click="turnColMenu()") Коллекции
         ul.child-ul(:class="{active: collectionsDropdown }")

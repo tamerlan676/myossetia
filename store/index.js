@@ -24,6 +24,7 @@ const createStore = () => {
       brelock: '',
       wrapper: '',
       bracelets: [],
+      cards: [],
       hits: [],
       deliveryCities:null,
       deliveryCity: null,
@@ -112,10 +113,10 @@ const createStore = () => {
         localStorage.setItem('cart', JSON.stringify(state.cart));
       },
       usePromocode(state, promocode){
-        if(promocode === 'MYOSS10') {
-          state.percent = 10
+        if(promocode === 'LAG23') {
+          state.percent = 23
           state.sale = state.totalPrice / state.percent;
-          state.totalPrice = state.totalPrice - state.sale;
+          state.totalPrice = Math.round(state.totalPrice - state.sale);
           state.promocodeActivated = true
           if(state.promocodeError){
             state.promocodeError = false
@@ -148,6 +149,9 @@ const createStore = () => {
       },
       setCuples (state, cuples) {
         state.cuples = cuples
+      },
+      setCards (state, cards) {
+        state.cards = cards
       },
       setBracelets (state, bracelets) {
         state.bracelets = bracelets
@@ -195,6 +199,10 @@ const createStore = () => {
         async getPines ({ commit }) {
           const pines = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/pines?_embed&per_page=100')
           commit('setPines', pines.data)
+        },
+        async getCards ({ commit }) {
+          const pines = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cards?_embed&per_page=100')
+          commit('setCards', pines.data)
         },
         async getBrelocks ({ commit }) {
           const brelocks = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/brelocks?_embed&per_page=100')
