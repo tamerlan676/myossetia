@@ -4,9 +4,9 @@
   .category-info
     h1.title Брелоки
     .category-desc {{ desc }}
-  //- .materials
-  //-   button(:class="{active: material === 'Кожа'}" @click="changeMaterial('Кожа')" ) из кожи
-  //-   button(:class="{active: material === 'ПВХ'}" @click="changeMaterial('ПВХ')") из ПВХ
+  .materials
+    button(:class="{active: material === 'Метал'}" @click="changeMaterial('Метал')" ) из метала
+    button(:class="{active: material === 'Дерево'}" @click="changeMaterial('Дерево')") из дерева
   .category-flex
     ProductsWrapper(:products="brelocks" folder="categories" category="brelocks")
 </template>
@@ -16,7 +16,7 @@
       name: 'SlugCategory',
       data() {
         return {
-          // material: 'Кожа',
+          material: 'Метал',
           desc: 'Брелоки от My Ossetia  из дерева - это отличный сувенир и прекрасный подарок для детей и взрослых. Оригинальный дизайн и красочность оформления придутся по вкусу ценителям оригинальных вещей. Изготовлен из экологически чистого материала - березовой фанеры. Окрашен безопасными красками на водной основе.'
         }
       },
@@ -38,7 +38,7 @@
           this.$store.commit('addToCart', e)
         },
         changeMaterial(material){
-           this.$store.dispatch('changeMaterial', material)
+           this.$store.dispatch('changeBrelocksMaterial', material)
            this.material = material
         }
       }

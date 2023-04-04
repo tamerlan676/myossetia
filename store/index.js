@@ -206,7 +206,7 @@ const createStore = () => {
         },
         async getBrelocks ({ commit }) {
           const brelocks = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/brelocks?_embed&per_page=100')
-          commit('setBrelocks', brelocks.data)
+          commit('setBrelocks',  brelocks.data.filter((item) => { return item.acf.material === 'Метал' }))
         },
         async getBrelock ({ commit }, id) {
           const brelocks = await axios.get(`https://myossetia.ru/admin/wp-json/wp/v2/brelocks/${id}`, id)
@@ -227,6 +227,10 @@ const createStore = () => {
         async changeMaterial ({ commit }, material) {
           const wrappers = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100', material)
           commit('setWrappers', wrappers.data.filter((item) => { return item.acf.material === material }))
+        },
+        async changeBrelocksMaterial ({ commit }, material) {
+          const brelocks = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/brelocks?_embed&per_page=100', material)
+          commit('setBrelocks', brelocks.data.filter((item) => { return item.acf.material === material }))
         },
         async getCuples ({ commit }) {
           const cuples = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cuples?_embed&per_page=100')

@@ -70,7 +70,7 @@ export default{
           adress: 'г. Владикавказ, ул. Васо Абаева, 69'
         },
         {
-          name: 'To be Hip',
+          name: 'To bee Hip',
           adress: 'г. Владикавказ, ул. Международная улица, 2А'
         },
         {

@@ -7,18 +7,18 @@
   .category-flex
     CaseCollections
     ProductsWrapper(:products="collection" folder="collections" category="alania")
-    //-   template(v-slot:constructor)
-    //-     .product(v-for="item in constructors")
-    //-       nuxt-link(to="/constructors/alania-1")
-    //-         img.img(:src="item.img" style="max-width: 100%")
-    //-       .info 
-    //-         .left
-    //-           h3 {{ item.title }}
-    //-         .right
-    //-           .old-price {{ item.oldPrice}} ₽
-    //-           .price {{ item.price }} ₽ 
-    //-       //- .sale Конструктор
-    //-       .sale-dt Конструктор
+      template(v-slot:constructor)
+        .product(v-for="item in constructors")
+          nuxt-link(to="/constructors/alania-1")
+            img.img(:src="item.img" style="max-width: 100%")
+          .info 
+            .left
+              h3 {{ item.title }}
+            .right
+              .old-price {{ item.oldPrice}} ₽
+              .price {{ item.price }} ₽ 
+          //- .sale Конструктор
+          .sale-dt Конструктор
 
 </template>
   
