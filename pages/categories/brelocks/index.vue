@@ -5,7 +5,7 @@
     h1.title Брелоки
     .category-desc {{ desc }}
   .materials
-    button(:class="{active: material === 'Метал'}" @click="changeMaterial('Метал')" ) из метала
+    button(:class="{active: material === 'Метал'}" @click="changeMaterial('Метал')" ) из металла
     button(:class="{active: material === 'Дерево'}" @click="changeMaterial('Дерево')") из дерева
   .category-flex
     ProductsWrapper(:products="brelocks" folder="categories" category="brelocks")

@@ -113,8 +113,8 @@ const createStore = () => {
         localStorage.setItem('cart', JSON.stringify(state.cart));
       },
       usePromocode(state, promocode){
-        if(promocode === 'LAG23') {
-          state.percent = 23
+        if(promocode === 'MYOSSETIA10') {
+          state.percent = 10
           state.sale = state.totalPrice / state.percent;
           state.totalPrice = Math.round(state.totalPrice - state.sale);
           state.promocodeActivated = true
