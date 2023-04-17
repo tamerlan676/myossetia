@@ -21,6 +21,8 @@
           li
             nuxt-link(to="/categories/bracelets") Браслеты
           li
+            nuxt-link(to="/categories/pines") Пины
+          li
             nuxt-link(to="/categories/brelocks") Брелоки
           li
             nuxt-link(to="/categories/cards") Открытки

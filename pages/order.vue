@@ -133,7 +133,7 @@
       .promocode-zone(v-if="!promocodeActivated")
         input(type="text" v-model="promocode" placeholder="Введите промокод")
         button(type="button" @click="usePromocode") Применить
-      .message(v-if="promocodeActivated") Промокод на скидку 23% применился!
+      .message(v-if="promocodeActivated") Промокод на скидку 10% применился!
       .errorMessage(v-if="promocodeError") Недействительный промокод
 </template>
 

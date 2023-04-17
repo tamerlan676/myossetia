@@ -27,12 +27,8 @@
           .current {{ getItem.acf.price }} ₽
         .options 
           .description {{ getItem.acf.description }}
-        button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
+        button.add-to-cart(@click="addToCart(product)" class="active") Добавить в корзину
     .rcommended
-  .customers 
-    h2 Довольные покупатели
-    .customers-wrapper
-      .customer(v-for="item in 5")
 </template>
 
 <script>
@@ -102,7 +98,7 @@ export default {
       padding: 32px;;
   }
   @media(min-width: 1200px) {
-      margin: 0 auto;
+      margin: 0 auto 80px;
       width: 1120px;
       padding: 0;
   }
@@ -301,39 +297,6 @@ export default {
     }
     &.active{
       background: orange;
-    }
-  }
-}
-.customers{
-  padding: 16px;
-  @media(min-width: 1200px){
-    padding: 32px;
-  }
-  h2{
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .customers-wrapper{
-    display: flex;
-    overflow: auto;
-    width: 100%;
-    @media(min-width: 1200px){
-      width: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-    .customer{
-      width: 300px;
-      height: 300px;
-      background: url('~/assets/images/amina.jpg');
-      background-size: cover;
-      flex: 0 0 auto;
-      @media(min-width: 1200px){
-        width: 100%;
-        height: 400px;
-      }
     }
   }
 }
