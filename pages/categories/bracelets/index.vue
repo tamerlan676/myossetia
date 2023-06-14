@@ -79,9 +79,12 @@
   .category-wrapper{
     width: 100%;
     height: 380px;
-    background-image: url('~/assets/images/br-wr.jpg');
+    background-image: url('~/assets/images/br-xs.jpg');
     background-size: cover;
     background-position: center;
+    @media(min-width: 768px){
+      background-image: url('~/assets/images/br-wr.jpg');
+    }
   }
   .category-info{
     padding: 32px 16px;

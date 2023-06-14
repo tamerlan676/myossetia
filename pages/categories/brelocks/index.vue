@@ -87,7 +87,10 @@
   .category-wrapper{
     width: 100%;
     height: 380px;
-    background-image: url('~/assets/images/brelki-wr.jpg');
+    background-image: url('~/assets/images/brelocks-xs.jpg');
+    @media(min-width: 768px){
+      background-image: url('~/assets/images/brelki-wr.jpg');
+    }
     background-size: cover;
     background-position: center;
   }

@@ -83,9 +83,12 @@ import CaseCollections from '~/components/CaseCollections.vue';
   .category-wrapper{
     width: 100%;
     height: 380px;
-    background-image: url('~/assets/images/wr-mob.jpg');
+    background-image: url('~/assets/images/mob-xs.jpg');
     background-size: cover;
     background-position: center;
+    @media(min-width: 1200px){
+      background-image: url('~/assets/images/wr-mob.jpg');
+    }
   }
   .category-info{
     padding: 32px 16px;

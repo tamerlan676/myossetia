@@ -4,7 +4,9 @@
   //- Slider
   Categories
   Hits(:hits="hits")
+  Reviews
   Mission
+  Questions
   .blog 
     h2 #MYOSSETIACares
     .desc Давайте вместе изменим в к лучшему отношение к&#160;природе нашего региона.

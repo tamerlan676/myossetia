@@ -37,11 +37,7 @@
   .product{
     border: 1px solid rgb(241, 241, 241);
     position: relative;
-    transition: all .5s ease;
     overflow: hidden;
-    &:hover{
-      transform: translateY(-20px);
-    }
     img{
       max-width: 100%;
       @media(min-width: 1200px){

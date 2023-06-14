@@ -66,6 +66,10 @@ import CartPanel from '~/components/CartPanel.vue';
                     link: '/categories/bracelets'
                   },
                   {
+                    title: 'Пины',
+                    link: '/categories/pines'
+                  },
+                  {
                     title: 'Брелоки',
                     link: '/categories/brelocks'
                   },

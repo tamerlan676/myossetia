@@ -54,7 +54,6 @@
   .product{
     border: 1px solid rgb(241, 241, 241);
     position: relative;
-    transition: all .5s ease;
     @media(min-width: 768px){
       margin-bottom: 0;
     }
@@ -64,9 +63,6 @@
     img{
       width: 100%;
       object-fit: cover;
-    }
-    &:hover{
-      transform: translateY(-20px);
     }
   }
   .info{
