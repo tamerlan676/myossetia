@@ -247,7 +247,7 @@ import CartPanel from '~/components/CartPanel.vue';
           transform: translateY(0);
           pointer-events: all;
           opacity: 1;
-          max-height: 300px;
+          max-height: 345px;
         }
       }
       .socials{

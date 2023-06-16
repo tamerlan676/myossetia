@@ -1,6 +1,6 @@
 <template lang="pug">
 .after-info
-  .price-info Цена действительна только для сайта и может отличаться от цен в розничных магазинах
+  //- .price-info Цена действительна только для сайта и может отличаться от цен в розничных магазинах
   .benefits
     .benefit(v-for="item in benefits")
       img(:src="item.icon") 
@@ -31,14 +31,15 @@
     .benefit{
       display: flex;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       font-size: 14px;
+      white-space: pre-line;
       &:last-child{
         margin-bottom: 0;
       }
       img{
         margin-right: 8px;
-        width: 20px;
+        width: 25px;
       }
     }
   }

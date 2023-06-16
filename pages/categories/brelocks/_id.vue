@@ -78,8 +78,8 @@ export default {
       }
     }
   },
-  async fetch ({ store, params }) {
-        await store.dispatch('getBrelock', params.id)
+  async fetch ({ store }) {
+        await store.dispatch('getBrelocks')
   },
   head(){
         return {
@@ -88,7 +88,7 @@ export default {
   },
   computed: {
     getItem() {
-      return this.$store.state.brelock
+      return this.$store.state.brelocks.filter(item => item.id === +this.$route.params.id)[0]
     },
     oldPrice() {
       return this.$store.state.brelock.filter(item => item.id === +this.$route.params.id)[0].acf.price * 1.3

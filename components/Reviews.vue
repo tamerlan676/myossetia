@@ -51,7 +51,7 @@ section.reviews
       
       <style lang="scss" scoped>
       .reviews{
-          padding: 40px 24px;
+          padding: 40px 16px;
           @media(min-width: 1200px){
               width: 1120px;
               padding: 120px 0;

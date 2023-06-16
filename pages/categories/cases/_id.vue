@@ -32,7 +32,7 @@
           .old {{ getItem.acf.price * 1.5 }} ₽
           .current {{ getItem.acf.price }} ₽
         .options 
-          .description {{ getItem.acf.description }}
+          AfterInfo(:benefits="benefits")
           .option
             h4 1. Выберите модель телефона
             select(v-model="model")
@@ -45,7 +45,7 @@
               input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
               input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") {{ cartText }}
-        AfterInfo(:benefits="benefits")
+    Reviews    
     .rcommended
   ProductBanner(v-if="getItem.acf.banner" :img="getItem.acf.banner" :text="getItem.acf.banner_text")
   //- OurTeam
@@ -68,20 +68,20 @@ export default {
       color: 'Черный',
       benefits: [
           {
+            icon: require('~/assets/images/benefits/thumb-up.svg'),
+            text: `Высокое качество материалов и печати. \n Чехол обеспечит надежную защиту и идеально подойдет по размеру.`
+          },
+          {
             icon: require('~/assets/images/benefits/brilliant.svg'),
-            text: 'Эксклюзивный дизайн'
+            text: `Эксклюзивный дизайн, который придаст вашему телефону эстетическую привлекательность.`
           },
           {
             icon: require('~/assets/images/benefits/point.svg'),
-            text: 'Бесплатная доставка от 2500 рублей'
-          },
-          {
-            icon: require('~/assets/images/benefits/thumb-up.svg'),
-            text: 'Высокое качество материалов и печати'
+            text: `Быстрая и надежная доставка в любую точку Мира любым удобным способом.`
           },
           {
             icon: require('~/assets/images/benefits/heart.svg'),
-            text: 'Из Осетии с любовью!'
+            text: `Из Осетии с любовью!`
           },
         ],
       settings: {
@@ -211,7 +211,7 @@ export default {
     }
   }
   .slick-prev{
-    left: -10px;
+    left: 8px;
     z-index: 15;
     width: 17px;
     height: 30px;
@@ -223,7 +223,7 @@ export default {
     }
   }
   .slick-next{
-    right: -10px;
+    right: 8px;
     z-index: 15;
     width: 17px;
     height: 30px;
