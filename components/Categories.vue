@@ -10,6 +10,14 @@
       h4.category-name Обложки на паспорт
     nuxt-link.category(to="/categories/cuples" :style="{ 'background-image': 'url(' + cupleImg + ')' }")
       h4.category-name Металлические кружки
+    nuxt-link.category(to=`/categories/brelocks` :style="{ 'background-image': 'url(' + brelCat + ')' }")
+      h4.category-name Брелоки
+    nuxt-link.category(to="/categories/bracelets" :style="{ 'background-image': 'url(' + bracCat + ')' }")
+      h4.category-name Браслеты
+    nuxt-link.category(to="/categories/pines" :style="{ 'background-image': 'url(' + pinesCat + ')' }")
+      h4.category-name Пины
+    nuxt-link.category(to="/categories/cards" :style="{ 'background-image': 'url(' + cardCat + ')' }")
+      h4.category-name Открытки
 </template>
 
 <script>
@@ -21,6 +29,10 @@
         cupleImg: require('~/assets/images/cuplee-cat.jpg'),
         popImg: require('~/assets/images/popscockets.png'),
         pasImg: require('~/assets/images/pas-cat.jpg'),
+        brelCat: require('~/assets/images/brel-cat.jpg'),
+        bracCat: require('~/assets/images/brac-cat.jpg'),
+        pinesCat: require('~/assets/images/pincat.jpg'),
+        cardCat: require('~/assets/images/card-cat.jpg'),
       }
     }
   }

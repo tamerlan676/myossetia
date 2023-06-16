@@ -31,10 +31,9 @@
         .prices 
           .old {{ getItem.acf.price * 1.5 }} ₽
           .current {{ getItem.acf.price }} ₽
-        .options 
-          .description {{ getItem.acf.description }}
-        button.add-to-cart(@click="addToCart(product)" class="active") Добавить в корзину
         AfterInfo(:benefits="benefits")
+        button.add-to-cart(@click="addToCart(product)" class="active") Добавить в корзину
+  Reviews
 </template>
 
 <script>
@@ -51,20 +50,20 @@ export default {
       addedMessage: false,
       benefits: [
           {
+            icon: require('~/assets/images/benefits/thumb-up.svg'),
+            text: `Особое внимание к производству. \n Каждый брелок мы обрабатываем вручную, чтобы мелкие детали были максимально четкими.`
+          },
+          {
             icon: require('~/assets/images/benefits/brilliant.svg'),
-            text: 'Эксклюзивный дизайн'
+            text: `Эксклюзивный дизайн, который обратит на себя внимание ваших близких.`
           },
           {
             icon: require('~/assets/images/benefits/point.svg'),
-            text: 'Бесплатная доставка от 2500 рублей'
-          },
-          {
-            icon: require('~/assets/images/benefits/thumb-up.svg'),
-            text: 'Высокое качество материалов'
+            text: `Быстрая и надежная доставка в любую точку Мира любым удобным способом.`
           },
           {
             icon: require('~/assets/images/benefits/heart.svg'),
-            text: 'Из Осетии с любовью!'
+            text: `Из Осетии с любовью!`
           },
         ],
       settings: {

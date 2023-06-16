@@ -52,7 +52,7 @@ export default {
     baseURL: '/',
   },
   generate: {
-    routes: ['/', '/test']
+    fallback: true 
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
