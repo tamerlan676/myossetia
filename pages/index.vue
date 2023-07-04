@@ -1,7 +1,6 @@
 <template lang="pug">
 .main
-  CarouselSlider
-  //- Slider
+  Hero
   Categories
   Hits(:hits="hits")
   Reviews
