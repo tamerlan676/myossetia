@@ -41,7 +41,7 @@
   }
   .promo{
       font-size: 40px;
-      margin-bottom: 24px;
+      margin-bottom: 380px;
     @media(min-width: 992px){
       font-size: 90px;
     }

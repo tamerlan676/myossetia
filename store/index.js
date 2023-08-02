@@ -16,6 +16,7 @@ const createStore = () => {
       promocodeError: false,
       mobileCases: [],
       collection: [],
+      articles: [],
       pines: [],
       popsockets: [],
       cuples: [],
@@ -166,6 +167,9 @@ const createStore = () => {
         state.deliveryCities = deliveryCities
         state.deliveryRegion = deliveryRegion
       },
+      setArticles (state, articles) {
+        state.articles = articles
+      },
       setDeliveryCity(state, datas) {
         state.deliveryCity = datas.value
         state.deliveryCities = null
@@ -211,6 +215,10 @@ const createStore = () => {
         async getPopsockets ({ commit }) {
           const popsockets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/popsockets?_embed&per_page=100')
           commit('setPopsockets', popsockets.data)
+        },
+        async getArticles ({ commit }) {
+          const articles = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/articles?_embed&per_page=100')
+          commit('setArticles', articles.data)
         },
         async getWrappers ({ commit }) {
           const wrappers = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/wrappers?_embed&per_page=100')
