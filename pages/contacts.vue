@@ -7,7 +7,7 @@
     a(:href="item.link" target="_blank") {{ item.text }}
   .divider
   h2 Точки продаж
-  .text Купить нашу продукцию в Осетии вы можете по следующим адресам:
+  .text Купить нашу продукцию вы можете по следующим адресам:
   .adresses-wrapper
     .adress(v-for="point in adresses")
       .point-name {{ point.name }}
@@ -45,6 +45,10 @@ export default{
         },
       ],
       adresses: [
+      {
+          name: 'My Ossetia',
+          adress: 'г. Владикавказ, ул. Максима Горького, 23'
+        },
         {
           name: 'Творческий центр Allon',
           adress: 'г. Москва, ул. 1 машиностроения 10'
@@ -177,6 +181,9 @@ export default{
       margin-bottom: 24px;
       background: rgb(246, 246, 246);
       padding: 15px;
+      &:first-child{
+        background: rgb(245, 219, 142);
+      }
       @media(min-width: 992px){
         width: 300px;
       }
