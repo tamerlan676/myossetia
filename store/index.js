@@ -13,6 +13,7 @@ const createStore = () => {
       delPrice: 0,
       priceWithDelivery: 0,
       promocodeActivated: false,
+      promocodeMessage: 'Без промокода',
       promocodeError: false,
       mobileCases: [],
       collection: [],
@@ -119,6 +120,7 @@ const createStore = () => {
           state.sale = state.totalPrice / state.percent;
           state.totalPrice = Math.round(state.totalPrice - state.sale);
           state.promocodeActivated = true
+          state.promocodeMessage = 'ИСПОЛЬЗОВАН'
           if(state.promocodeError){
             state.promocodeError = false
           }
@@ -211,6 +213,10 @@ const createStore = () => {
         async getBrelocks ({ commit }) {
           const brelocks = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/brelocks?_embed&per_page=100')
           commit('setBrelocks',  brelocks.data.filter((item) => { return item.acf.material === 'Метал' }))
+        },
+        async getBrelock ({ commit }, id) {
+          const brelocks = await axios.get(`https://myossetia.ru/admin/wp-json/wp/v2/brelocks/${id}`, id)
+          commit('setBrelock', brelocks.data)
         },
         async getPopsockets ({ commit }) {
           const popsockets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/popsockets?_embed&per_page=100')

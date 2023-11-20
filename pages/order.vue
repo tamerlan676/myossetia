@@ -131,10 +131,10 @@
         .total Итого
         .total-price {{ priceWithDelivery }} ₽
       .promocode-zone(v-if="!promocodeActivated")
-        input(type="text" v-model="promocode" placeholder="Введите промокод")
+        input(type="text" v-model="promocode" placeholder="Введите промокод") 
         button(type="button" @click="usePromocode") Применить
       .message(v-if="promocodeActivated") Промокод на скидку 10% применился!
-      .errorMessage(v-if="promocodeError") Недействительный промокод
+      .errorMessage(v-if="promocodeError") Недействительный промокод 
 </template>
 
 <script>
@@ -201,6 +201,9 @@ export default{
     },
     promocodeActivated() {
         return this.$store.state.promocodeActivated
+    },
+    promocodeMessage(){
+      return this.$store.state.promocodeMessage
     },
     promocodeError() {
       return this.$store.state.promocodeError
@@ -271,11 +274,12 @@ export default{
         sdekAdress: this.sdekAdress,
         delVariant: this.delVariant,
         paymentMethod: this.paymentMethod,
+        promo: this.promocodeMessage,
         userInfo: false,   
         totalPrice: this.totalPrice,
         products: list.join().replace(/,/g, '\n')
       }
-      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Способ доставки: ${order.delVariant} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}  \n`
+      const message = `Заказ на сумму: ${order.totalPrice}₽ \n ${order.products} \n Имя: ${order.name} \n Фамилия ${order.familia} \n Телефон ${order.phone} \n Способ доставки: ${order.delVariant} \n Адрес: ${order.city}, ул.${order.street}, №${order.number}, Квартира: ${order.flat} Индекс: ${order.index}, Промокод: ${order.promo}  \n`
       axios.post('https://api.telegram.org/bot5727754164:AAEZ2AaJjTuTVWdIdd9oL0M5s2YEZbXCtvI/sendMessage', {
         chat_id: '-741684193',
         parse_mode: 'html',
