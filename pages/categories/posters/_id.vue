@@ -29,7 +29,6 @@
       .info
         h1.product-mob-title {{ getItem.title.rendered }}
         .prices 
-          .old {{ getItem.acf.price * 1.5 }} ₽
           .current {{ price }} ₽ 
         .options 
           AfterInfo(:benefits="benefits")
@@ -64,11 +63,7 @@ export default {
       benefits: [
           {
             icon: require('~/assets/images/benefits/thumb-up.svg'),
-            text: `Высокое качество материалов и печати. \n Чехол обеспечит надежную защиту и идеально подойдет по размеру.`
-          },
-          {
-            icon: require('~/assets/images/benefits/brilliant.svg'),
-            text: `Эксклюзивный дизайн, который придаст вашему телефону эстетическую привлекательность.`
+            text: `Высокое качество печати. \n Постер станет идеальным украшением вашего кабинета или комнаты.`
           },
           {
             icon: require('~/assets/images/benefits/point.svg'),
