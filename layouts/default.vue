@@ -58,6 +58,10 @@ import CartPanel from '~/components/CartPanel.vue';
                     link: '/categories/wrappers'
                   },
                   {
+                    title: 'Постеры',
+                    link: '/categories/posters'
+                  },
+                  {
                     title: 'Металлические кружки',
                     link: '/categories/cuples'
                   },

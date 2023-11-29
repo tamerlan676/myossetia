@@ -28,6 +28,7 @@ const createStore = () => {
       bracelets: [],
       cards: [],
       hits: [],
+      posters: [],
       deliveryCities:null,
       deliveryCity: null,
       deliveryRegion: null,
@@ -58,7 +59,8 @@ const createStore = () => {
         'IPhone 14',
         'IPhone 14 pro',
         'IPhone 14 pro max'
-      ]
+      ],
+      posterSizes: ['10*15-600руб','15*20-800руб','21*30-1400руб','30*40-2000руб']
     },
    mutations: {
       setCart (state) {
@@ -132,6 +134,9 @@ const createStore = () => {
       setMobileCases (state, products) {
         state.mobileCases = products
       },
+      setPosters (state, products) {
+        state.posters = products
+      },
       setPines (state, pines) {
         state.pines = pines
       },
@@ -193,6 +198,10 @@ const createStore = () => {
         async getMobileCases ({ commit }) {
           const products = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
           commit('setMobileCases', products.data)
+        },
+        async getPosters ({ commit }) {
+          const products = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/posters?_embed&per_page=100')
+          commit('setPosters', products.data)
         },
         async getCollection ({ commit }, options) {
           const collection = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100', options)

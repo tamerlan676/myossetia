@@ -17,6 +17,8 @@
           li
             nuxt-link(to="/categories/wrappers") Обложки на паспорт
           li
+            nuxt-link(to="/categories/posters") Постеры
+          li
             nuxt-link(to="/categories/cuples") Металлические кружки
           li
             nuxt-link(to="/categories/bracelets") Браслеты
