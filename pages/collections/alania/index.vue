@@ -17,7 +17,7 @@
             .right
               .old-price {{ item.oldPrice}} ₽
               .price {{ item.price }} ₽ 
-          //- .sale Конструктор
+          .sale Конструктор
           .sale-dt Конструктор
 
 </template>

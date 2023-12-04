@@ -103,7 +103,7 @@
       }
       .products-list{
         overflow-y: scroll;
-        height: 370px;
+        height: 270px;
         margin-bottom: 24px;
         .product{
           padding: 16px;
