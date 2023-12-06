@@ -63,15 +63,12 @@
           button.prev-step(type="button" @click="prevStep()") Назад
       transition(name="slide-fade")
         .step(v-if="currentStep === 4") 
-          .step-title 4. Способ оплаты
+          .step-title 4. Последний штрих
           //- .variant(@click="paymentMethod = 'Банковской картой'" :class="{active: paymentMethod === 'Банковской картой' }")
           //-   .variant-title Банковской картой
           //- .variant(@click="paymentMethod = 'Наличными при получении'" :class="{active: paymentMethod === 'Наличными при получении' }")
           //-   .variant-title Наличными при получении
-          .pay-info 
-            | Пока вы можете оплатить заказ лишь при получении. 
-            br
-            | Вскоре мы добавим и другие способы оплаты.
+          .pay-info После оформления заказа наш менеджер проверит наличие и свяжется с вами 
           button.next-step(type="button" @click="userInfo = !userInfo" class="active") завершить
           button.prev-step(type="button" @click="prevStep()") назад
       .steps-status 

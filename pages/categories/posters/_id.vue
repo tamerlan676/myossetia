@@ -11,7 +11,7 @@
         nuxt-link(to="/categories/posters/") Постеры
       li {{ getItem.title.rendered }}
   AddMessage(:addedMessage="addedMessage")
-  .item
+  .item(v-if="getItem")
     .wrapper
       h1.product-title {{ getItem.title.rendered }}
       .slider

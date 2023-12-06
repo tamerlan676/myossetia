@@ -23,7 +23,7 @@
   overflow: hidden;
   position: relative;
   display: flex;
-  background: url('~/assets/images/beregi-wr.webp');
+  background: url('~/assets/images/hero-new.jpg');
   background-size: cover;
   background-position: center;
   justify-content: center;
