@@ -24,7 +24,7 @@ export default{
       map: 'https://yandex.ru/maps/?um=constructor%3A5fedb0800bc765bf95c201bc0b0dc85baba827dbed9932897fcc04e8377ed223&source=constructorLink',
       options: [
         {
-          text: '+ 79288597799',
+          text: '+7 989 137-27-27',
           img: require('~/assets/images/contacts/call.png'),
           link: 'tel:+79288597799'
         },
@@ -36,7 +36,7 @@ export default{
         {
           text: 'Написать в WhatsApp',
           img: require('~/assets/images/contacts/whats.png'),
-          link: 'https://wa.me/79288597799'
+          link: 'https://wa.me/79891372727'
         },
         {
           text: 'mail@myossetia.ru',

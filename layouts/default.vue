@@ -21,7 +21,7 @@
   Nuxt
   Footer
   .floating-call-btn 
-      a(target="_blank" href="https://wa.me/79288597799")
+      a(target="_blank" href="https://wa.me/79891372727")
         .pulse
           img(width="60px" src="~/assets/images/fl-wts.svg")
 </template>

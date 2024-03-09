@@ -46,6 +46,10 @@
               title: 'Контакты',
               link: '/contacts'
             },
+            {
+              title: 'Политика конфиденциальности',
+              link: '/policy'
+            },
           ],
           menu2:[
             {

@@ -58,7 +58,10 @@ const createStore = () => {
         'IPhone 13 mini',
         'IPhone 14',
         'IPhone 14 pro',
-        'IPhone 14 pro max'
+        'IPhone 14 pro max',
+        'IPhone 15',
+        'IPhone 15 pro',
+        'IPhone 15 pro max',
       ],
       posterSizes: ['10*15-600руб','15*20-800руб','21*30-1400руб','30*40-2000руб']
     },
