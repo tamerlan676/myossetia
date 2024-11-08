@@ -54,6 +54,10 @@ import CartPanel from '~/components/CartPanel.vue';
                     link: '/categories/cases'
                   },
                   {
+                    title: 'Чехлы на Air Pods',
+                    link: '/categories/airpods'
+                  },
+                  {
                     title: 'Обложки на паспорт',
                     link: '/categories/wrappers'
                   },
@@ -68,6 +72,10 @@ import CartPanel from '~/components/CartPanel.vue';
                   {
                     title: 'Браслеты',
                     link: '/categories/bracelets'
+                  },
+                  {
+                    title: 'Термосы',
+                    link: '/categories/termosi'
                   },
                   {
                     title: 'Пины',

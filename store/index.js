@@ -29,12 +29,21 @@ const createStore = () => {
       cards: [],
       hits: [],
       posters: [],
+      termosi: [],
       deliveryCities:null,
       deliveryCity: null,
       deliveryRegion: null,
       deliveryStreets: null,
       deliveryStreet: null,
       deliveryIndex: null,
+      airpods: [],
+      airpodsModels: [
+        'AirPods 1',
+        'AirPods 2',
+        'AirPods 3',
+        'AirPods Pro',
+        'AirPods Pro 2'
+      ],
       models: [
         
         'IPhone 7',
@@ -137,6 +146,9 @@ const createStore = () => {
       setMobileCases (state, products) {
         state.mobileCases = products
       },
+      setAirPods (state, products) {
+        state.airpods = products
+      },
       setPosters (state, products) {
         state.posters = products
       },
@@ -166,6 +178,9 @@ const createStore = () => {
       },
       setBracelets (state, bracelets) {
         state.bracelets = bracelets
+      },
+      setTermoses (state, termosi) {
+        state.termosi = termosi
       },
       setCollection (state, collection) {
         state.collection = collection
@@ -201,6 +216,10 @@ const createStore = () => {
         async getMobileCases ({ commit }) {
           const products = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cases?_embed&per_page=100')
           commit('setMobileCases', products.data)
+        },
+        async getAirPods ({ commit }) {
+          const products = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/pods-cases?_embed&per_page=100')
+          commit('setAirPods', products.data)
         },
         async getPosters ({ commit }) {
           const products = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/posters?_embed&per_page=100')
@@ -261,6 +280,10 @@ const createStore = () => {
         async getBracelets ({ commit }) {
           const bracelets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/bracelets?_embed&per_page=100')
           commit('setBracelets', bracelets.data)
+        },
+        async getTermoses ({ commit }) {
+          const termosi = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/termosi?_embed&per_page=100')
+          commit('setTermoses', termosi.data)
         },
         async getDeliveryCities ({ commit }, params) {
            await this.$axios.post("https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",

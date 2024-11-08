@@ -15,6 +15,8 @@
           li
             nuxt-link(to="/categories/cases") Чехлы на телефоны
           li
+            nuxt-link(to="/categories/airpods") Чехлы на Air Pods
+          li
             nuxt-link(to="/categories/wrappers") Обложки на паспорт
           li
             nuxt-link(to="/categories/posters") Постеры
@@ -22,6 +24,8 @@
             nuxt-link(to="/categories/cuples") Металлические кружки
           li
             nuxt-link(to="/categories/bracelets") Браслеты
+          li
+            nuxt-link(to="/categories/termosi") Термосы
           li
             nuxt-link(to="/categories/pines") Пины
           li
