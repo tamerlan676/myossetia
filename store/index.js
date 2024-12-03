@@ -24,6 +24,8 @@ const createStore = () => {
       wrappers: [],
       brelocks: [],
       brelock: '',
+      magnets: [],
+      magnet: '',
       wrapper: '',
       bracelets: [],
       cards: [],
@@ -161,6 +163,12 @@ const createStore = () => {
       setBrelock (state, brelock) {
         state.brelock = brelock
       },
+      setMagnets (state, magnets) {
+        state.magnets = magnets
+      },
+      setMagnet (state, magnet) {
+        state.magnet = magnet
+      },
       setPopsockets (state, popsockets) {
         state.popsockets = popsockets
       },
@@ -249,6 +257,14 @@ const createStore = () => {
           const brelocks = await axios.get(`https://myossetia.ru/admin/wp-json/wp/v2/brelocks/${id}`, id)
           commit('setBrelock', brelocks.data)
         },
+        async getMagnets ({ commit }) {
+          const magnets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/magnets?_embed&per_page=100')
+          commit('setMagnets',  magnets.data.filter((item) => { return item.acf.material === 'Виниловые' }))
+        },
+        async getMagnet ({ commit }, id) {
+          const magnets = await axios.get(`https://myossetia.ru/admin/wp-json/wp/v2/magnets/${id}`, id)
+          commit('setMagnet', magnets.data)
+        },
         async getPopsockets ({ commit }) {
           const popsockets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/popsockets?_embed&per_page=100')
           commit('setPopsockets', popsockets.data)
@@ -272,6 +288,10 @@ const createStore = () => {
         async changeBrelocksMaterial ({ commit }, material) {
           const brelocks = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/brelocks?_embed&per_page=100', material)
           commit('setBrelocks', brelocks.data.filter((item) => { return item.acf.material === material }))
+        },
+        async changeMagnetsMaterial ({ commit }, material) {
+          const magnets = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/magnets?_embed&per_page=100', material)
+          commit('setMagnets', magnets.data.filter((item) => { return item.acf.material === material }))
         },
         async getCuples ({ commit }) {
           const cuples = await axios.get('https://myossetia.ru/admin/wp-json/wp/v2/cuples?_embed&per_page=100')

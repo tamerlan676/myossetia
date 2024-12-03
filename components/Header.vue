@@ -25,6 +25,8 @@
           li
             nuxt-link(to="/categories/bracelets") Браслеты
           li
+            nuxt-link(to="/categories/magnets") Магниты
+          li
             nuxt-link(to="/categories/termosi") Термосы
           li
             nuxt-link(to="/categories/pines") Пины
