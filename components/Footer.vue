@@ -1,6 +1,5 @@
 <template lang="pug">
 .footer
-  .footer-header
   .footer-wrapper
     .block
         img(src="~/assets/images/logo_footer.png")
@@ -17,7 +16,7 @@
       ul.menu
         li(v-for="item in menu3")
           nuxt-link(:to="item.link") {{ item.title }}
-  .copyright © 2022 WWW.MYOSSETIA.RU
+  .copyright © 2025 WWW.MYOSSETIA.RU
   </template>
   
   <script>
@@ -102,29 +101,24 @@
     overflow: hidden;
     box-sizing: border-box;
     background: #000;
-    .footer-header{
-      width: 100%;
-      height: 320px;
-      background-image: url(~/assets/images/footer-bg.png);
-      background-size: cover;
-      background-color: #fff;
-    }
     .footer-wrapper{
       margin-bottom: 24px;
+      padding: 40px 0;
       @media(min-width: 992px){
         width: 1120px;
-        padding-top: 30px;
-        margin: 0 auto 80px;
+        margin: 0 auto;
+        padding: 80px 0;
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid rgba(0, 0, 0, .12)
       }
       .block{
         text-align: center;
-        padding: 20px;
         border-bottom:  1px solid rgba(0, 0, 0, .12);
+        padding: 0;
         @media(min-width: 992px){
           border-bottom: none;
+          padding: 20px;
         }
         img{
           width: 150px;

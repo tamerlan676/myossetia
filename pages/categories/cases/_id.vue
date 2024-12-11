@@ -35,15 +35,11 @@
           AfterInfo(:benefits="benefits")
           .option
             h4 1. Выберите модель телефона
-            select(v-model="model")
-              option(disabled value="") Выберите один из вариантов
-              option(v-for="(item, key) in getModels" :key="key") {{ item }}
+            .select-wrap
+              select(v-model="model")
+                option(disabled value="") Выберите один из вариантов
+                option(v-for="(item, key) in getModels" :key="key") {{ item }}
             a.not-model(href="https://wa.me/79288597799" target="_blank") Моей модели нет в списке
-          .option
-            h4 2. Выберите цвет чехла
-            .colors
-              input.black(type="radio" name="color" id="color1" value="Черный" v-model="color")
-              input.white(type="radio" name="color" id="color2" value="Прозрачный" v-model="color")
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") {{ cartText }}
     Reviews    
     .rcommended
@@ -65,7 +61,6 @@ export default {
       cartText: 'Добавить в корзину',
       addedMessage: false,
       model: '',
-      color: 'Черный',
       benefits: [
           {
             icon: require('~/assets/images/benefits/thumb-up.svg'),
@@ -118,7 +113,6 @@ export default {
         title: this.getItem.title.rendered,
         id: this.id,
         model: this.model,
-        color: this.color,
         price: +this.getItem.acf.price,
         price_count: +this.getItem.acf.price_count,
         quantity: +this.getItem.acf.quantity,
@@ -237,8 +231,22 @@ export default {
   .options{
     .option{
       margin-bottom: 32px;
+      position: relative;
       h4{
         margin-bottom: 10px;
+      }
+      .select-wrap{
+        position: relative;
+        pointer-events: auto;
+        width: 300px;
+        &:after{
+          content: "▼";
+            font-size: 1rem;
+            top: 11px;
+            right: 10px;
+            position: absolute;
+            color: gray;
+        }
       }
       select{
         width: 100%;
@@ -248,8 +256,9 @@ export default {
         margin-bottom: 4px;
         border: 2px solid #000;
         color: #000;
-        background: transparent;
         border-radius: 5px;
+        -webkit-appearance: none;
+        appearance: none;
         @media(min-width: 768px){
           width: 300px;
         }

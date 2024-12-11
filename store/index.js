@@ -47,15 +47,6 @@ const createStore = () => {
         'AirPods Pro 2'
       ],
       models: [
-        
-        'IPhone 7',
-        'IPhone 8',
-        'IPhone 7 plus',
-        'IPhone 8 Plus', 
-        'IPhone X',
-        'IPhone XS',
-        'IPhone XS MAX',
-        'IPhone XR',
         'IPhone 11',
         'IPhone 11 pro',
         'IPhone 11 pro max',
@@ -73,6 +64,9 @@ const createStore = () => {
         'IPhone 15',
         'IPhone 15 pro',
         'IPhone 15 pro max',
+        'IPhone 16',
+        'IPhone 16 pro',
+        'IPhone 16 pro max',
       ],
       posterSizes: ['10*15-600руб','15*20-800руб','21*30-1400руб','30*40-2000руб']
     },

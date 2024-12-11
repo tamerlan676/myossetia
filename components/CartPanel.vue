@@ -11,7 +11,7 @@
           img(:src="product.img")
           .info
             .title {{ product.title }}
-            .model(v-if="product.model || product.color") {{ product.model }}, {{ product.color }}
+            .model(v-if="product.model") {{ product.model }}
             .model(v-if="product.shirtName || product.shirtNumber") {{ product.shirtName }}, {{ product.shirtNumber }}
             .calc
               .calc-wrapper 

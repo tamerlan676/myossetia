@@ -35,9 +35,10 @@
           AfterInfo(:benefits="benefits")
           .option
             h4 Выберите модель Air Pods
-            select(v-model="model")
-              option(disabled value="") Выберите один из вариантов
-              option(v-for="(item, key) in getModels" :key="key") {{ item }}
+            .select-wrap
+              select(v-model="model")
+                option(disabled value="") Выберите один из вариантов
+                option(v-for="(item, key) in getModels" :key="key") {{ item }}
             //- a.not-model(href="https://wa.me/79288597799" target="_blank") Моей модели нет в списке
         button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") {{ cartText }}
     Reviews    
@@ -234,6 +235,10 @@ export default {
       margin-bottom: 32px;
       h4{
         margin-bottom: 10px;
+      }
+      .select-wrap{
+        position: relative;
+        width: 300px
       }
       select{
         width: 100%;
