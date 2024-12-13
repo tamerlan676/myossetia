@@ -23,7 +23,7 @@
   overflow: hidden;
   position: relative;
   display: flex;
-  background: url('~/assets/images/best.jpg');
+  background: url('~/assets/images/best-mob.jpg');
   background-size: cover;
   background-position: center;
   justify-content: center;
@@ -32,6 +32,9 @@
   height: 600px;
   @media(min-width: 992px){
     height: calc(100vh - 80px);
+    background: url('~/assets/images/best.jpg');
+    background-size: cover;
+    background-position: center;
   }
   .text{
     color: #fff;
@@ -42,11 +45,11 @@
   }
   .promo{
       font-size: 40px;
-      margin-bottom: 400px;
+      margin-bottom: 350px;
       opacity: 0;
     @media(min-width: 992px){
       font-size: 90px;
-      margin-bottom: 480px;
+      margin-bottom: 450px;
     }
     color: #fff;
     font-weight: 900;

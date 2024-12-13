@@ -5,17 +5,11 @@
     li
       nuxt-link(to="/collections/artlova") Дарья Орлова
     li
-      nuxt-link(to="/collections/hohag") Hohag_com
-    li
       nuxt-link(to="/collections/dzigoi") Dzigojty_ka
     li
       nuxt-link(to="/collections/tembolat") Tembolat 
     li
       nuxt-link(to="/collections/alania") Alania
-    li
-      nuxt-link(to="/collections/irondz") Irondzinad
-    li
-      nuxt-link(to="/collections/alborov") Atsamaz Alborov
 </template>
 
 <script>

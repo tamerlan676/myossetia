@@ -5,8 +5,9 @@
    .order-wrapper
     .steps
       transition(name="slide-fade")
+
         .step(v-if="currentStep === 1") 
-          .step-title 1. Имя и фамилия
+          .step-title Имя и фамилия
           .field
             .name Имя*
             input.text-field(type="text" v-model="name" placeholder="Введите имя" require)
@@ -18,8 +19,28 @@
             input.text-field(type="number" v-model="phone" placeholder="Введите номер телефона" require)
           button.next-step(type="button" @click="nextStepFirst()" :class="{active: name !== '' && familia !== '' && phone !== ''}") Следующий шаг
       transition(name="slide-fade")
-        .step(v-if="currentStep === 2") 
-          .step-title 2. Адрес доставки
+        .step(v-if="currentStep === 2")  
+          .step-title Способ доставки
+          .variant(@click="delVariant = 'Самовывоз'; changeDelPrice(0)" :class="{active: delVariant === 'Самовывоз' }")
+            .variant-title 
+              |Самовывоз
+              br
+              span(style="font-weight: normal; font-size: 13px") (по Владикавказу)
+            .variant-desc  бесплатно
+          .variant(@click="delVariant = 'Почта'; changeDelPrice(300)" :class="{active: delVariant === 'Почта' }")
+            .variant-title Почта России
+            .variant-desc  300 ₽.
+          .variant(@click="delVariant = 'Курьер'; changeDelPrice(350)" :class="{active: delVariant === 'Курьер' }")
+            .variant-title 
+              | Доставка курьером
+              br
+              span(style="font-weight: normal; font-size: 13px") (по Владикавказу)
+            .variant-desc  350 ₽.
+          button.next-step(type="button" @click="nextStepSecond()" :class="{active: delVariant !== ''}") Следующий шаг
+          button.prev-step(type="button" @click="prevStep()") Назад
+      transition(name="slide-fade")
+        .step(v-if="currentStep === 3") 
+          .step-title Адрес доставки
           .field
             .name Город*
             input.text-field(type="text" v-model="city" @input="getDeliveryCities()" placeholder="Введите название города" require)
@@ -41,36 +62,17 @@
             input.text-field(type="text" v-model="flat" placeholder="Введите номер квартиры")
           button.next-step(type="button" @click="nextStepSecond()" href="#" :class="{active: city !== '' && street !== '' && number !== ''}") Следующий шаг
           button.prev-step(type="button" @click="prevStep()") Назад
-      transition(name="slide-fade")
-        .step(v-if="currentStep === 3")  
-          .step-title 3. Способ доставки
-          .variant(@click="delVariant = 'Самовывоз'; changeDelPrice(0)" :class="{active: delVariant === 'Самовывоз' }")
-            .variant-title 
-              |Самовывоз
-              br
-              span(style="font-weight: normal; font-size: 13px") (по Владикавказу)
-            .variant-desc  бесплатно
-          .variant(@click="delVariant = 'Почта'; changeDelPrice(250)" :class="{active: delVariant === 'Почта' }")
-            .variant-title Почта России
-            .variant-desc  250 ₽.
-          .variant(@click="delVariant = 'Курьер'; changeDelPrice(150)" :class="{active: delVariant === 'Курьер' }")
-            .variant-title 
-              | Доставка курьером
-              br
-              span(style="font-weight: normal; font-size: 13px") (по Владикавказу)
-            .variant-desc  150 ₽.
-          button.next-step(type="button" @click="nextStepThird()" :class="{active: delVariant !== ''}") Следующий шаг
-          button.prev-step(type="button" @click="prevStep()") Назад
+
       transition(name="slide-fade")
         .step(v-if="currentStep === 4") 
-          .step-title 4. Последний штрих
+          .step-title Последний штрих
           //- .variant(@click="paymentMethod = 'Банковской картой'" :class="{active: paymentMethod === 'Банковской картой' }")
           //-   .variant-title Банковской картой
           //- .variant(@click="paymentMethod = 'Наличными при получении'" :class="{active: paymentMethod === 'Наличными при получении' }")
           //-   .variant-title Наличными при получении
           .pay-info После оформления заказа наш менеджер проверит наличие и свяжется с вами 
           button.next-step(type="button" @click="userInfo = !userInfo" class="active") завершить
-          button.prev-step(type="button" @click="prevStep()") назад
+          button.prev-step(type="button" @click="prevLastStep()") назад
       .steps-status 
         .step-box(v-for="i  in 4" :class="{first: currentStep === 1, second: currentStep === 2, third: currentStep === 3, four: currentStep === 4}")
       .user-info(v-if="userInfo") 
@@ -85,27 +87,24 @@
         .line(v-if="surname !== ''") 
           span Отчество
           span {{ surname }}
-        .line 
+        .line(v-if="phone !== ''") 
+          span Номер телефона
+          span {{ phone }}
+        .line(v-if="city !== '' ") 
           span Город
           span {{ city }}
-        .line 
+        .line(v-if="street !== ''")  
           span Улица
           span {{ street }}
-        .line 
+        .line(v-if="index !== ''")  
           span Индекс
           span {{ index }}
-        .line 
+        .line(v-if="number !== ''")  
           span Номер дома
           span {{ number }}
         .line(v-if="flat !== ''") 
           span Квартира
           span {{ flat }}
-        .line(v-if="index !== ''") 
-          span Индекс
-          span {{ index }}
-        .line(v-if="phone !== ''") 
-          span Номер телефона
-          span {{ phone }}
         .line(v-if="delVariant !== ''") 
           span Способ доставки
           span {{ delVariant }}
@@ -121,10 +120,10 @@
           .pr-price {{ product.price }} ₽
       .delivery(v-if="delVariant === 'Почта'") 
         .del-var Почта России
-        .de-price 250 ₽
+        .de-price 300 ₽
       .delivery(v-if="delVariant === 'Курьер'") 
         .del-var Курьер
-        .de-price 150 ₽
+        .de-price 350 ₽
       .price
         .total Итого
         .total-price {{ priceWithDelivery }} ₽
@@ -212,6 +211,14 @@ export default{
     prevStep() {
       this.currentStep = this.currentStep - 1
     },
+    prevLastStep() {
+      if(this.delVariant === 'Самовывоз'){
+        this.currentStep = 2
+      }
+      else{
+        this.currentStep = this.currentStep - 1
+      }
+    },
     nextStepFirst() {
       if(this.name !=='' && this.familia !=='' && this.phone !== '') {
         this.currentStep++
@@ -221,7 +228,7 @@ export default{
     changeDelPrice(n){
       this.$store.commit('changeDelPrice', n)
     },
-    nextStepSecond() {
+    nextStepThird() {
       if(this.city !=='' && this.street !=='' && this.number !== '') {
         this.currentStep++
         location.href="#"
@@ -230,8 +237,11 @@ export default{
     usePromocode(){
         this.$store.commit('usePromocode', this.promocode.toUpperCase())
     },
-    nextStepThird() {
-      if(this.delVariant !=='') {
+    nextStepSecond() {
+      if(this.delVariant === 'Самовывоз') {
+        this.currentStep = 4
+      }
+      else{
         this.currentStep++
       }
     },

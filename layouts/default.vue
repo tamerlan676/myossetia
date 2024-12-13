@@ -113,10 +113,6 @@ import CartPanel from '~/components/CartPanel.vue';
                     link: '/collections/artlova'
                   },
                   {
-                    title: 'Hohag_com',
-                    link: '/collections/hohag'
-                  },
-                  {
                     title: 'Dzigojty_ka',
                     link: '/collections/dzigoi'
                   },
@@ -127,15 +123,7 @@ import CartPanel from '~/components/CartPanel.vue';
                   {
                     title: 'Alania',
                     link: '/collections/alania'
-                  },
-                  {
-                    title: 'Irondzinad',
-                    link: '/collections/irondz'
-                  },
-                  {
-                    title: 'Atsamaz Alborov',
-                    link: '/collections/alborov'
-                  },
+                  }
                 ]
               },
               {
@@ -263,7 +251,7 @@ import CartPanel from '~/components/CartPanel.vue';
           transform: translateY(0);
           pointer-events: all;
           opacity: 1;
-          max-height: 380px;
+          max-height: 530px;
         }
       }
       .socials{
