@@ -25,7 +25,7 @@
     .promocode-zone(v-if="!promocodeActivated")
       input(type="text" v-model="promocode" placeholder="Введите промокод")
       button(type="button" @click="usePromocode") Применить
-    .message(v-if="promocodeActivated") Промокод на скидку 10% применился!
+    .message(v-if="promocodeActivated") Промокод на скидку {{ saleProcent }}% применился!
     .errorMessage(v-if="promocodeError") Недействительный промокод
     .btn(@click="$emit('turnCart')")
       nuxt-link.create-order(to="/order") Оформить заказ
@@ -46,6 +46,9 @@
       },
       totalPrice() {
         return this.$store.state.totalPrice
+      },
+      saleProcent(){
+        return this.$store.state.saleProcent
       },
       promocodeActivated() {
         return this.$store.state.promocodeActivated

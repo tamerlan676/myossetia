@@ -15,6 +15,7 @@ const createStore = () => {
       promocodeActivated: false,
       promocodeMessage: 'Без промокода',
       promocodeError: false,
+      saleProcent: 0,
       mobileCases: [],
       collection: [],
       articles: [],
@@ -127,16 +128,19 @@ const createStore = () => {
       usePromocode(state, promocode){
         if(promocode === 'MYOSSETIA10') {
           state.percent = 10
+          state.saleProcent = 10
           state.sale = state.totalPrice / state.percent;
           state.totalPrice = Math.round(state.totalPrice - state.sale);
           state.promocodeActivated = true
-          state.promocodeMessage = 'ИСПОЛЬЗОВАН'
-          if(state.promocodeError){
-            state.promocodeError = false
-          }
+          state.promocodeMessage = 'ИСПОЛЬЗОВАН MYOSSETIA10'
         }
-        else{
-          state.promocodeError = true
+        if(promocode === 'POBRATSKI') {
+          state.percent = 100
+          state.saleProcent = 100
+          state.sale = state.totalPrice / state.percent;
+          state.totalPrice = state.totalPrice - state.totalPrice;
+          state.promocodeActivated = true
+          state.promocodeMessage = 'ИСПОЛЬЗОВАН POBRATSKI'
         }
       },
       setMobileCases (state, products) {
