@@ -33,7 +33,7 @@
           .current {{ getItem.acf.price }} ₽
         .options 
           .description {{ getItem.acf.description }}
-        button.add-to-cart(@click="addToCart(product)" :class="{ active: model !== '' }") Добавить в корзину
+        button.add-to-cart(@click="addToCart(product)" class="active") Добавить в корзину
         AfterInfo(:benefits="benefits")
 </template>
 
@@ -51,12 +51,8 @@ export default {
       addedMessage: false,
       benefits: [
           {
-            icon: require('~/assets/images/benefits/brilliant.svg'),
-            text: 'Эксклюзивный дизайн'
-          },
-          {
             icon: require('~/assets/images/benefits/point.svg'),
-            text: 'Бесплатная доставка от 2500 рублей'
+            text: 'Бесплатная доставка'
           },
           {
             icon: require('~/assets/images/benefits/hand.svg'),
@@ -64,7 +60,15 @@ export default {
           },
           {
             icon: require('~/assets/images/benefits/thumb-up.svg'),
-            text: 'Материалы: Вощенный шнур ХБ, металл'
+            text: 'Материалы: Нержавеющая сталь и пищевой пластик, Вощенный шнур ХБ'
+          },
+          {
+            icon: require('~/assets/images/benefits/temp.svg'),
+            text: 'Держит температуру до 8 часов'
+          },
+          {
+            icon: require('~/assets/images/benefits/close.svg'),
+            text: 'Не рекомендуется мыть в ПММ'
           },
           {
             icon: require('~/assets/images/benefits/heart.svg'),
@@ -105,7 +109,6 @@ export default {
         price_count: +this.getItem.acf.price_count,
         quantity: +this.getItem.acf.quantity,
         img: this.getItem.acf.product_images_1,
-        model: '',
         color: '',
         shirtName: '',
         shirtNumber: ''
